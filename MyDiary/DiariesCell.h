@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DiariesCell.h
 //  MyDiary
 //
 //  Created by Linquas on 30/08/2017.
@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface DiariesCell : UITableViewCell
 
+- (void)updateCell:(int)num;
 
 @end
 

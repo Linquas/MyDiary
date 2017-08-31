@@ -7,8 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "DiariesCell.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIView *bottomRec;
+@property (weak, nonatomic) IBOutlet UITableView *diariesTableView;
+
 
 @end
 
@@ -16,14 +20,45 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [self.bottomRec.layer setCornerRadius:0.5];
+    [self.bottomRec.layer setShadowColor:[UIColor blackColor].CGColor];
+    [self.bottomRec.layer setCornerRadius:5.0];
+    [self.bottomRec.layer setShadowOffset:CGSizeMake(0.0f, 1.0f)];
+    [self.bottomRec.layer setShadowOpacity:0.6f];
+    
+    self.diariesTableView.dataSource = self;
+    self.diariesTableView.delegate = self;
+    
+    
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    DiariesCell *cell = (DiariesCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    if (!cell) {
+        cell = [[DiariesCell alloc]init];
+    }
+    return cell;
 }
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
+}
+
+-(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    DiariesCell *Cell = (DiariesCell*)cell;
+    [Cell updateCell:20];
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+- (IBAction)writeBtnPressed:(id)sender {
+    [self performSegueWithIdentifier:@"writing" sender:nil];
+}
 
 @end

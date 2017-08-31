@@ -7,15 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15FDC062AC133986ECF44B13 /* libPods-MyDiary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C677DD1F29CFA2D6BF50D3F1 /* libPods-MyDiary.a */; };
 		F3C6AD2C1F5681BC00DCEF42 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6AD2B1F5681BC00DCEF42 /* main.m */; };
 		F3C6AD2F1F5681BC00DCEF42 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6AD2E1F5681BC00DCEF42 /* AppDelegate.m */; };
 		F3C6AD321F5681BC00DCEF42 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6AD311F5681BC00DCEF42 /* ViewController.m */; };
 		F3C6AD351F5681BC00DCEF42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3C6AD331F5681BC00DCEF42 /* Main.storyboard */; };
 		F3C6AD371F5681BC00DCEF42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3C6AD361F5681BC00DCEF42 /* Assets.xcassets */; };
 		F3C6AD3A1F5681BC00DCEF42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3C6AD381F5681BC00DCEF42 /* LaunchScreen.storyboard */; };
+		F3C6AD441F568B6F00DCEF42 /* DiariesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6AD431F568B6F00DCEF42 /* DiariesCell.m */; };
+		F3C6AD481F56AB3200DCEF42 /* WritingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6AD471F56AB3200DCEF42 /* WritingVC.m */; };
+		F3C6AD4B1F56B08800DCEF42 /* PlaceHoldUITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6AD4A1F56B08800DCEF42 /* PlaceHoldUITextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1DFBB55305983422ADA3A138 /* Pods-MyDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary.debug.xcconfig"; sourceTree = "<group>"; };
+		7941754ACB055356062262A1 /* Pods-MyDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiary.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary.release.xcconfig"; sourceTree = "<group>"; };
+		C677DD1F29CFA2D6BF50D3F1 /* libPods-MyDiary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyDiary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C6AD271F5681BC00DCEF42 /* MyDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C6AD2B1F5681BC00DCEF42 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F3C6AD2D1F5681BC00DCEF42 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +33,12 @@
 		F3C6AD361F5681BC00DCEF42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3C6AD391F5681BC00DCEF42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3C6AD3B1F5681BC00DCEF42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3C6AD421F568B6F00DCEF42 /* DiariesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiariesCell.h; sourceTree = "<group>"; };
+		F3C6AD431F568B6F00DCEF42 /* DiariesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiariesCell.m; sourceTree = "<group>"; };
+		F3C6AD461F56AB3200DCEF42 /* WritingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WritingVC.h; sourceTree = "<group>"; };
+		F3C6AD471F56AB3200DCEF42 /* WritingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WritingVC.m; sourceTree = "<group>"; };
+		F3C6AD491F56B08800DCEF42 /* PlaceHoldUITextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceHoldUITextView.h; sourceTree = "<group>"; };
+		F3C6AD4A1F56B08800DCEF42 /* PlaceHoldUITextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceHoldUITextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +46,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15FDC062AC133986ECF44B13 /* libPods-MyDiary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E89BA161C99185D3C93515C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C677DD1F29CFA2D6BF50D3F1 /* libPods-MyDiary.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7F16984B439E4B5135DE437A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1DFBB55305983422ADA3A138 /* Pods-MyDiary.debug.xcconfig */,
+				7941754ACB055356062262A1 /* Pods-MyDiary.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F3C6AD1E1F5681BC00DCEF42 = {
 			isa = PBXGroup;
 			children = (
 				F3C6AD291F5681BC00DCEF42 /* MyDiary */,
 				F3C6AD281F5681BC00DCEF42 /* Products */,
+				7F16984B439E4B5135DE437A /* Pods */,
+				6E89BA161C99185D3C93515C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,15 +91,18 @@
 		F3C6AD291F5681BC00DCEF42 /* MyDiary */ = {
 			isa = PBXGroup;
 			children = (
+				F3C6AD4C1F57EC9E00DCEF42 /* view */,
+				F3C6AD451F56A11B00DCEF42 /* controller */,
+				F3C6AD411F568B3000DCEF42 /* model */,
 				F3C6AD2D1F5681BC00DCEF42 /* AppDelegate.h */,
 				F3C6AD2E1F5681BC00DCEF42 /* AppDelegate.m */,
-				F3C6AD301F5681BC00DCEF42 /* ViewController.h */,
-				F3C6AD311F5681BC00DCEF42 /* ViewController.m */,
 				F3C6AD331F5681BC00DCEF42 /* Main.storyboard */,
 				F3C6AD361F5681BC00DCEF42 /* Assets.xcassets */,
 				F3C6AD381F5681BC00DCEF42 /* LaunchScreen.storyboard */,
 				F3C6AD3B1F5681BC00DCEF42 /* Info.plist */,
 				F3C6AD2A1F5681BC00DCEF42 /* Supporting Files */,
+				F3C6AD491F56B08800DCEF42 /* PlaceHoldUITextView.h */,
+				F3C6AD4A1F56B08800DCEF42 /* PlaceHoldUITextView.m */,
 			);
 			path = MyDiary;
 			sourceTree = "<group>";
@@ -79,6 +115,33 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F3C6AD411F568B3000DCEF42 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F3C6AD421F568B6F00DCEF42 /* DiariesCell.h */,
+				F3C6AD431F568B6F00DCEF42 /* DiariesCell.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		F3C6AD451F56A11B00DCEF42 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F3C6AD301F5681BC00DCEF42 /* ViewController.h */,
+				F3C6AD311F5681BC00DCEF42 /* ViewController.m */,
+				F3C6AD461F56AB3200DCEF42 /* WritingVC.h */,
+				F3C6AD471F56AB3200DCEF42 /* WritingVC.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		F3C6AD4C1F57EC9E00DCEF42 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +149,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3C6AD3E1F5681BC00DCEF42 /* Build configuration list for PBXNativeTarget "MyDiary" */;
 			buildPhases = (
+				DEFEA12125BC4A101CC3AB09 /* [CP] Check Pods Manifest.lock */,
 				F3C6AD231F5681BC00DCEF42 /* Sources */,
 				F3C6AD241F5681BC00DCEF42 /* Frameworks */,
 				F3C6AD251F5681BC00DCEF42 /* Resources */,
+				4B9A64294AC4E055F60BF295 /* [CP] Embed Pods Frameworks */,
+				0FC098BB761DDE8B679ED032 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -145,12 +211,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0FC098BB761DDE8B679ED032 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4B9A64294AC4E055F60BF295 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DEFEA12125BC4A101CC3AB09 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F3C6AD231F5681BC00DCEF42 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3C6AD4B1F56B08800DCEF42 /* PlaceHoldUITextView.m in Sources */,
 				F3C6AD321F5681BC00DCEF42 /* ViewController.m in Sources */,
+				F3C6AD441F568B6F00DCEF42 /* DiariesCell.m in Sources */,
+				F3C6AD481F56AB3200DCEF42 /* WritingVC.m in Sources */,
 				F3C6AD2F1F5681BC00DCEF42 /* AppDelegate.m in Sources */,
 				F3C6AD2C1F5681BC00DCEF42 /* main.m in Sources */,
 			);
@@ -270,6 +387,7 @@
 		};
 		F3C6AD3F1F5681BC00DCEF42 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1DFBB55305983422ADA3A138 /* Pods-MyDiary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyDiary/Info.plist;
@@ -281,6 +399,7 @@
 		};
 		F3C6AD401F5681BC00DCEF42 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7941754ACB055356062262A1 /* Pods-MyDiary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyDiary/Info.plist;
@@ -309,6 +428,7 @@
 				F3C6AD401F5681BC00DCEF42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  WritingVC.h
 //  MyDiary
 //
 //  Created by Linquas on 30/08/2017.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-
+@interface WritingVC : UIViewController  <UITextViewDelegate>
 
 @end
-
