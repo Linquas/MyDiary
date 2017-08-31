@@ -42,7 +42,7 @@
     self.titleTextView.textContainer.maximumNumberOfLines = 1;
     self.titleTextView.delegate = self;
     self.titleTextView.attributedPlaceholder = [self generateAttributedStringWithString:@"Title" Color:TEXTCOLOR FontName:FONTNAME FontSize:35.0];
-
+    
     self.contentTextView.delegate = self;
     self.contentTextView.attributedPlaceholder = [self generateAttributedStringWithString:@"Diary" Color:TEXTCOLOR FontName:FONTNAME FontSize:20.0];
     
@@ -50,7 +50,7 @@
     self.isKeyBoardShowed = NO;
     
     [self updateDate];
-
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -101,6 +101,7 @@
 - (IBAction)dimissKeyBoardBtn:(id)sender {
     [self dismissKeyboard];
 }
+
 - (IBAction)closeBtn:(id)sender {
     UIAlertController* closeAlert = [UIAlertController alertControllerWithTitle:@"你的日記尚未存擋" message:@"你不寫了嗎？" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* close = [UIAlertAction actionWithTitle:@"是的"
