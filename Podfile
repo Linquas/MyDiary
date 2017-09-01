@@ -6,7 +6,7 @@ target 'MyDiary' do
   # use_frameworks!
 
   # Pods for MyDiary
-  pod 'UITextView+Placeholder', '~> 1.2'
+  pod 'Realm'
 
 
 end
