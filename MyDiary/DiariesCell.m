@@ -7,6 +7,8 @@
 //
 
 #import "DiariesCell.h"
+#import "Diary.h"
+#import "NSDate+YearMonthDay.h"
 
 @interface DiariesCell ()
 
@@ -23,7 +25,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.layer.cornerRadius =  5.0;
+    self.layer.cornerRadius =  8.0;
     self.layer.masksToBounds = YES;
     self.layer.shadowColor = [UIColor colorWithRed:157.0 / 255.0 green:157.0 / 255.0 blue:157.0 / 255.0 alpha:0.8].CGColor;
     self.layer.shadowOpacity = 0.8;
@@ -34,6 +36,14 @@
 
 - (void)updateCell:(int)num {
     self.dateLabel.text = [NSString stringWithFormat:@"10"];
+}
+
+-(void)update:(Diary*)diary {
+    self.titleLabel.text = diary.title;
+    self.contentLabel.text = diary.text;
+    self.dateLabel.text = [diary.date dayInString];
+    self.timeLabel.text = [diary.date timeInString];
+    self.weekDayLabel.text = [diary.date weekdayShortInString];
 }
 
 

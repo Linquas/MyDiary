@@ -8,11 +8,11 @@
 
 #import "WritingVC.h"
 #import "PlaceHoldUITextView.h"
-#define kOFFSET_FOR_KEYBOARD 80.0
-#define TEXTCOLOR [UIColor colorWithRed:0.53 green:0.71 blue:0.76 alpha:1.0]
-#define FONTNAME @"Helvetica Neue"
-#define WEEKDAYS [@"Sunday",@"Monday",@"Tuseday",@"Wednesday",@"Thursday",@"Friday",@"Saturday"]
-#define MONTHS [@"January",@"February",@"March",@"April",@"May",@"June",@"July",@"August",@"September",@"October",@"November",@"December"]
+#import "RealmManager.h"
+#import "NSDate+YearMonthDay.h"
+#import "Diary.h"
+@import Firebase;
+
 
 @interface WritingVC ()
 @property (weak, nonatomic) IBOutlet PlaceHoldUITextView *titleTextView;
@@ -21,13 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIView *bottonView;
 @property (weak, nonatomic) PlaceHoldUITextView *activeField;
 @property (weak, nonatomic) IBOutlet UIButton *dismissBtn;
-@property (weak, nonatomic) IBOutlet UILabel *monthLAbel;
-@property (weak, nonatomic) IBOutlet UILabel *dayLAbel;
-@property (weak, nonatomic) IBOutlet UILabel *weekdayLabel;
-@property (weak, nonatomic) IBOutlet UILabel *yearLabel;
 @property (nonatomic) BOOL isKeyBoardShowed;
 @property (nonatomic) CGSize kbSize;
-
+@property (nonatomic) RealmManager* realmManager;
 
 @end
 
@@ -37,19 +33,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.realmManager = [[RealmManager alloc]init];
+    
     [self registerForKeyboardNotifications];
     
-    self.titleTextView.textContainer.maximumNumberOfLines = 1;
     self.titleTextView.delegate = self;
-    self.titleTextView.attributedPlaceholder = [self generateAttributedStringWithString:@"Title" Color:TEXTCOLOR FontName:FONTNAME FontSize:35.0];
-    
     self.contentTextView.delegate = self;
-    self.contentTextView.attributedPlaceholder = [self generateAttributedStringWithString:@"Diary" Color:TEXTCOLOR FontName:FONTNAME FontSize:20.0];
     
     [self.dismissBtn setHidden:YES];
-    self.isKeyBoardShowed = NO;
     
-    [self updateDate];
+    self.isKeyBoardShowed = NO;
     
 }
 
@@ -57,26 +50,7 @@
     [self.titleTextView becomeFirstResponder];
 }
 
-- (void)updateDate {
-    NSArray *weekdays = @WEEKDAYS;
-    NSArray *months = @MONTHS;
-    
-    NSDate *today = [NSDate date];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay | NSCalendarUnitWeekday;
-    NSDateComponents *components = [calendar components:unitFlags fromDate:today];
-    
-    self.dayLAbel.text = [NSString stringWithFormat:@"%d",(int)[components day]];
-    self.weekdayLabel.text = [NSString stringWithFormat:@"%@",[weekdays objectAtIndex:[components weekday] - 1]];
-    self.yearLabel.text = [NSString stringWithFormat:@"%d",(int)[components year]];
-    self.monthLAbel.text = [NSString stringWithFormat:@"%@",[months objectAtIndex:[components month] - 1]];
-    
-    
-    NSLog(@"weekday: %ld",(long)[components weekday]);
-    NSLog(@"%@", components.debugDescription);
-}
-
-- (void) dismissKeyboard {
+- (void)dismissKeyboard {
     [self.titleTextView endEditing:YES];
     [self.contentTextView endEditing:YES];
     self.isKeyBoardShowed = NO;
@@ -86,14 +60,6 @@
     CGRect newFrame = view.frame;
     newFrame.origin.y += y;
     [view setFrame:newFrame];
-}
-
-- (NSMutableAttributedString*)generateAttributedStringWithString:(NSString*)str Color:(UIColor*)color FontName:(NSString*) fontname FontSize:(NSInteger) fontsize {
-    
-    NSMutableDictionary *attrDict = [NSMutableDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
-    UIFont *font = [UIFont fontWithName:fontname size:fontsize];
-    [attrDict setObject:font forKey:NSFontAttributeName];
-    return [[NSMutableAttributedString alloc] initWithString:str attributes: attrDict];
 }
 
 //button
@@ -117,6 +83,40 @@
                                                      }];
     [closeAlert addAction:resume];
     [self presentViewController:closeAlert animated:YES completion:nil];
+}
+
+- (IBAction)saveDiaryBtn:(id)sender {
+    if ([self.titleTextView.text isEqualToString:@""] || [self.contentTextView.text isEqualToString:@""] ) {
+        UIAlertController* saveAlert = [UIAlertController alertControllerWithTitle:@"空白內容" message:@"好好想想生活中的樂趣吧！" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *resume = [UIAlertAction actionWithTitle:@"繼續寫"
+                                                         style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                                                             [saveAlert dismissViewControllerAnimated:YES completion:nil];
+                                                        }];
+        [saveAlert addAction:resume];
+        [self presentViewController:saveAlert animated:YES completion:nil];
+    } else {
+        Diary *diary = [[Diary alloc]init];
+        NSDate *today = [NSDate date];
+        NSString *buff = [NSString stringWithFormat:@"%@", self.titleTextView.text];
+        diary.title =buff;
+        buff = [NSString stringWithFormat:@"%@", self.contentTextView.text];
+        diary.text = buff;
+        diary.key = [today getYearMonthDayOfTodayInInteger];
+        diary.date = today;
+        diary.user = [FIRAuth auth].currentUser.uid;
+        [self.realmManager updateObject:diary];
+        [self dismissKeyboard];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (NSInteger)getYearMonthDayOfTodayInInteger {
+
+    NSDateFormatter * formatter = [[NSDateFormatter alloc ] init];
+    [formatter setDateFormat:@"YYYYMMdd"];
+    NSString *date =  [formatter stringFromDate:[NSDate date]];
+    
+    return [date integerValue];
 }
 
 - (void)textFieldDidBeginEditing:(PlaceHoldUITextView *)textField {
@@ -184,10 +184,6 @@
     }
     [self.dismissBtn setHidden:YES];
 }
-
-
-
-
 
 
 @end

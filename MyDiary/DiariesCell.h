@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Diary.h"
 
 @interface DiariesCell : UITableViewCell
 
-- (void)updateCell:(int)num;
+-(void)updateCell:(int)num;
+-(void)update:(Diary*)diary;
 
 @end
 

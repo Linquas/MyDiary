@@ -151,7 +151,6 @@
         }
         rect.origin.y += 8.0f;
     }
-    
     return rect;
 }
 

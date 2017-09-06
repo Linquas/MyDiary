@@ -3,10 +3,13 @@
 
 target 'MyDiary' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
+  use_frameworks!
 
   # Pods for MyDiary
   pod 'Realm'
-
+  pod 'FSCalendar'   
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
 
 end
