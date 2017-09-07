@@ -22,16 +22,6 @@
                     <view key="view" contentMode="scaleToFill" id="WbL-YS-e0e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0P-4Q-djR">
-                                <rect key="frame" x="160" y="555" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="sign out"/>
-                                <connections>
-                                    <action selector="signOut:" destination="mbh-Xu-6Me" eventType="touchUpInside" id="yQz-B7-uuc"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="0.41366603940000002" green="0.74643519079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
@@ -83,13 +73,13 @@
                                                                                 <constraint firstAttribute="width" constant="42" id="gjI-H5-KQi"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="35"/>
-                                                                            <color key="textColor" red="0.52549019607843139" green="0.70588235294117641" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" red="0.070588235294117646" green="0.58823529411764708" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Fri." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5b-VC-AGZ" userLabel="WeekDay">
                                                                             <rect key="frame" x="0.0" y="49.5" width="42" height="31"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <color key="textColor" red="0.52549019610000003" green="0.70588235290000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
@@ -104,19 +94,19 @@
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mL8-XT-sbZ" userLabel="Time">
                                                                             <rect key="frame" x="0.0" y="0.0" width="253" height="27"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                                            <color key="textColor" red="0.52549019610000003" green="0.70588235290000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="東京生活" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3na-km-SMC" userLabel="Title">
                                                                             <rect key="frame" x="0.0" y="27" width="253" height="26.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                            <color key="textColor" red="0.52549019610000003" green="0.70588235290000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="展望台巡りとフリ一マーケット❄️❤️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgj-6a-9Fb" userLabel="Content">
                                                                             <rect key="frame" x="0.0" y="53.5" width="253" height="27"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                                            <color key="textColor" red="0.52549019610000003" green="0.70588235290000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
@@ -179,7 +169,7 @@
                                             <segment title="Calendar"/>
                                             <segment title="Diary"/>
                                         </segments>
-                                        <color key="tintColor" red="0.47071802616119385" green="0.76249349117279053" blue="0.92109483480453491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.41366603940000002" green="0.74643519079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="segementChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="jAO-vw-Bnl"/>
                                         </connections>
@@ -212,7 +202,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.40392156862745099" green="0.70980392156862748" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.41176470588235292" green="0.74509803921568629" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="N8h-nn-VxW" secondAttribute="bottom" constant="11" id="1Gg-zC-wc0"/>
                                     <constraint firstItem="1mA-8w-7gC" firstAttribute="leading" secondItem="OWY-R0-THm" secondAttribute="leadingMargin" id="41M-Kt-Jk4"/>
@@ -282,7 +272,7 @@
                                             <segment title="Calendar"/>
                                             <segment title="Diary"/>
                                         </segments>
-                                        <color key="tintColor" red="0.47071802619999997" green="0.76249349119999998" blue="0.92109483479999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.41366603940000002" green="0.74643519079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="segementChanged:" destination="uPo-tE-aKh" eventType="valueChanged" id="Fp4-KQ-ARY"/>
                                         </connections>
@@ -327,13 +317,13 @@
                                                                                 <constraint firstAttribute="width" constant="42" id="FY4-ps-M5L"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="35"/>
-                                                                            <color key="textColor" red="0.52549019610000003" green="0.70588235290000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Fri." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUA-gQ-AUi" userLabel="WeekDay">
                                                                             <rect key="frame" x="0.0" y="48" width="42" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <color key="textColor" red="0.52549019610000003" green="0.70588235290000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
@@ -347,19 +337,19 @@
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsC-RX-7QO" userLabel="Time">
                                                                             <rect key="frame" x="0.0" y="0.0" width="27" height="25.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                                            <color key="textColor" red="0.52549019610000003" green="0.70588235290000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="東京生活" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2O-w3-fVe" userLabel="Title">
                                                                             <rect key="frame" x="0.0" y="21.5" width="225" height="25.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                            <color key="textColor" red="0.52549019610000003" green="0.70588235290000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="展望台巡りとフリ一マーケット❄️❤️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wN9-aZ-FXo" userLabel="Content">
                                                                             <rect key="frame" x="0.0" y="43" width="225" height="25.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                                            <color key="textColor" red="0.52549019610000003" green="0.70588235290000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
@@ -447,7 +437,7 @@
                         <viewControllerLayoutGuide type="top" id="6vn-Lg-gUE"/>
                         <viewControllerLayoutGuide type="bottom" id="oFt-K2-aGJ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="paS-0w-etB">
+                    <view key="view" contentMode="scaleToFill" id="paS-0w-etB" customClass="AboutMeView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -465,7 +455,7 @@
                                             <segment title="Calendar"/>
                                             <segment title="Diary"/>
                                         </segments>
-                                        <color key="tintColor" red="0.47071802619999997" green="0.76249349119999998" blue="0.92109483479999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.41366603940000002" green="0.74643519079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="segementChanged:" destination="xgX-9N-URw" eventType="valueChanged" id="DU8-Xg-9ZR"/>
                                         </connections>
@@ -478,6 +468,50 @@
                                     <constraint firstAttribute="height" constant="95" id="vnb-xK-du8"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_contacts_image_default" translatesAutoresizingMaskIntoConstraints="NO" id="lnh-gM-zy3">
+                                <rect key="frame" x="97" y="156" width="180" height="180"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Steven Lin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zig-qL-lCt">
+                                <rect key="frame" x="46" y="374" width="282" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vX2-AU-V63" customClass="LGButton" customModule="LGButton">
+                                <rect key="frame" x="30" y="508" width="130" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Logout"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="rightIconFontName" value="ic"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="rightIconString" value="account-logout"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="17"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="logoutBtn:" destination="xgX-9N-URw" eventType="touchUpInside" id="hZ6-iv-vjk"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SA2-2n-LDr" customClass="LGButton" customModule="LGButton">
+                                <rect key="frame" x="214" y="508" width="130" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Sync"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="rightIconFontName" value="ic"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="rightIconString" value="loop-circular"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="17"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="syncBtn:" destination="xgX-9N-URw" eventType="touchUpInside" id="Ocu-tB-Osa"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -489,11 +523,18 @@
                             <constraint firstItem="7Wo-8s-kZY" firstAttribute="bottom" secondItem="oFt-K2-aGJ" secondAttribute="top" id="p3g-ea-mKA"/>
                             <constraint firstItem="7Wo-8s-kZY" firstAttribute="top" secondItem="ggC-qS-wSa" secondAttribute="bottom" id="rxm-Ly-XC2"/>
                         </constraints>
+                        <connections>
+                            <outlet property="nameLabel" destination="zig-qL-lCt" id="Jmg-b0-zG1"/>
+                            <outlet property="personImg" destination="lnh-gM-zy3" id="60U-Hu-S06"/>
+                        </connections>
                     </view>
                     <connections>
+                        <outlet property="nameLabel" destination="zig-qL-lCt" id="ktN-3X-0uS"/>
                         <outlet property="segmentControl" destination="82g-fC-lAN" id="6iI-JK-LxK"/>
+                        <outlet property="userImg" destination="lnh-gM-zy3" id="H8G-Fr-61w"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="meToDiary" animates="NO" id="mkm-hZ-QOE"/>
                         <segue destination="uPo-tE-aKh" kind="show" identifier="meToCalendar" animates="NO" id="kGB-FT-haR"/>
+                        <segue destination="mbh-Xu-6Me" kind="show" identifier="backToLogin" id="vBU-bw-vjB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQs-Nn-F5p" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -569,7 +610,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.4039215686" green="0.70980392160000005" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.41366603940000002" green="0.74643519079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="36B-e4-53t" firstAttribute="centerY" secondItem="0iZ-Rz-6zH" secondAttribute="centerY" id="6PM-Ck-axW"/>
                                             <constraint firstAttribute="trailing" secondItem="tfF-Ob-7YK" secondAttribute="trailing" constant="8" id="TWQ-Jq-nG0"/>
@@ -586,11 +627,6 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                <color key="value" red="0.52549019610000003" green="0.70588235290000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSS-Xr-sK6" customClass="PlaceHoldUITextView">
                                         <rect key="frame" x="16" y="218" width="343" height="391"/>
@@ -600,11 +636,6 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                <color key="value" red="0.52549019610000003" green="0.70588235290000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mRu-Zp-Xs5" userLabel="BottomView">
                                         <rect key="frame" x="0.0" y="617" width="375" height="50"/>
@@ -632,7 +663,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.4039215686" green="0.70980392160000005" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.41366603940000002" green="0.74643519079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="ceC-Xq-V5F" firstAttribute="leading" secondItem="mRu-Zp-Xs5" secondAttribute="leading" id="2Yx-m7-Xiv"/>
                                             <constraint firstAttribute="height" constant="50" id="3X4-UY-SWa"/>
@@ -761,7 +792,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.4039215686" green="0.70980392160000005" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.41366603940000002" green="0.74643519079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Wsa-xe-HyD" firstAttribute="centerY" secondItem="0RI-Me-3t2" secondAttribute="centerY" id="ZtR-Pv-ngs"/>
                                     <constraint firstAttribute="height" constant="150" id="kXo-bZ-kOi"/>
@@ -779,11 +810,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" red="0.52549019610000003" green="0.70588235290000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axk-U5-GhS" userLabel="Content Text View" customClass="PlaceHoldUITextView">
                                 <rect key="frame" x="16" y="218" width="343" height="391"/>
@@ -793,11 +819,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" red="0.52549019610000003" green="0.70588235290000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6To-nj-wfN" userLabel="BottomView">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
@@ -814,7 +835,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.4039215686" green="0.70980392160000005" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.41366603940000002" green="0.74643519079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Ukt-rT-K8M" secondAttribute="bottom" constant="3" id="8Py-gK-D8x"/>
                                     <constraint firstAttribute="height" constant="50" id="GA9-Ej-bFj"/>
@@ -862,6 +883,7 @@
     </scenes>
     <resources>
         <image name="ic_clear_white_24dp" width="72" height="72"/>
+        <image name="ic_contacts_image_default" width="240" height="240"/>
         <image name="ic_delete_white_24dp" width="72" height="72"/>
         <image name="ic_keyboard_arrow_down_black_24dp" width="72" height="72"/>
         <image name="ic_menu_white_24dp" width="72" height="72"/>
@@ -870,9 +892,9 @@
         <image name="theme_bg_taki" width="1080" height="1276"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FIs-5r-HJZ"/>
-        <segue reference="I1k-0d-RdE"/>
-        <segue reference="q0f-sm-ytR"/>
-        <segue reference="QQE-Ao-NSQ"/>
+        <segue reference="mkm-hZ-QOE"/>
+        <segue reference="rhE-Cm-fFW"/>
+        <segue reference="kGB-FT-haR"/>
+        <segue reference="g0y-5W-5Y2"/>
     </inferredMetricsTieBreakers>
 </document>

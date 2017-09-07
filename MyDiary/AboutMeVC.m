@@ -7,10 +7,18 @@
 //
 
 #import "AboutMeVC.h"
+#import <Realm/Realm.h>
+#import "RealmManager.h"
+#import "DatabaseServices.h"
+#import "User.h"
+@import GoogleSignIn;
+@import Firebase;
 
 @interface AboutMeVC ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
-
+@property RLMResults *user;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *userImg;
 @end
 
 @implementation AboutMeVC
@@ -18,6 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.user = [[RealmManager instance] loadAllUser];
+    User *user = [self.user objectAtIndex:0];
+    if (user) {
+        if (user.familyName)
+            self.nameLabel.text = user.fullName;
+        if (user.photo)
+            self.userImg.image = [UIImage imageWithData:user.photo];
+    }
     [self.segmentControl addTarget:self action:@selector(segementChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
@@ -28,6 +44,20 @@
     if (self.segmentControl.selectedSegmentIndex == 1) {
         [self performSegueWithIdentifier:@"meToCalendar" sender:nil];
     }
+}
+- (IBAction)logoutBtn:(id)sender {
+    NSError *signOutError;
+    BOOL status = [[FIRAuth auth] signOut:&signOutError];
+    [[GIDSignIn sharedInstance] signOut];
+    if (!status) {
+        NSLog(@"Error signing out: %@", signOutError);
+    } else {
+        NSLog(@"Logout");
+        [self performSegueWithIdentifier:@"backToLogin" sender:nil];
+    }
+}
+- (IBAction)syncBtn:(id)sender {
+    [[DatabaseServices instance] loadDiaryFromFirebase];
 }
 
 

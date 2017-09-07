@@ -10,6 +10,7 @@
 
 @import GoogleSignIn;
 @import Firebase;
+@import FirebaseDatabase;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

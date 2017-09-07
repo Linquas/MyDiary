@@ -27,6 +27,12 @@
 		F3C6ADC11F5D779C00DCEF42 /* AboutMeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADC01F5D779C00DCEF42 /* AboutMeVC.m */; };
 		F3C6ADC61F5E90B100DCEF42 /* LogInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADC51F5E90B100DCEF42 /* LogInVC.m */; };
 		F3C6ADC81F5EB24F00DCEF42 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3C6ADC71F5EB24F00DCEF42 /* GoogleService-Info.plist */; };
+		F3C6ADCD1F5FCAB100DCEF42 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C6ADCA1F5FCAB100DCEF42 /* Bolts.framework */; };
+		F3C6ADCE1F5FCAB100DCEF42 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C6ADCB1F5FCAB100DCEF42 /* FBSDKCoreKit.framework */; };
+		F3C6ADCF1F5FCAB100DCEF42 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C6ADCC1F5FCAB100DCEF42 /* FBSDKLoginKit.framework */; };
+		F3C6ADD51F5FD47600DCEF42 /* DatabaseServices.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADD41F5FD47600DCEF42 /* DatabaseServices.m */; };
+		F3C6ADD81F61141900DCEF42 /* AboutMeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADD71F61141900DCEF42 /* AboutMeView.m */; };
+		F3C6ADDB1F611B5000DCEF42 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADDA1F611B5000DCEF42 /* User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +75,15 @@
 		F3C6ADC41F5E90B100DCEF42 /* LogInVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInVC.h; sourceTree = "<group>"; };
 		F3C6ADC51F5E90B100DCEF42 /* LogInVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInVC.m; sourceTree = "<group>"; };
 		F3C6ADC71F5EB24F00DCEF42 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F3C6ADCA1F5FCAB100DCEF42 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		F3C6ADCB1F5FCAB100DCEF42 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		F3C6ADCC1F5FCAB100DCEF42 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		F3C6ADD31F5FD47600DCEF42 /* DatabaseServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseServices.h; sourceTree = "<group>"; };
+		F3C6ADD41F5FD47600DCEF42 /* DatabaseServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseServices.m; sourceTree = "<group>"; };
+		F3C6ADD61F61141900DCEF42 /* AboutMeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutMeView.h; sourceTree = "<group>"; };
+		F3C6ADD71F61141900DCEF42 /* AboutMeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutMeView.m; sourceTree = "<group>"; };
+		F3C6ADD91F611B5000DCEF42 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		F3C6ADDA1F611B5000DCEF42 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +92,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE3979E7CB3718C941C93889 /* Pods_MyDiary.framework in Frameworks */,
+				F3C6ADCE1F5FCAB100DCEF42 /* FBSDKCoreKit.framework in Frameworks */,
+				F3C6ADCF1F5FCAB100DCEF42 /* FBSDKLoginKit.framework in Frameworks */,
+				F3C6ADCD1F5FCAB100DCEF42 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +104,9 @@
 		6E89BA161C99185D3C93515C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F3C6ADCA1F5FCAB100DCEF42 /* Bolts.framework */,
+				F3C6ADCB1F5FCAB100DCEF42 /* FBSDKCoreKit.framework */,
+				F3C6ADCC1F5FCAB100DCEF42 /* FBSDKLoginKit.framework */,
 				F3C6AD821F59310100DCEF42 /* libc++.1.tbd */,
 				9331B83F373E2EBEE64CBBD6 /* Pods_MyDiary.framework */,
 			);
@@ -127,6 +148,8 @@
 				F3C6AD411F568B3000DCEF42 /* model */,
 				F3C6ADAD1F59748C00DCEF42 /* RealmManager.h */,
 				F3C6ADAE1F59748C00DCEF42 /* RealmManager.m */,
+				F3C6ADD31F5FD47600DCEF42 /* DatabaseServices.h */,
+				F3C6ADD41F5FD47600DCEF42 /* DatabaseServices.m */,
 				F3C6AD2D1F5681BC00DCEF42 /* AppDelegate.h */,
 				F3C6AD2E1F5681BC00DCEF42 /* AppDelegate.m */,
 				F3C6AD331F5681BC00DCEF42 /* Main.storyboard */,
@@ -156,6 +179,8 @@
 			children = (
 				F3C6AD7F1F592C0B00DCEF42 /* Diary.h */,
 				F3C6AD801F592C0B00DCEF42 /* Diary.m */,
+				F3C6ADD91F611B5000DCEF42 /* User.h */,
+				F3C6ADDA1F611B5000DCEF42 /* User.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -188,6 +213,8 @@
 				F3C6AD431F568B6F00DCEF42 /* DiariesCell.m */,
 				F3C6ADB61F5A8A4C00DCEF42 /* ReadingView.h */,
 				F3C6ADB71F5A8A4C00DCEF42 /* ReadingView.m */,
+				F3C6ADD61F61141900DCEF42 /* AboutMeView.h */,
+				F3C6ADD71F61141900DCEF42 /* AboutMeView.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -319,13 +346,16 @@
 			files = (
 				F3C6AD4B1F56B08800DCEF42 /* PlaceHoldUITextView.m in Sources */,
 				F3C6ADB21F5A77EC00DCEF42 /* NSDate+YearMonthDay.m in Sources */,
+				F3C6ADDB1F611B5000DCEF42 /* User.m in Sources */,
 				F3C6ADC61F5E90B100DCEF42 /* LogInVC.m in Sources */,
 				F3C6AD811F592C0B00DCEF42 /* Diary.m in Sources */,
 				F3C6AD321F5681BC00DCEF42 /* ViewController.m in Sources */,
 				F3C6AD441F568B6F00DCEF42 /* DiariesCell.m in Sources */,
+				F3C6ADD51F5FD47600DCEF42 /* DatabaseServices.m in Sources */,
 				F3C6ADBB1F5CFAA300DCEF42 /* CalendarVC.m in Sources */,
 				F3C6ADB81F5A8A4C00DCEF42 /* ReadingView.m in Sources */,
 				F3C6ADAF1F59748C00DCEF42 /* RealmManager.m in Sources */,
+				F3C6ADD81F61141900DCEF42 /* AboutMeView.m in Sources */,
 				F3C6AD481F56AB3200DCEF42 /* WritingVC.m in Sources */,
 				F3C6AD2F1F5681BC00DCEF42 /* AppDelegate.m in Sources */,
 				F3C6AD2C1F5681BC00DCEF42 /* main.m in Sources */,
@@ -454,6 +484,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = ZJ68Z9J58L;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MyDiary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lnquas.MyDiary;
@@ -471,6 +505,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = ZJ68Z9J58L;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MyDiary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lnquas.MyDiary;

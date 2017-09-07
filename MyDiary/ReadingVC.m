@@ -10,6 +10,7 @@
 #import "NSDate+YearMonthDay.h"
 #import "PlaceHoldUITextView.h"
 #import "RealmManager.h"
+#import "DatabaseServices.h"
 
 @interface ReadingVC ()
 @property (weak, nonatomic) IBOutlet PlaceHoldUITextView *titleTextView;
@@ -41,8 +42,8 @@
 }
 
 - (IBAction)deleteBtn:(id)sender {
-    RealmManager *mg = [[RealmManager alloc]init];
-    [mg deleteObject: self.diary];
+    [[DatabaseServices instance] deleteDiary:self.diary];
+    [[RealmManager instance] deleteObject: self.diary];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

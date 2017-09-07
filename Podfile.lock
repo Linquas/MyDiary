@@ -5,6 +5,9 @@ PODS:
   - Firebase/Core (4.1.0):
     - FirebaseAnalytics (= 4.0.3)
     - FirebaseCore (= 4.0.5)
+  - Firebase/Database (4.1.0):
+    - Firebase/Core
+    - FirebaseDatabase (= 4.0.1)
   - FirebaseAnalytics (4.0.3):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -17,6 +20,10 @@ PODS:
   - FirebaseCore (4.0.5):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
+  - FirebaseDatabase (4.0.1):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - leveldb-library (~> 1.18)
   - FirebaseInstanceID (2.0.1):
     - FirebaseCore (~> 4.0)
   - FSCalendar (2.7.9)
@@ -42,6 +49,8 @@ PODS:
   - GTMSessionFetcher/Core (1.1.11)
   - GTMSessionFetcher/Full (1.1.11):
     - GTMSessionFetcher/Core (= 1.1.11)
+  - leveldb-library (1.18.3)
+  - LGButton (1.0.2)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -54,8 +63,10 @@ PODS:
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
+  - Firebase/Database
   - FSCalendar
   - GoogleSignIn
+  - LGButton
   - Realm
 
 SPEC CHECKSUMS:
@@ -63,15 +74,18 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 76f754d37ca5b04f36856729b6af3ca0152d1069
   FirebaseAuth: 8d1d2389cf82f891048d6d50d27d044f55ae09a6
   FirebaseCore: 7d876ea97a830cbe62ba7fbbe7670c833a324ba0
+  FirebaseDatabase: 94c38c783d23dc6679441050772d42e801d06e9e
   FirebaseInstanceID: 0500e3cb54a1a4e01a8cffcc09323b8bb8fc7e1e
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
+  leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
+  LGButton: 44ce49b10deb84a2a8bd6fe5c763a65ff78a3180
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Realm: 98b3a25643cf6b3e07d2b99fb43fe0eb9c801dec
 
-PODFILE CHECKSUM: cd72170479cdc962f222075c1e5b0481df59f126
+PODFILE CHECKSUM: 91024fd7a26f74bffb80346f6993e634b9f04609
 
 COCOAPODS: 1.2.1

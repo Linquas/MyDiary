@@ -11,6 +11,7 @@
 #import "RealmManager.h"
 #import "NSDate+YearMonthDay.h"
 #import "Diary.h"
+#import "DatabaseServices.h"
 @import Firebase;
 
 
@@ -23,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *dismissBtn;
 @property (nonatomic) BOOL isKeyBoardShowed;
 @property (nonatomic) CGSize kbSize;
-@property (nonatomic) RealmManager* realmManager;
+
 
 @end
 
@@ -32,8 +33,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.realmManager = [[RealmManager alloc]init];
     
     [self registerForKeyboardNotifications];
     
@@ -104,7 +103,10 @@
         diary.key = [today getYearMonthDayOfTodayInInteger];
         diary.date = today;
         diary.user = [FIRAuth auth].currentUser.uid;
-        [self.realmManager updateObject:diary];
+        
+        [[DatabaseServices instance] storeDiary:diary];
+        
+        [[RealmManager instance] updateObject:diary];
         [self dismissKeyboard];
         [self dismissViewControllerAnimated:YES completion:nil];
     }

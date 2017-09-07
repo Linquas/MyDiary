@@ -10,6 +10,7 @@ target 'MyDiary' do
   pod 'FSCalendar'   
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
   pod 'GoogleSignIn'
-
+  pod 'LGButton'
 end

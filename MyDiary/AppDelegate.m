@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Realm/Realm.h>
 
 
 @interface AppDelegate ()
@@ -18,9 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [FIRApp configure];
-
     
+    [FIRApp configure];
+    [FIRDatabase database].persistenceEnabled = YES;
     
     return YES;
 }

@@ -12,6 +12,7 @@
 #import "RealmManager.h"
 #import "Diary.h"
 #import "ReadingVC.h"
+#import "DatabaseServices.h"
 @import Firebase;
 
 
@@ -24,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segementControl;
 
 // realm notification
-@property (nonatomic, strong) RLMNotificationToken *token;
+@property (strong, nonatomic) RLMNotificationToken *token;
 
 @end
 
@@ -43,16 +44,25 @@
     self.diariesTableView.dataSource = self;
     self.diariesTableView.delegate = self;
     
+    __weak ViewController *weakSelf = self;
+    
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *note, RLMRealm * realm) {
-        [self.diariesTableView reloadData];
+        ViewController *innerSelf = weakSelf;
+        RLMResults *tmp = [[RealmManager instance] loadAllDataWithUid:[FIRAuth auth].currentUser.uid];
+        if (!tmp || tmp.count != 0) {
+            innerSelf.tableDataArray = tmp;
+            NSLog(@"%@", innerSelf.tableDataArray.debugDescription);
+            [innerSelf.diariesTableView reloadData];
+        }
     }];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    RLMResults<Diary *> *diaries = [Diary objectsWhere: [NSString stringWithFormat:@"user = '%@'",[FIRAuth auth].currentUser.uid]];
-    self.tableDataArray = [diaries sortedResultsUsingKeyPath:@"key" ascending:YES];
+    self.tableDataArray = [[RealmManager instance] loadAllDataWithUid:[FIRAuth auth].currentUser.uid];
     [self.diariesTableView reloadData];
 }
+
 - (IBAction)segementChanged:(id)sender {
     if (self.segementControl.selectedSegmentIndex == 1) {
         [self performSegueWithIdentifier:@"entriesToCalendar" sender:nil];
@@ -70,7 +80,6 @@
     
     Diary *diary = [self.tableDataArray objectAtIndex:indexPath.row];
     [cell update:diary];
-    
     
     return cell;
 }

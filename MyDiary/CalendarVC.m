@@ -9,6 +9,7 @@
 #import "CalendarVC.h"
 
 #import <Realm/Realm.h>
+#import "RealmManager.h"
 #import "Diary.h"
 #import "DiariesCell.h"
 #import "ReadingVC.h"
@@ -99,8 +100,7 @@
 
 // load data from realm
 - (void)loadDiaries {
-    RLMResults<Diary *> *All = [Diary objectsWhere: [NSString stringWithFormat:@"user = '%@'",[FIRAuth auth].currentUser.uid]];
-    self.diariesArray = [All sortedResultsUsingKeyPath:@"key" ascending:YES];
+    self.diariesArray = [[RealmManager instance] loadAllDataWithUid:[FIRAuth auth].currentUser.uid];
     self.fillColors = [[NSMutableArray alloc]init];
     for (Diary *d in self.diariesArray) {
         [self.fillColors addObject: [self.dateFormatter stringFromDate:d.date]];

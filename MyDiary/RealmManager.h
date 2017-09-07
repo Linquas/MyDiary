@@ -12,9 +12,12 @@ typedef  void (^onComplete)(void);
 
 @interface RealmManager : NSObject
 
++(id)instance;
 -(void)addOrUpdateObject:(RLMObject*)obj;
 -(void)updateObject:(RLMObject*)obj;
 -(void)deleteObject:(RLMObject*)obj;
 -(void)deleteAllData;
-
+-(RLMResults*)loadAllDataWithUid:(NSString*)uid;
+-(RLMResults*)loadAllUser;
+-(void)saveDatafromFirebase:(NSDictionary*)data;
 @end
