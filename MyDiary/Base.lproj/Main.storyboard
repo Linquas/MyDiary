@@ -22,15 +22,62 @@
                     <view key="view" contentMode="scaleToFill" id="WbL-YS-e0e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WfJ-fw-nmZ" customClass="LGButton" customModule="LGButton">
+                                <rect key="frame" x="92" y="439" width="191" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="gradientHorizontal" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRoundedCorners" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Login with google    "/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="leftIconFontName" value="ti"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="leftIconString" value="google"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="googleLoginBtn:" destination="mbh-Xu-6Me" eventType="touchUpInside" id="Zqc-8d-qcc"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Diary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpc-AA-2Sh">
+                                <rect key="frame" x="78" y="165" width="219" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="57"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LZj-7a-eI3" customClass="LGButton" customModule="LGButton">
+                                <rect key="frame" x="92" y="487" width="191" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="gradientHorizontal" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRoundedCorners" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Login with facebook"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="leftIconString" value="facebook"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="leftIconFontName" value="ti"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="loadingString" value="Loading"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="fbLoginBtn:" destination="mbh-Xu-6Me" eventType="touchUpInside" id="3Tj-TA-BqY"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.41366603940000002" green="0.74643519079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="googleBtn" destination="WfJ-fw-nmZ" id="dOZ-ej-XQq"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="logInToDiary" id="I1k-0d-RdE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJL-rj-vS0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-801" y="123"/>
+            <point key="canvasLocation" x="-802.39999999999998" y="122.78860569715144"/>
         </scene>
         <!--DiariesVC-->
         <scene sceneID="tne-QT-ifu">
@@ -291,19 +338,19 @@
                                     <constraint firstAttribute="height" constant="277" id="hvb-hu-hTx"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="139" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EHy-A6-QDe">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EHy-A6-QDe">
                                 <rect key="frame" x="16" y="403" width="343" height="264"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="calendarCell" rowHeight="139" id="CE4-lV-sJL" customClass="DiariesCell">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="139"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="calendarCell" rowHeight="88" id="CE4-lV-sJL" customClass="DiariesCell">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CE4-lV-sJL" id="jWf-zb-UuC">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="139"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="88"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w9E-QW-c2a">
-                                                    <rect key="frame" x="8" y="35" width="327" height="69"/>
+                                                    <rect key="frame" x="8" y="9.5" width="327" height="69"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="Y1h-B3-be9" userLabel="Cell Stack">
                                                             <rect key="frame" x="15.5" y="0.5" width="278" height="68.5"/>
@@ -717,6 +764,7 @@
                         <outlet property="dismissBtn" destination="ceC-Xq-V5F" id="uPL-4X-rRO"/>
                         <outlet property="scrollView" destination="Q0g-yM-aOW" id="69a-zv-E1u"/>
                         <outlet property="titleTextView" destination="bCD-Gv-vXD" id="cLb-9O-dwI"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="writingToDiary" id="ryc-Aw-LKj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtX-bb-JKK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -834,11 +882,26 @@
                                             <action selector="deleteBtn:" destination="jfi-M0-FL6" eventType="touchUpInside" id="VCK-Em-Pfw"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cs9-cV-OMJ" userLabel="MenuBtn">
+                                        <rect key="frame" x="340" y="12" width="27" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="7GU-lb-EUO"/>
+                                            <constraint firstAttribute="height" constant="27" id="RsX-St-vqg"/>
+                                            <constraint firstAttribute="width" constant="27" id="TDb-lE-EEL"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="27" id="cnK-g3-SRA"/>
+                                        </constraints>
+                                        <state key="normal" image="ic_mode_edit_white_24dp"/>
+                                        <connections>
+                                            <action selector="editBtn:" destination="jfi-M0-FL6" eventType="touchUpInside" id="bNa-BX-Jr8"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.41366603940000002" green="0.74643519079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Cs9-cV-OMJ" secondAttribute="bottom" constant="11" id="0l6-W6-UfS"/>
                                     <constraint firstAttribute="bottom" secondItem="Ukt-rT-K8M" secondAttribute="bottom" constant="3" id="8Py-gK-D8x"/>
                                     <constraint firstAttribute="height" constant="50" id="GA9-Ej-bFj"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cs9-cV-OMJ" secondAttribute="trailing" constant="8" id="L3B-at-7iO"/>
                                     <constraint firstItem="Ukt-rT-K8M" firstAttribute="leading" secondItem="6To-nj-wfN" secondAttribute="leading" constant="5" id="imN-zR-axL"/>
                                 </constraints>
                             </view>
@@ -874,6 +937,7 @@
                         <outlet property="titleTextView" destination="Mvm-EK-L2K" id="hue-mf-lAe"/>
                         <outlet property="weekdayLabel" destination="Vbh-WP-DFW" id="AJA-SA-o2E"/>
                         <outlet property="yearLabel" destination="C0R-Hw-gMe" id="nyN-og-bIv"/>
+                        <segue destination="8ES-Tq-h5T" kind="show" identifier="readingToWriting" id="kTo-ey-Ohg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aqh-iS-gqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -892,9 +956,10 @@
         <image name="theme_bg_taki" width="1080" height="1276"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mkm-hZ-QOE"/>
-        <segue reference="rhE-Cm-fFW"/>
-        <segue reference="kGB-FT-haR"/>
-        <segue reference="g0y-5W-5Y2"/>
+        <segue reference="FIs-5r-HJZ"/>
+        <segue reference="I1k-0d-RdE"/>
+        <segue reference="q0f-sm-ytR"/>
+        <segue reference="QQE-Ao-NSQ"/>
+        <segue reference="kTo-ey-Ohg"/>
     </inferredMetricsTieBreakers>
 </document>

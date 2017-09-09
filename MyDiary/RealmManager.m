@@ -69,6 +69,11 @@
     return [diaries sortedResultsUsingKeyPath:@"key" ascending:YES];
 }
 
+- (RLMResults*)loadUserWithUid:(NSString*)uid {
+    RLMResults<User *> *Users = [User objectsWhere: [NSString stringWithFormat:@"userId = '%@'",uid]];
+    return Users;
+}
+
 -(RLMResults*)loadAllUser {
     return [User allObjects];
 }
@@ -81,7 +86,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSLog(@"Start to save to realm");
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"yyyyMMdd"];
+        [dateFormat setDateFormat:@"yyyyMMddHHmmss"];
 
         RLMRealm* realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];
@@ -89,7 +94,7 @@
             if ([data objectForKey:key] == [NSNull null])
                 break;
             Diary *usr = [[Diary alloc]init];
-            usr.key = key.integerValue;
+            usr.key = [NSString stringWithFormat:@"%@", [[data objectForKey:key] objectForKey:@"date"]].integerValue;
             usr.title = [[data objectForKey:key] objectForKey:@"title"];
             usr.text = [[data objectForKey:key] objectForKey:@"text"];
             usr.weather = [[data objectForKey:key] objectForKey:@"weather"];
@@ -101,8 +106,6 @@
         NSLog(@"Sync Conplete");
     });
 }
-
-
 
 
 @end

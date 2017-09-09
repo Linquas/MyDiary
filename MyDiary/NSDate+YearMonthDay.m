@@ -66,6 +66,15 @@
     return [date integerValue];
 }
 
+- (NSInteger)timeInInteger {
+    NSDateFormatter * formatter = [[NSDateFormatter alloc ] init];
+    [formatter setDateFormat:@"YYYYMMddHHmmss"];
+    NSString *date =  [formatter stringFromDate:[NSDate date]];
+    
+    return [date integerValue];
+
+}
+
 
 
 @end

@@ -17,5 +17,6 @@
 - (NSString*)timeInString;
 - (NSString*)weekdayShortInString;
 - (NSInteger)getYearMonthDayOfTodayInInteger;
+- (NSInteger)timeInInteger;
 
 @end

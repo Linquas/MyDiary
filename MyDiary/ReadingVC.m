@@ -11,6 +11,7 @@
 #import "PlaceHoldUITextView.h"
 #import "RealmManager.h"
 #import "DatabaseServices.h"
+#import "WritingVC.h"
 
 @interface ReadingVC ()
 @property (weak, nonatomic) IBOutlet PlaceHoldUITextView *titleTextView;
@@ -27,9 +28,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titleTextView.text = self.diary.title;
-    [self.titleTextView setEditable:NO];
+    self.titleTextView.editable = NO;
     self.contentTextView.text = self.diary.text;
-    [self.titleTextView setEditable:NO];
+    self.contentTextView.editable = NO;
     [self updateDate];
     
 }
@@ -45,6 +46,16 @@
     [[DatabaseServices instance] deleteDiary:self.diary];
     [[RealmManager instance] deleteObject: self.diary];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)editBtn:(id)sender {
+    [self performSegueWithIdentifier:@"readingToWriting" sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"readingToWriting"]) {
+        WritingVC *vc =  (WritingVC*)segue.destinationViewController;
+        vc.diary = self.diary;
+    }
 }
 
 - (IBAction)closeBtn:(id)sender {

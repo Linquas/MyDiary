@@ -8,6 +8,7 @@
 
 #import "DatabaseServices.h"
 #import "RealmManager.h"
+#import "NSDate+YearMonthDay.h"
 #define USER_UID [FIRAuth auth].currentUser.uid
 #define DB_REF [[FIRDatabase database] reference]
 #define DIARY_KEY [NSString stringWithFormat:@"%ld",diary.key]
@@ -37,8 +38,9 @@
     NSDictionary *post = @{@"weather": @"sunny",
                            @"date": [NSNumber numberWithInteger:diary.key],
                            @"title": diary.title,
-                           @"text": diary.text};
-    NSDictionary *childUpdates = @{[NSString stringWithFormat:@"/users/%@/%ld", usr_uid, diary.key ]: post};
+                           @"text": diary.text,
+                           @"time": diary.date.timeInString};
+    NSDictionary *childUpdates = @{[NSString stringWithFormat:@"/users/%@/%ld", usr_uid, diary.key]: post};
     [self.ref updateChildValues:childUpdates];
 }
 
@@ -50,7 +52,12 @@
 - (void) loadDiaryFromFirebase {
     self.ref = [[FIRDatabase database] reference];
     [[[self.ref child:@"users"] child:USER_UID] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        [[RealmManager instance]saveDatafromFirebase:snapshot.value];
+        if (snapshot.hasChildren) {
+            [[RealmManager instance]saveDatafromFirebase:snapshot.value];
+        } else {
+            NSLog(@"No data from firebase");
+        }
+        
     }];
 }
 

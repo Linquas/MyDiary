@@ -12,6 +12,8 @@
 #import "DatabaseServices.h"
 #import "User.h"
 @import GoogleSignIn;
+@import FBSDKCoreKit;
+@import FBSDKLoginKit;
 @import Firebase;
 
 @interface AboutMeVC ()
@@ -25,11 +27,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.user = [[RealmManager instance] loadAllUser];
+    self.user = [[RealmManager instance] loadUserWithUid:[FIRAuth auth].currentUser.uid];
     User *user = [self.user objectAtIndex:0];
     if (user) {
-        if (user.familyName)
+        if (user.fullName)
             self.nameLabel.text = user.fullName;
         if (user.photo)
             self.userImg.image = [UIImage imageWithData:user.photo];
@@ -48,7 +49,13 @@
 - (IBAction)logoutBtn:(id)sender {
     NSError *signOutError;
     BOOL status = [[FIRAuth auth] signOut:&signOutError];
-    [[GIDSignIn sharedInstance] signOut];
+    
+    if ([GIDSignIn sharedInstance].currentUser) {
+        [[GIDSignIn sharedInstance] signOut];
+    } else if ([FBSDKAccessToken currentAccessToken]) {
+        [[[FBSDKLoginManager alloc]init] logOut];
+    }
+    
     if (!status) {
         NSLog(@"Error signing out: %@", signOutError);
     } else {

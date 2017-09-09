@@ -13,4 +13,7 @@ target 'MyDiary' do
   pod 'Firebase/Database'
   pod 'GoogleSignIn'
   pod 'LGButton'
+  pod 'Bolts'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
 end

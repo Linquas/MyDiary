@@ -23,6 +23,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>fb1460667507354342</string>
 				<string>com.googleusercontent.apps.561261572441-bfk7nvb14f9ki5iri5gkome6dvlssne1</string>
 			</array>
 		</dict>
@@ -39,6 +40,7 @@
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
+		<string>fbauth</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

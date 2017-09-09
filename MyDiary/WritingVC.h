@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Diary.h"
 
 @interface WritingVC : UIViewController  <UITextViewDelegate>
+@property (strong, nonatomic) Diary* diary;
 
 @end

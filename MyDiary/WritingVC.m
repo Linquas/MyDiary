@@ -24,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *dismissBtn;
 @property (nonatomic) BOOL isKeyBoardShowed;
 @property (nonatomic) CGSize kbSize;
-
+@property (nonatomic) BOOL editExistDiary;
 
 @end
 
@@ -42,6 +42,14 @@
     [self.dismissBtn setHidden:YES];
     
     self.isKeyBoardShowed = NO;
+    
+    if (self.diary) {
+        self.editExistDiary = YES;
+        self.titleTextView.text = self.diary.title;
+        self.contentTextView.text = self.diary.text;
+    } else {
+        self.editExistDiary = NO;
+    }
     
 }
 
@@ -94,19 +102,34 @@
         [saveAlert addAction:resume];
         [self presentViewController:saveAlert animated:YES completion:nil];
     } else {
-        Diary *diary = [[Diary alloc]init];
-        NSDate *today = [NSDate date];
-        NSString *buff = [NSString stringWithFormat:@"%@", self.titleTextView.text];
-        diary.title =buff;
-        buff = [NSString stringWithFormat:@"%@", self.contentTextView.text];
-        diary.text = buff;
-        diary.key = [today getYearMonthDayOfTodayInInteger];
-        diary.date = today;
-        diary.user = [FIRAuth auth].currentUser.uid;
-        
-        [[DatabaseServices instance] storeDiary:diary];
-        
-        [[RealmManager instance] updateObject:diary];
+        if (self.editExistDiary) {
+            Diary *diary = [[Diary alloc]init];
+            NSString *buff = [NSString stringWithFormat:@"%@", self.titleTextView.text];
+            diary.title =buff;
+            buff = [NSString stringWithFormat:@"%@", self.contentTextView.text];
+            diary.text = buff;
+            diary.key = self.diary.key;
+            diary.date = self.diary.date;
+            diary.user = [FIRAuth auth].currentUser.uid;
+            
+            [[DatabaseServices instance] storeDiary:diary];
+            [[RealmManager instance] updateObject:diary];
+            [self dismissKeyboard];
+            [self.presentingViewController.presentingViewController dismissViewControllerAnimated: true completion: nil];
+        } else {
+            Diary *diary = [[Diary alloc]init];
+            NSDate *today = [NSDate date];
+            NSString *buff = [NSString stringWithFormat:@"%@", self.titleTextView.text];
+            diary.title =buff;
+            buff = [NSString stringWithFormat:@"%@", self.contentTextView.text];
+            diary.text = buff;
+            diary.key = [today timeInInteger];
+            diary.date = today;
+            diary.user = [FIRAuth auth].currentUser.uid;
+            
+            [[DatabaseServices instance] storeDiary:diary];
+            [[RealmManager instance] updateObject:diary];
+        }
         [self dismissKeyboard];
         [self dismissViewControllerAnimated:YES completion:nil];
     }

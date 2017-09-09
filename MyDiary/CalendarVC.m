@@ -39,7 +39,7 @@
     [self.segementControl addTarget:self action:@selector(segementChanged:) forControlEvents:UIControlEventValueChanged];
     self.selectedDiary = [[NSMutableArray alloc]init];
     self.dateFormatter = [[NSDateFormatter alloc] init];
-    self.dateFormatter.dateFormat = @"yyyy/MM/dd";
+    self.dateFormatter.dateFormat = @"yyyyMMdd";
     
     self.tableview.dataSource = self;
     self.tableview.delegate = self;
