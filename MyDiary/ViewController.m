@@ -23,6 +23,7 @@
 @property Diary *selected;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segementControl;
 @property (nonatomic) BOOL isUsingFirebase;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 // realm notification
 @property (strong, nonatomic) RLMNotificationToken *token;
@@ -39,6 +40,14 @@
     [self.bottomRec.layer setCornerRadius:5.0];
     [self.bottomRec.layer setShadowOffset:CGSizeMake(0.0f, 1.0f)];
     [self.bottomRec.layer setShadowOpacity:0.6f];
+    
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 5, 0, 0)];
+    [self.diariesTableView insertSubview:refreshView atIndex:0];
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self action:@selector(reloadTableView) forControlEvents:UIControlEventValueChanged];
+    [refreshView addSubview:self.refreshControl];
+    
     [self.segementControl addTarget:self action:@selector(segementChanged:) forControlEvents:UIControlEventValueChanged];
     
     self.diariesTableView.dataSource = self;
@@ -69,6 +78,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self updateTableDataArray];
+}
+
+- (void)updateTableDataArray {
     if (self.isUsingFirebase) {
         self.tableDataArray = [[RealmManager instance] loadAllDataWithUid:[FIRAuth auth].currentUser.uid];
     } else {
@@ -119,6 +132,12 @@
         ReadingVC *vc = (ReadingVC*)segue.destinationViewController;
         vc.diary = self.selected;
     }
+}
+
+-(void)reloadTableView
+{
+    [self updateTableDataArray];
+    [self.refreshControl endRefreshing];
 }
 
 

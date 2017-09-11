@@ -26,6 +26,7 @@
 @property (nonatomic) CGSize kbSize;
 @property (nonatomic) BOOL editExistDiary;
 @property (nonatomic) BOOL isUsingFirebase;
+@property (nonatomic) CGRect bottomRect;
 
 @end
 
@@ -34,6 +35,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.bottomRect = self.bottonView.frame;
     
     [self registerForKeyboardNotifications];
     
@@ -66,11 +69,6 @@
     self.isKeyBoardShowed = NO;
 }
 
-- (void)setNewYPositionWithView:(UIView *)view Y:(CGFloat) y{
-    CGRect newFrame = view.frame;
-    newFrame.origin.y += y;
-    [view setFrame:newFrame];
-}
 
 //button
 
@@ -179,6 +177,8 @@
                                              selector:@selector(keyboardWillBeHidden:)
                                                  name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
 - (void)keyboardWillShow:(NSNotification*)noti {
@@ -188,7 +188,9 @@
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     self.kbSize = kbSize;
     if (!self.isKeyBoardShowed) {
-        [self setNewYPositionWithView:self.bottonView Y:-self.kbSize.height];
+        CGRect newFrame = self.bottomRect;
+        newFrame.origin.y -= self.kbSize.height;
+        [self.bottonView setFrame:newFrame];
         self.isKeyBoardShowed = YES;
     }
     [self.dismissBtn setHidden:NO];
@@ -219,10 +221,22 @@
     
     //move down bottom view
     if (self.isKeyBoardShowed) {
-        [self setNewYPositionWithView:self.bottonView Y:self.kbSize.height];
+        [self.bottonView setFrame:self.bottomRect];
+//        [self setNewYPositionWithView:self.bottonView Y:self.kbSize.height];
         self.isKeyBoardShowed = NO;
     }
     [self.dismissBtn setHidden:YES];
+}
+
+// Called when the keyboard frame change
+- (void)keyboardWillChange:(NSNotification*)aNotification {
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    self.kbSize = kbSize;
+    CGRect newFrame = self.bottomRect;
+    newFrame.origin.y -= self.kbSize.height;
+    [self.bottonView setFrame:newFrame];
+
 }
 
 
