@@ -19,7 +19,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    
     self.personImg.layer.cornerRadius = self.personImg.frame.size.width / 2;
     self.personImg.clipsToBounds = YES;
     self.personImg.layer.borderWidth = 3.0;

@@ -16,7 +16,7 @@
 
 @interface LogInVC ()
 @property (weak, nonatomic) IBOutlet LGButton *googleBtn;
-
+@property (strong, nonatomic) NSUserDefaults *userDefaults;
 @end
 
 @implementation LogInVC
@@ -30,10 +30,15 @@
     [GIDSignIn sharedInstance].shouldFetchBasicProfile = YES;
     [[GIDSignIn sharedInstance] signInSilently];
     
+    self.userDefaults = [NSUserDefaults standardUserDefaults];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    if ([FBSDKAccessToken currentAccessToken]) {
+    if ([self.userDefaults objectForKey:@"isOffline"]) {
+        if ([self.userDefaults boolForKey:@"isOffline"])
+            [self performSegueWithIdentifier:@"logInToDiary" sender:nil];
+    }else if ([FBSDKAccessToken currentAccessToken]) {
         [self performSegueWithIdentifier:@"logInToDiary" sender:nil];
     }
 }
@@ -48,22 +53,26 @@ didSignInForUser:(GIDGoogleUser *)user
         FIRAuthCredential *credential =
         [FIRGoogleAuthProvider credentialWithIDToken:authentication.idToken
                                          accessToken:authentication.accessToken];
-        __block GIDGoogleUser *u = user;
+        __block GIDGoogleUser *usr = user;
+        __weak LogInVC *weakself = self;
         //use credential to sign in firebase
         [[FIRAuth auth] signInWithCredential:credential
                                   completion:^(FIRUser *user, NSError *error) {
+                                      LogInVC* innerSelf = weakself;
                                       if (error) {
                                           NSLog(@"FireBase signin failed with google account.\n%@",error);
                                           self.googleBtn.isLoading = NO;
                                           return;
                                       }
                                       NSLog(@"Google FireBase Logged IN");
-                                      [self saveGoogleUserData:u];
-                                      self.googleBtn.isLoading = NO;
-                                      [self performSegueWithIdentifier:@"logInToDiary" sender:nil];
+                                      [innerSelf saveGoogleUserData:usr];
+                                      innerSelf.googleBtn.isLoading = NO;
+                                      [weakself.userDefaults setBool:YES forKey:@"UsingFirebase"];
+                                      [weakself.userDefaults synchronize];
+                                      [innerSelf performSegueWithIdentifier:@"logInToDiary" sender:nil];
                                   }];
         } else {
-        // ...
+            self.googleBtn.isLoading = NO;
     }
 }
 
@@ -132,6 +141,8 @@ didDisconnectWithUser:(GIDGoogleUser *)user
                                            NSLog(@"Google FireBase Logged IN");
                                            [innerSelf saveFbUserData];
                                            btn.isLoading = NO;
+                                           [weakself.userDefaults setBool:YES forKey:@"UsingFirebase"];
+                                           [weakself.userDefaults synchronize];
                                            [innerSelf performSegueWithIdentifier:@"logInToDiary" sender:nil];
                                        }];
              
@@ -175,5 +186,8 @@ didDisconnectWithUser:(GIDGoogleUser *)user
     
 }
 
+- (IBAction)loginOffline:(id)sender {
+    [self performSegueWithIdentifier:@"loginToUserinfo" sender:nil];
+}
 
 @end

@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weekdayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *yearLabel;
+@property (nonatomic) BOOL isUsingFirebase;
 
 @end
 
@@ -31,6 +32,7 @@
     self.titleTextView.editable = NO;
     self.contentTextView.text = self.diary.text;
     self.contentTextView.editable = NO;
+    self.isUsingFirebase = [[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"];
     [self updateDate];
     
 }
@@ -43,9 +45,23 @@
 }
 
 - (IBAction)deleteBtn:(id)sender {
-    [[DatabaseServices instance] deleteDiary:self.diary];
-    [[RealmManager instance] deleteObject: self.diary];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    UIAlertController* deleteAlert = [UIAlertController alertControllerWithTitle:@"你確定要刪除日記?" message:@"你的心情將深藏在你的心中" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* close = [UIAlertAction actionWithTitle:@"確定"
+                                                    style:UIAlertActionStyleDestructive
+                                                  handler:^(UIAlertAction * action) {
+                                                      if (self.isUsingFirebase) {
+                                                          [[DatabaseServices instance] deleteDiary:self.diary];
+                                                      }
+                                                      [[RealmManager instance] deleteObject: self.diary];
+                                                      [self dismissViewControllerAnimated:YES completion:nil];
+                                                  }];
+    [deleteAlert addAction:close];
+    UIAlertAction *resume = [UIAlertAction actionWithTitle:@"取消"
+                                                     style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                                                         [deleteAlert dismissViewControllerAnimated:YES completion:nil];
+                                                     }];
+    [deleteAlert addAction:resume];
+    [self presentViewController:deleteAlert animated:YES completion:nil];
 }
 - (IBAction)editBtn:(id)sender {
     [self performSegueWithIdentifier:@"readingToWriting" sender:nil];

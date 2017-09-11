@@ -12,7 +12,6 @@
 #import "RealmManager.h"
 #import "Diary.h"
 #import "ReadingVC.h"
-#import "DatabaseServices.h"
 @import Firebase;
 
 
@@ -23,6 +22,7 @@
 @property RLMResults *tableDataArray;
 @property Diary *selected;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segementControl;
+@property (nonatomic) BOOL isUsingFirebase;
 
 // realm notification
 @property (strong, nonatomic) RLMNotificationToken *token;
@@ -44,22 +44,36 @@
     self.diariesTableView.dataSource = self;
     self.diariesTableView.delegate = self;
     
+    self.isUsingFirebase = [[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"];
     __weak ViewController *weakSelf = self;
     
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *note, RLMRealm * realm) {
         ViewController *innerSelf = weakSelf;
-        RLMResults *tmp = [[RealmManager instance] loadAllDataWithUid:[FIRAuth auth].currentUser.uid];
-        if (!tmp || tmp.count != 0) {
-            innerSelf.tableDataArray = tmp;
-            NSLog(@"%@", innerSelf.tableDataArray.debugDescription);
-            [innerSelf.diariesTableView reloadData];
+        if (weakSelf.isUsingFirebase) {
+            RLMResults *tmp = [[RealmManager instance] loadAllDataWithUid:[FIRAuth auth].currentUser.uid];
+            if (!tmp || tmp.count != 0) {
+                innerSelf.tableDataArray = tmp;
+//                NSLog(@"%@", innerSelf.tableDataArray.debugDescription);
+                [innerSelf.diariesTableView reloadData];
+            }
+        } else {
+            RLMResults *tmp = [[RealmManager instance] loadAllDataWithUid:[[NSUserDefaults standardUserDefaults] stringForKey: @"ID"]];
+            if (!tmp || tmp.count != 0) {
+                innerSelf.tableDataArray = tmp;
+//                NSLog(@"%@", innerSelf.tableDataArray.debugDescription);
+                [innerSelf.diariesTableView reloadData];
+            }
         }
     }];
 
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.tableDataArray = [[RealmManager instance] loadAllDataWithUid:[FIRAuth auth].currentUser.uid];
+    if (self.isUsingFirebase) {
+        self.tableDataArray = [[RealmManager instance] loadAllDataWithUid:[FIRAuth auth].currentUser.uid];
+    } else {
+        self.tableDataArray = [[RealmManager instance] loadAllDataWithUid:[[NSUserDefaults standardUserDefaults] stringForKey: @"ID"]];
+    }
     [self.diariesTableView reloadData];
 }
 

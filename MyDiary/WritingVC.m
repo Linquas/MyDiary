@@ -25,6 +25,7 @@
 @property (nonatomic) BOOL isKeyBoardShowed;
 @property (nonatomic) CGSize kbSize;
 @property (nonatomic) BOOL editExistDiary;
+@property (nonatomic) BOOL isUsingFirebase;
 
 @end
 
@@ -42,6 +43,8 @@
     [self.dismissBtn setHidden:YES];
     
     self.isKeyBoardShowed = NO;
+    
+    self.isUsingFirebase = [[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"];
     
     if (self.diary) {
         self.editExistDiary = YES;
@@ -78,7 +81,7 @@
 - (IBAction)closeBtn:(id)sender {
     UIAlertController* closeAlert = [UIAlertController alertControllerWithTitle:@"你的日記尚未存擋" message:@"你不寫了嗎？" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* close = [UIAlertAction actionWithTitle:@"是的"
-                                                    style:UIAlertActionStyleDefault
+                                                    style:UIAlertActionStyleDestructive
                                                   handler:^(UIAlertAction * action) {
                                                       [self dismissKeyboard];
                                                       [self dismissViewControllerAnimated:YES completion:nil];
@@ -110,9 +113,14 @@
             diary.text = buff;
             diary.key = self.diary.key;
             diary.date = self.diary.date;
-            diary.user = [FIRAuth auth].currentUser.uid;
             
-            [[DatabaseServices instance] storeDiary:diary];
+            if (self.isUsingFirebase) {
+                [[DatabaseServices instance] storeDiary:diary];
+                diary.user = [FIRAuth auth].currentUser.uid;
+            } else {
+                diary.user = [[NSUserDefaults standardUserDefaults] stringForKey:@"ID"];
+            }
+            
             [[RealmManager instance] updateObject:diary];
             [self dismissKeyboard];
             [self.presentingViewController.presentingViewController dismissViewControllerAnimated: true completion: nil];
@@ -127,7 +135,12 @@
             diary.date = today;
             diary.user = [FIRAuth auth].currentUser.uid;
             
-            [[DatabaseServices instance] storeDiary:diary];
+            if (self.isUsingFirebase) {
+                [[DatabaseServices instance] storeDiary:diary];
+                diary.user = [FIRAuth auth].currentUser.uid;
+            } else {
+                diary.user = [[NSUserDefaults standardUserDefaults] stringForKey:@"ID"];
+            }
             [[RealmManager instance] updateObject:diary];
         }
         [self dismissKeyboard];
@@ -146,6 +159,8 @@
 
 - (void)textFieldDidBeginEditing:(PlaceHoldUITextView *)textField {
     self.activeField = textField;
+    
+    
 }
 
 - (void)textFieldDidEndEditing:(PlaceHoldUITextView *)textField {
@@ -170,7 +185,7 @@
     //move up bottom view
     NSDictionary* info = [noti userInfo];
     //get size of KeyBoard
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     self.kbSize = kbSize;
     if (!self.isKeyBoardShowed) {
         [self setNewYPositionWithView:self.bottonView Y:-self.kbSize.height];

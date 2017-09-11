@@ -30,6 +30,7 @@
 		F3C6ADD51F5FD47600DCEF42 /* DatabaseServices.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADD41F5FD47600DCEF42 /* DatabaseServices.m */; };
 		F3C6ADD81F61141900DCEF42 /* AboutMeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADD71F61141900DCEF42 /* AboutMeView.m */; };
 		F3C6ADDB1F611B5000DCEF42 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADDA1F611B5000DCEF42 /* User.m */; };
+		F3C6ADDF1F63DDF500DCEF42 /* UserInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADDE1F63DDF500DCEF42 /* UserInfoVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,8 @@
 		F3C6ADD91F611B5000DCEF42 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		F3C6ADDA1F611B5000DCEF42 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		F3C6ADDC1F626A3E00DCEF42 /* MyDiary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyDiary.entitlements; sourceTree = "<group>"; };
+		F3C6ADDD1F63DDF500DCEF42 /* UserInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoVC.h; sourceTree = "<group>"; };
+		F3C6ADDE1F63DDF500DCEF42 /* UserInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +193,8 @@
 				F3C6ADBA1F5CFAA300DCEF42 /* CalendarVC.m */,
 				F3C6ADC41F5E90B100DCEF42 /* LogInVC.h */,
 				F3C6ADC51F5E90B100DCEF42 /* LogInVC.m */,
+				F3C6ADDD1F63DDF500DCEF42 /* UserInfoVC.h */,
+				F3C6ADDE1F63DDF500DCEF42 /* UserInfoVC.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 				F3C6ADBB1F5CFAA300DCEF42 /* CalendarVC.m in Sources */,
 				F3C6ADB81F5A8A4C00DCEF42 /* ReadingView.m in Sources */,
 				F3C6ADAF1F59748C00DCEF42 /* RealmManager.m in Sources */,
+				F3C6ADDF1F63DDF500DCEF42 /* UserInfoVC.m in Sources */,
 				F3C6ADD81F61141900DCEF42 /* AboutMeView.m in Sources */,
 				F3C6AD481F56AB3200DCEF42 /* WritingVC.m in Sources */,
 				F3C6AD2F1F5681BC00DCEF42 /* AppDelegate.m in Sources */,

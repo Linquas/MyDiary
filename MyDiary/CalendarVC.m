@@ -28,6 +28,7 @@
 @property (nonatomic, strong) RLMNotificationToken *token;
 @property (strong, nonatomic) NSMutableArray *selectedDiary;
 @property Diary *selected;
+@property (nonatomic) BOOL isUsingFirebase;
 
 @end
 
@@ -50,8 +51,11 @@
     self.calendar = self.calendar;
     self.calendar.layer.cornerRadius = 10.0;
     
+    self.isUsingFirebase = [[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"];
+    
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *note, RLMRealm * realm) {
         [self loadDiaries];
+        [self.tableview reloadData];
     }];
     
 }
@@ -100,7 +104,12 @@
 
 // load data from realm
 - (void)loadDiaries {
-    self.diariesArray = [[RealmManager instance] loadAllDataWithUid:[FIRAuth auth].currentUser.uid];
+    if (self.isUsingFirebase) {
+        self.diariesArray = [[RealmManager instance] loadAllDataWithUid:[FIRAuth auth].currentUser.uid];
+    } else {
+        self.diariesArray = [[RealmManager instance] loadAllDataWithUid:[[NSUserDefaults standardUserDefaults] stringForKey:@"ID"]];
+    }
+    
     self.fillColors = [[NSMutableArray alloc]init];
     for (Diary *d in self.diariesArray) {
         [self.fillColors addObject: [self.dateFormatter stringFromDate:d.date]];

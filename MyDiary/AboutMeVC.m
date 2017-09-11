@@ -11,6 +11,7 @@
 #import "RealmManager.h"
 #import "DatabaseServices.h"
 #import "User.h"
+@import LGButton;
 @import GoogleSignIn;
 @import FBSDKCoreKit;
 @import FBSDKLoginKit;
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property RLMResults *user;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet LGButton *syncBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *userImg;
 @end
 
@@ -27,7 +29,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.user = [[RealmManager instance] loadUserWithUid:[FIRAuth auth].currentUser.uid];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"]) {
+        [self.syncBtn setEnabled:YES];
+        self.user = [[RealmManager instance] loadUserWithUid:[FIRAuth auth].currentUser.uid];
+    } else {
+        self.user = [[RealmManager instance] loadUserWithUid:[[NSUserDefaults standardUserDefaults] stringForKey:@"ID"]];
+        [self.syncBtn setEnabled:NO];
+    }
+    
     User *user = [self.user objectAtIndex:0];
     if (user) {
         if (user.fullName)
@@ -60,6 +69,10 @@
         NSLog(@"Error signing out: %@", signOutError);
     } else {
         NSLog(@"Logout");
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"UsingFirebase"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ID"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isOffline"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         [self performSegueWithIdentifier:@"backToLogin" sender:nil];
     }
 }
