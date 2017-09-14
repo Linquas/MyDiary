@@ -12,6 +12,7 @@
 #import "RealmManager.h"
 #import "Diary.h"
 #import "ReadingVC.h"
+#import "NSDate+YearMonthDay.h"
 @import Firebase;
 
 
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segementControl;
 @property (nonatomic) BOOL isUsingFirebase;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) NSArray *sectionData;
 
 // realm notification
 @property (strong, nonatomic) RLMNotificationToken *token;
@@ -79,6 +81,9 @@
 - (void)updateTableDataArray {
     if (self.isUsingFirebase) {
         self.tableDataArray = [[RealmManager instance] loadAllDataWithUid:[FIRAuth auth].currentUser.uid];
+        self.sectionData= [self getTableHeader:self.tableDataArray];
+        NSLog(@"%@", self.sectionData.debugDescription);
+        
     } else {
         self.tableDataArray = [[RealmManager instance] loadAllDataWithUid:[[NSUserDefaults standardUserDefaults] stringForKey: @"ID"]];
     }
@@ -101,25 +106,41 @@
         cell = [[DiariesCell alloc]init];
     }
     
-    Diary *diary = [self.tableDataArray objectAtIndex:indexPath.row];
+//    Diary *diary = [self.tableDataArray objectAtIndex:indexPath.row];
+    Diary *diary = self.sectionData[indexPath.section][indexPath.row];
     [cell update:diary];
     
     return cell;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.sectionData.count;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.tableDataArray count];
+//    return [self.tableDataArray count];
+    return [self.sectionData[section] count];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 50, 35)];
+    [view setBackgroundColor:[UIColor clearColor]];
+    UILabel *month = [[UILabel alloc]initWithFrame:CGRectMake(8, 5, 200, 40)];
+    Diary *a = self.sectionData[section][0];
+    month.text = [a.date monthInString];
+    month.textColor = [UIColor whiteColor];
+    [view addSubview:month];
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 35;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.selected = [self.tableDataArray objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"reading" sender:nil];
 }
-
 
 - (IBAction)writeBtnPressed:(id)sender {
     [self performSegueWithIdentifier:@"writing" sender:nil];
@@ -136,6 +157,31 @@
 {
     [self updateTableDataArray];
     [self.refreshControl endRefreshing];
+}
+
+-(NSArray*)getTableHeader:(RLMResults*)result{
+    NSLog(@"%@", result.debugDescription);
+    NSMutableArray *head = [[NSMutableArray alloc]init];
+    NSMutableArray *days = [[NSMutableArray alloc]init];
+    NSMutableString *month = [[NSMutableString alloc]init];
+    Diary *first = result[0];
+    month = [NSMutableString stringWithString:[first.date monthInString]];
+    for (Diary* d in result) {
+        NSLog(@"%@", d.debugDescription);
+        NSLog(@"%@",month);
+        NSLog(@"%@", [d.date monthInString]);
+        if ( ![[d.date monthInString] isEqualToString:month]) {
+            [head addObject:[days copy]];
+            
+            month = [NSMutableString stringWithString:[d.date monthInString]];
+            [days removeAllObjects];
+            [days addObject:d];
+            continue;
+        }
+        [days addObject:d];
+    }
+    [head addObject:[days copy]];
+    return head;
 }
 
 
