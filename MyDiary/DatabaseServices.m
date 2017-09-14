@@ -40,13 +40,13 @@
                            @"title": diary.title,
                            @"text": diary.text,
                            @"time": diary.date.timeInString};
-    NSDictionary *childUpdates = @{[NSString stringWithFormat:@"/users/%@/%ld", usr_uid, diary.key]: post};
+    NSDictionary *childUpdates = @{[NSString stringWithFormat:@"/users/%@/%ld", usr_uid, (long)diary.key]: post};
     [self.ref updateChildValues:childUpdates];
 }
 
 - (void) deleteDiary:(Diary*)diary {
     self.ref = [[FIRDatabase database] reference];
-    [[[[self.ref child:@"users"] child:USER_UID] child:[NSString stringWithFormat:@"%ld",diary.key]] removeValue];
+    [[[[self.ref child:@"users"] child:USER_UID] child:[NSString stringWithFormat:@"%ld",(long)diary.key]] removeValue];
 }
 
 - (void) loadDiaryFromFirebase {

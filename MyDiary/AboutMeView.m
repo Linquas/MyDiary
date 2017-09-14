@@ -11,6 +11,7 @@
 @interface AboutMeView ()
 @property (weak, nonatomic) IBOutlet UIImageView *personImg;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIView *upperRec;
 
 @end
 
@@ -27,6 +28,12 @@
     self.personImg.layer.shadowOpacity = 0.8;
     self.personImg.layer.shadowRadius = 5.0;
     self.personImg.layer.shadowOffset = CGSizeMake(1.0, 3.0);
+    
+    [self.upperRec.layer setCornerRadius:0.5];
+    [self.upperRec.layer setShadowColor:[UIColor blackColor].CGColor];
+    [self.upperRec.layer setCornerRadius:5.0];
+    [self.upperRec.layer setShadowOffset:CGSizeMake(0.0f, 1.0f)];
+    [self.upperRec.layer setShadowOpacity:0.6f];
 }
 
 

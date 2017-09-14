@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CE3979E7CB3718C941C93889 /* Pods_MyDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9331B83F373E2EBEE64CBBD6 /* Pods_MyDiary.framework */; };
+		F3B618EF1F67D9C0006467D5 /* DiaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B618EE1F67D9C0006467D5 /* DiaryView.m */; };
+		F3B618F21F67DBA2006467D5 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B618F11F67DBA2006467D5 /* CalendarView.m */; };
 		F3C6AD2C1F5681BC00DCEF42 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6AD2B1F5681BC00DCEF42 /* main.m */; };
 		F3C6AD2F1F5681BC00DCEF42 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6AD2E1F5681BC00DCEF42 /* AppDelegate.m */; };
 		F3C6AD321F5681BC00DCEF42 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6AD311F5681BC00DCEF42 /* ViewController.m */; };
@@ -37,6 +39,10 @@
 		1DFBB55305983422ADA3A138 /* Pods-MyDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary.debug.xcconfig"; sourceTree = "<group>"; };
 		7941754ACB055356062262A1 /* Pods-MyDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiary.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary.release.xcconfig"; sourceTree = "<group>"; };
 		9331B83F373E2EBEE64CBBD6 /* Pods_MyDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3B618ED1F67D9C0006467D5 /* DiaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryView.h; sourceTree = "<group>"; };
+		F3B618EE1F67D9C0006467D5 /* DiaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryView.m; sourceTree = "<group>"; };
+		F3B618F01F67DBA2006467D5 /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
+		F3B618F11F67DBA2006467D5 /* CalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
 		F3C6AD271F5681BC00DCEF42 /* MyDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C6AD2B1F5681BC00DCEF42 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F3C6AD2D1F5681BC00DCEF42 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -210,6 +216,10 @@
 				F3C6ADB71F5A8A4C00DCEF42 /* ReadingView.m */,
 				F3C6ADD61F61141900DCEF42 /* AboutMeView.h */,
 				F3C6ADD71F61141900DCEF42 /* AboutMeView.m */,
+				F3B618ED1F67D9C0006467D5 /* DiaryView.h */,
+				F3B618EE1F67D9C0006467D5 /* DiaryView.m */,
+				F3B618F01F67DBA2006467D5 /* CalendarView.h */,
+				F3B618F11F67DBA2006467D5 /* CalendarView.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -227,6 +237,7 @@
 				F3C6AD251F5681BC00DCEF42 /* Resources */,
 				4B9A64294AC4E055F60BF295 /* [CP] Embed Pods Frameworks */,
 				0FC098BB761DDE8B679ED032 /* [CP] Copy Pods Resources */,
+				F3B618EC1F66890B006467D5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -254,6 +265,9 @@
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
 							};
 						};
 					};
@@ -298,9 +312,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -313,9 +330,32 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/LGButton/LGButton.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -328,14 +368,30 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyDiary-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3B618EC1F66890B006467D5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 0eeed1c65f5fe9af9ea97baa0ada2f7c18fd29f8 4e100f33b05711aed00450e50ffbedac3259ee8779e2cf76b291b822dc769694";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -359,9 +415,11 @@
 				F3C6ADD81F61141900DCEF42 /* AboutMeView.m in Sources */,
 				F3C6AD481F56AB3200DCEF42 /* WritingVC.m in Sources */,
 				F3C6AD2F1F5681BC00DCEF42 /* AppDelegate.m in Sources */,
+				F3B618F21F67DBA2006467D5 /* CalendarView.m in Sources */,
 				F3C6AD2C1F5681BC00DCEF42 /* main.m in Sources */,
 				F3C6ADB51F5A89D900DCEF42 /* ReadingVC.m in Sources */,
 				F3C6ADC11F5D779C00DCEF42 /* AboutMeVC.m in Sources */,
+				F3B618EF1F67D9C0006467D5 /* DiaryView.m in Sources */,
 				F3C6ADAC1F59466200DCEF42 /* WritingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

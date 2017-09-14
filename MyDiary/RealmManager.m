@@ -104,8 +104,10 @@
         }
         [realm commitWriteTransaction];
         NSLog(@"Sync Conplete");
+        dispatch_async(dispatch_get_main_queue(),^{
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"dataSyncComplete" object:self];
+        });
     });
 }
-
 
 @end

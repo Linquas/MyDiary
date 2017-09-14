@@ -46,6 +46,13 @@
     imagePickerController.allowsEditing = NO;
     [self presentViewController:imagePickerController animated:YES completion:nil];
 }
+- (IBAction)cameraBtn:(id)sender {
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
+    imagePickerController.delegate = self;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePickerController.allowsEditing = NO;
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+}
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     if ([info objectForKey:UIImagePickerControllerOriginalImage]) {
@@ -56,6 +63,7 @@
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 - (IBAction)doneBtn:(id)sender {
     if ([self.userNameTextField.text isEqualToString:@""]) {
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"空白內容" message:@"你的名字是？" preferredStyle:UIAlertControllerStyleAlert];

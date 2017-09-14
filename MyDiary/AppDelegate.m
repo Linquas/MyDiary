@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import <Realm/Realm.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 
 @interface AppDelegate ()
@@ -22,9 +24,11 @@
     // Override point for customization after application launch.
     
     [FIRApp configure];
+    [GADMobileAds configureWithApplicationID:@"ca-app-pub-3940256099942544/6300978111"];
     [FIRDatabase database].persistenceEnabled = YES;
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
+    [Fabric with:@[[Crashlytics class]]];
     
     return YES;
 }

@@ -16,4 +16,7 @@ target 'MyDiary' do
   pod 'Bolts'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
+  pod 'Firebase/AdMob'
+  pod 'Fabric'
+  pod 'Crashlytics'
 end

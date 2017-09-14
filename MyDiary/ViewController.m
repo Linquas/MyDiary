@@ -35,12 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.bottomRec.layer setCornerRadius:0.5];
-    [self.bottomRec.layer setShadowColor:[UIColor blackColor].CGColor];
-    [self.bottomRec.layer setCornerRadius:5.0];
-    [self.bottomRec.layer setShadowOffset:CGSizeMake(0.0f, 1.0f)];
-    [self.bottomRec.layer setShadowOpacity:0.6f];
-    
+    //add refresh to top item of tableview
     UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 5, 0, 0)];
     [self.diariesTableView insertSubview:refreshView atIndex:0];
     self.refreshControl = [[UIRefreshControl alloc]init];
@@ -54,8 +49,8 @@
     self.diariesTableView.delegate = self;
     
     self.isUsingFirebase = [[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"];
-    __weak ViewController *weakSelf = self;
     
+    __weak ViewController *weakSelf = self;
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *note, RLMRealm * realm) {
         ViewController *innerSelf = weakSelf;
         if (weakSelf.isUsingFirebase) {
@@ -99,6 +94,7 @@
     }
 }
 
+#pragma mark - tableView Delegate
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DiariesCell *cell = (DiariesCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (!cell) {
@@ -123,6 +119,8 @@
     self.selected = [self.tableDataArray objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"reading" sender:nil];
 }
+
+
 - (IBAction)writeBtnPressed:(id)sender {
     [self performSegueWithIdentifier:@"writing" sender:nil];
 }

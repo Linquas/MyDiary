@@ -35,8 +35,8 @@
     
     [self updateDate];
     
-    self.contentTextView.attributedPlaceholder = [self generateAttributedStringWithString:@"Diary" Color:TEXTCOLOR FontName:FONTNAME FontSize:20.0];
-    self.titleTextView.attributedPlaceholder = [self generateAttributedStringWithString:@"Title" Color:TEXTCOLOR FontName:FONTNAME FontSize:35.0];
+    self.contentTextView.attributedPlaceholder = [self generateAttributedStringWithString:@"心情日記" Color:TEXTCOLOR FontName:FONTNAME FontSize:20.0];
+    self.titleTextView.attributedPlaceholder = [self generateAttributedStringWithString:@"標題" Color:TEXTCOLOR FontName:FONTNAME FontSize:35.0];
     
     self.upperView.layer.shadowColor = [UIColor colorWithRed:157.0 / 255.0 green:157.0 / 255.0 blue:157.0 / 255.0 alpha:0.8].CGColor;
     self.upperView.layer.shadowOpacity = 0.8;

@@ -16,6 +16,8 @@
 
 @interface LogInVC ()
 @property (weak, nonatomic) IBOutlet LGButton *googleBtn;
+@property (weak, nonatomic) IBOutlet LGButton *facebookBtn;
+@property (weak, nonatomic) IBOutlet LGButton *offlineBtn;
 @property (strong, nonatomic) NSUserDefaults *userDefaults;
 @end
 
@@ -62,17 +64,23 @@ didSignInForUser:(GIDGoogleUser *)user
                                       if (error) {
                                           NSLog(@"FireBase signin failed with google account.\n%@",error);
                                           self.googleBtn.isLoading = NO;
+                                          [self.facebookBtn setEnabled:YES];
+                                          [self.offlineBtn setEnabled:YES];
                                           return;
                                       }
                                       NSLog(@"Google FireBase Logged IN");
                                       [innerSelf saveGoogleUserData:usr];
                                       innerSelf.googleBtn.isLoading = NO;
+                                      [self.facebookBtn setEnabled:YES];
+                                      [self.offlineBtn setEnabled:YES];
                                       [weakself.userDefaults setBool:YES forKey:@"UsingFirebase"];
                                       [weakself.userDefaults synchronize];
                                       [innerSelf performSegueWithIdentifier:@"logInToDiary" sender:nil];
                                   }];
         } else {
             self.googleBtn.isLoading = NO;
+            [self.facebookBtn setEnabled:YES];
+            [self.offlineBtn setEnabled:YES];
     }
 }
 
@@ -108,11 +116,15 @@ didDisconnectWithUser:(GIDGoogleUser *)user
 - (IBAction)googleLoginBtn:(id)sender {
     self.googleBtn.isLoading = YES;
     [[GIDSignIn sharedInstance] signIn];
+    [self.facebookBtn setEnabled:NO];
+    [self.offlineBtn setEnabled:NO];
 }
 
 - (IBAction)fbLoginBtn:(id)sender {
     LGButton *btn = (LGButton*)sender;
     btn.isLoading = YES;
+    [self.googleBtn setEnabled:NO];
+    [self.offlineBtn setEnabled:NO];
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     [login
      logInWithReadPermissions: @[@"public_profile", @"email"]
@@ -122,9 +134,13 @@ didDisconnectWithUser:(GIDGoogleUser *)user
              NSLog(@"Process error");
              NSLog(@"%@", error.localizedDescription);
              btn.isLoading = NO;
+             [self.googleBtn setEnabled:YES];
+             [self.offlineBtn setEnabled:YES];
          } else if (result.isCancelled) {
              NSLog(@"Cancelled");
              btn.isLoading = NO;
+             [self.googleBtn setEnabled:YES];
+             [self.offlineBtn setEnabled:YES];
          } else {
              NSLog(@"Logged in");
              FIRAuthCredential *credential = [FIRFacebookAuthProvider
@@ -136,11 +152,15 @@ didDisconnectWithUser:(GIDGoogleUser *)user
                                            if (error) {
                                                NSLog(@"FireBase signin failed with FB account.\n%@",error);
                                                btn.isLoading = NO;
+                                               [self.googleBtn setEnabled:YES];
+                                               [self.offlineBtn setEnabled:YES];
                                                return;
                                            }
                                            NSLog(@"Google FireBase Logged IN");
                                            [innerSelf saveFbUserData];
                                            btn.isLoading = NO;
+                                           [self.googleBtn setEnabled:YES];
+                                           [self.offlineBtn setEnabled:YES];
                                            [weakself.userDefaults setBool:YES forKey:@"UsingFirebase"];
                                            [weakself.userDefaults synchronize];
                                            [innerSelf performSegueWithIdentifier:@"logInToDiary" sender:nil];

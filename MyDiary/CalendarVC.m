@@ -55,14 +55,16 @@
     
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *note, RLMRealm * realm) {
         [self loadDiaries];
-        [self.tableview reloadData];
+        [self loadToday];
     }];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self loadDiaries];
-    [self loadToday];
+    [self.calendar reloadData];
+    if (self.selectedDiary) {
+        [self.tableview reloadData];
+    }
 }
 
 - (IBAction)segementChanged:(id)sender {

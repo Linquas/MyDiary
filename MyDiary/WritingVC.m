@@ -26,7 +26,7 @@
 @property (nonatomic) CGSize kbSize;
 @property (nonatomic) BOOL editExistDiary;
 @property (nonatomic) BOOL isUsingFirebase;
-@property (nonatomic) CGRect bottomRect;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttomViewYConstraint;
 
 @end
 
@@ -35,19 +35,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.bottomRect = self.bottonView.frame;
-    
-    [self registerForKeyboardNotifications];
-    
-    self.titleTextView.delegate = self;
-    self.contentTextView.delegate = self;
-    
-    [self.dismissBtn setHidden:YES];
-    
+
     self.isKeyBoardShowed = NO;
-    
-    self.isUsingFirebase = [[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"];
+    [self.dismissBtn setHidden:YES];
     
     if (self.diary) {
         self.editExistDiary = YES;
@@ -57,20 +47,17 @@
         self.editExistDiary = NO;
     }
     
+    self.isUsingFirebase = [[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"];
+    [self registerForKeyboardNotifications];
+    
+    self.titleTextView.delegate = self;
+    self.contentTextView.delegate = self;
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self.titleTextView becomeFirstResponder];
+//    [self.titleTextView becomeFirstResponder];
 }
-
-- (void)dismissKeyboard {
-    [self.titleTextView endEditing:YES];
-    [self.contentTextView endEditing:YES];
-    self.isKeyBoardShowed = NO;
-}
-
-
-//button
 
 - (IBAction)dimissKeyBoardBtn:(id)sender {
     [self dismissKeyboard];
@@ -111,13 +98,8 @@
             diary.text = buff;
             diary.key = self.diary.key;
             diary.date = self.diary.date;
-            
-            if (self.isUsingFirebase) {
-                [[DatabaseServices instance] storeDiary:diary];
-                diary.user = [FIRAuth auth].currentUser.uid;
-            } else {
-                diary.user = [[NSUserDefaults standardUserDefaults] stringForKey:@"ID"];
-            }
+
+            [self setDiaryUid:diary];
             
             [[RealmManager instance] updateObject:diary];
             [self dismissKeyboard];
@@ -133,12 +115,8 @@
             diary.date = today;
             diary.user = [FIRAuth auth].currentUser.uid;
             
-            if (self.isUsingFirebase) {
-                [[DatabaseServices instance] storeDiary:diary];
-                diary.user = [FIRAuth auth].currentUser.uid;
-            } else {
-                diary.user = [[NSUserDefaults standardUserDefaults] stringForKey:@"ID"];
-            }
+            [self setDiaryUid:diary];
+            
             [[RealmManager instance] updateObject:diary];
         }
         [self dismissKeyboard];
@@ -146,27 +124,33 @@
     }
 }
 
-- (NSInteger)getYearMonthDayOfTodayInInteger {
-
-    NSDateFormatter * formatter = [[NSDateFormatter alloc ] init];
-    [formatter setDateFormat:@"YYYYMMdd"];
-    NSString *date =  [formatter stringFromDate:[NSDate date]];
-    
-    return [date integerValue];
+#pragma mark -- Private method
+- (void)dismissKeyboard {
+    [self.titleTextView endEditing:YES];
+    [self.contentTextView endEditing:YES];
+    self.isKeyBoardShowed = NO;
 }
 
+- (void)setDiaryUid:(Diary*)diary {
+    if (self.isUsingFirebase) {
+        [[DatabaseServices instance] storeDiary:diary];
+        diary.user = [FIRAuth auth].currentUser.uid;
+    } else {
+        diary.user = [[NSUserDefaults standardUserDefaults] stringForKey:@"ID"];
+    }
+}
+
+#pragma mark - TextView Delegate
 - (void)textFieldDidBeginEditing:(PlaceHoldUITextView *)textField {
     self.activeField = textField;
-    
-    
 }
 
 - (void)textFieldDidEndEditing:(PlaceHoldUITextView *)textField {
     self.activeField = nil;
 }
 
-//Keyboard setting
 
+#pragma mark - Keyboard delegate and Setting
 // Call this method somewhere in your view controller setup code.
 - (void)registerForKeyboardNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -188,10 +172,9 @@
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     self.kbSize = kbSize;
     if (!self.isKeyBoardShowed) {
-        CGRect newFrame = self.bottomRect;
-        newFrame.origin.y -= self.kbSize.height;
-        [self.bottonView setFrame:newFrame];
+        self.buttomViewYConstraint.constant = self.kbSize.height;
         self.isKeyBoardShowed = YES;
+        NSLog(@"%@", self.bottonView.debugDescription);
     }
     [self.dismissBtn setHidden:NO];
 }
@@ -221,22 +204,25 @@
     
     //move down bottom view
     if (self.isKeyBoardShowed) {
-        [self.bottonView setFrame:self.bottomRect];
-//        [self setNewYPositionWithView:self.bottonView Y:self.kbSize.height];
+        self.buttomViewYConstraint.constant = 0;
         self.isKeyBoardShowed = NO;
     }
     [self.dismissBtn setHidden:YES];
 }
 
-// Called when the keyboard frame change
+// Called when the keyboard frame change and update bottom view's frame
 - (void)keyboardWillChange:(NSNotification*)aNotification {
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     self.kbSize = kbSize;
-    CGRect newFrame = self.bottomRect;
-    newFrame.origin.y -= self.kbSize.height;
-    [self.bottonView setFrame:newFrame];
+    self.buttomViewYConstraint.constant = self.kbSize.height;
+}
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
 }
 
 
