@@ -10,6 +10,7 @@
 @import Firebase;
 #import "Diary.h"
 #import "User.h"
+#import "NSDate+YearMonthDay.h"
 
 @interface RealmManager()
 
@@ -65,11 +66,19 @@
 }
 
 -(RLMResults*)loadAllDataWithUid:(NSString*)uid {
+    if ([uid isEqualToString:@""] || !uid) {
+        NSLog(@"Empty uid");
+        return nil;
+    }
     RLMResults<Diary *> *diaries = [Diary objectsWhere: [NSString stringWithFormat:@"user = '%@'",uid]];
     return [diaries sortedResultsUsingKeyPath:@"key" ascending:YES];
 }
 
 - (RLMResults*)loadUserWithUid:(NSString*)uid {
+    if ([uid isEqualToString:@""] || !uid) {
+        NSLog(@"Empty uid");
+        return nil;
+    }
     RLMResults<User *> *Users = [User objectsWhere: [NSString stringWithFormat:@"userId = '%@'",uid]];
     return Users;
 }
@@ -108,6 +117,33 @@
             [[NSNotificationCenter defaultCenter]postNotificationName:@"dataSyncComplete" object:self];
         });
     });
+}
+
+-(NSArray*)loadDiaryInMonthWithUid:(NSString*)uid {
+    RLMResults<Diary *> *diaries = [Diary objectsWhere: [NSString stringWithFormat:@"user = '%@'",uid]];
+    return [self relocateDataInMonth:[diaries sortedResultsUsingKeyPath:@"key" ascending:YES]];
+}
+
+// separate diary data into group of month
+-(NSArray*)relocateDataInMonth:(RLMResults*)result{
+//    NSLog(@"%@", result.debugDescription);
+    NSMutableArray *head = [[NSMutableArray alloc]init];
+    NSMutableArray *days = [[NSMutableArray alloc]init];
+    NSMutableString *month = [[NSMutableString alloc]init];
+    Diary *first = result[0];
+    month = [NSMutableString stringWithString:[first.date monthInString]];
+    for (Diary* d in result) {
+        if ( ![[d.date monthInString] isEqualToString:month]) {
+            [head addObject:[days copy]];
+            month = [NSMutableString stringWithString:[d.date monthInString]];
+            [days removeAllObjects];
+            [days addObject:d];
+            continue;
+        }
+        [days addObject:d];
+    }
+    [head addObject:[days copy]];
+    return head;
 }
 
 @end

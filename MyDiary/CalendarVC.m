@@ -47,8 +47,6 @@
     
     self.calendar.dataSource = self;
     self.calendar.delegate = self;
-
-    self.calendar = self.calendar;
     self.calendar.layer.cornerRadius = 10.0;
     
     self.isUsingFirebase = [[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"];
@@ -76,7 +74,7 @@
     }
 }
 
-// calendar delegate
+#pragma mark -- calendar delegate
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
 {
     [self.selectedDiary removeAllObjects];
@@ -130,7 +128,7 @@
     }
 }
 
-// tableview delegate
+#pragma mark -- tableview delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.selectedDiary.count;
 }

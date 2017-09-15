@@ -36,9 +36,9 @@
     singleTap.delegate = self;
     [self.view addGestureRecognizer:singleTap];
     
-    
     [self registerForKeyboardNotifications];
 }
+
 - (IBAction)photoBtn:(id)sender {
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
     imagePickerController.delegate = self;
@@ -46,6 +46,7 @@
     imagePickerController.allowsEditing = NO;
     [self presentViewController:imagePickerController animated:YES completion:nil];
 }
+
 - (IBAction)cameraBtn:(id)sender {
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
     imagePickerController.delegate = self;
@@ -107,7 +108,7 @@
     [self presentViewController:closeAlert animated:YES completion:nil];
 }
 
-
+#pragma mark -- gesture setting
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
 //    NSLog(@"%@",touch.view.debugDescription);
     if ([touch.view isKindOfClass:[UIStackView class]]) {
@@ -120,6 +121,7 @@
     [self.currentResponder resignFirstResponder];
 }
 
+#pragma mark -- textfield delegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     self.currentResponder = textField;
     self.activeField = textField;
@@ -148,6 +150,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
+#pragma mark -- keyboard delegate
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {

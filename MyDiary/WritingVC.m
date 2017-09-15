@@ -56,7 +56,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-//    [self.titleTextView becomeFirstResponder];
+
 }
 
 - (IBAction)dimissKeyBoardBtn:(id)sender {

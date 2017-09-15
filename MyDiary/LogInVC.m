@@ -150,13 +150,13 @@ didDisconnectWithUser:(GIDGoogleUser *)user
                                        completion:^(FIRUser *user, NSError *error) {
                                            LogInVC *innerSelf = weakself;
                                            if (error) {
-                                               NSLog(@"FireBase signin failed with FB account.\n%@",error);
+                                               NSLog(@"Firebase signin failed with FB account.\n%@",error);
                                                btn.isLoading = NO;
                                                [self.googleBtn setEnabled:YES];
                                                [self.offlineBtn setEnabled:YES];
                                                return;
                                            }
-                                           NSLog(@"Google FireBase Logged IN");
+                                           NSLog(@"Google Firebase Logged IN");
                                            [innerSelf saveFbUserData];
                                            btn.isLoading = NO;
                                            [self.googleBtn setEnabled:YES];

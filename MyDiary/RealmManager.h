@@ -22,5 +22,6 @@ typedef  void (^onComplete)(void);
 -(RLMResults*)loadAllUser;
 - (RLMResults*)loadUserWithUid:(NSString*)uid;
 -(void)saveDatafromFirebase:(NSDictionary*)data;
+-(NSArray*)loadDiaryInMonthWithUid:(NSString*)uid;
 
 @end

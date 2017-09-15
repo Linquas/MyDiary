@@ -37,13 +37,6 @@
     
 }
 
-- (void)updateDate {
-    self.monthLabel.text = [self.diary.date monthInString];
-    self.dayLabel.text = [self.diary.date dayInString];
-    self.yearLabel.text = [self.diary.date yearInString];
-    self.weekdayLabel.text = [self.diary.date weekdayInString];
-}
-
 - (IBAction)deleteBtn:(id)sender {
     UIAlertController* deleteAlert = [UIAlertController alertControllerWithTitle:@"你確定要刪除日記?" message:@"你的心情將深藏在你的心中" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* close = [UIAlertAction actionWithTitle:@"確定"
@@ -67,6 +60,11 @@
     [self performSegueWithIdentifier:@"readingToWriting" sender:nil];
 }
 
+- (IBAction)closeBtn:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark -- Private method
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"readingToWriting"]) {
         WritingVC *vc =  (WritingVC*)segue.destinationViewController;
@@ -74,8 +72,12 @@
     }
 }
 
-- (IBAction)closeBtn:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (void)updateDate {
+    self.monthLabel.text = [self.diary.date monthInString];
+    self.dayLabel.text = [self.diary.date dayInString];
+    self.yearLabel.text = [self.diary.date yearInString];
+    self.weekdayLabel.text = [self.diary.date weekdayInString];
 }
+
 
 @end

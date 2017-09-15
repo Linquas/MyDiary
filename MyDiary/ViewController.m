@@ -55,23 +55,8 @@
     __weak ViewController *weakSelf = self;
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *note, RLMRealm * realm) {
         ViewController *innerSelf = weakSelf;
-        if (weakSelf.isUsingFirebase) {
-            RLMResults *tmp = [[RealmManager instance] loadAllDataWithUid:[FIRAuth auth].currentUser.uid];
-            if (!tmp || tmp.count != 0) {
-                innerSelf.tableDataArray = tmp;
-//                NSLog(@"%@", innerSelf.tableDataArray.debugDescription);
-                [innerSelf.diariesTableView reloadData];
-            }
-        } else {
-            RLMResults *tmp = [[RealmManager instance] loadAllDataWithUid:[[NSUserDefaults standardUserDefaults] stringForKey: @"ID"]];
-            if (!tmp || tmp.count != 0) {
-                innerSelf.tableDataArray = tmp;
-//                NSLog(@"%@", innerSelf.tableDataArray.debugDescription);
-                [innerSelf.diariesTableView reloadData];
-            }
-        }
+        [innerSelf updateTableDataArray];
     }];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -80,12 +65,9 @@
 
 - (void)updateTableDataArray {
     if (self.isUsingFirebase) {
-        self.tableDataArray = [[RealmManager instance] loadAllDataWithUid:[FIRAuth auth].currentUser.uid];
-        self.sectionData= [self getTableHeader:self.tableDataArray];
-        NSLog(@"%@", self.sectionData.debugDescription);
-        
+        self.sectionData = [[RealmManager instance] loadDiaryInMonthWithUid:[FIRAuth auth].currentUser.uid];
     } else {
-        self.tableDataArray = [[RealmManager instance] loadAllDataWithUid:[[NSUserDefaults standardUserDefaults] stringForKey: @"ID"]];
+        self.sectionData = [[RealmManager instance] loadDiaryInMonthWithUid:[[NSUserDefaults standardUserDefaults] stringForKey: @"ID"]];
     }
     [self.diariesTableView reloadData];
 }
@@ -105,8 +87,6 @@
     if (!cell) {
         cell = [[DiariesCell alloc]init];
     }
-    
-//    Diary *diary = [self.tableDataArray objectAtIndex:indexPath.row];
     Diary *diary = self.sectionData[indexPath.section][indexPath.row];
     [cell update:diary];
     
@@ -118,7 +98,6 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return [self.tableDataArray count];
     return [self.sectionData[section] count];
 }
 
@@ -138,7 +117,7 @@
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.selected = [self.tableDataArray objectAtIndex:indexPath.row];
+    self.selected = self.sectionData[indexPath.section][indexPath.row];
     [self performSegueWithIdentifier:@"reading" sender:nil];
 }
 
@@ -159,30 +138,6 @@
     [self.refreshControl endRefreshing];
 }
 
--(NSArray*)getTableHeader:(RLMResults*)result{
-    NSLog(@"%@", result.debugDescription);
-    NSMutableArray *head = [[NSMutableArray alloc]init];
-    NSMutableArray *days = [[NSMutableArray alloc]init];
-    NSMutableString *month = [[NSMutableString alloc]init];
-    Diary *first = result[0];
-    month = [NSMutableString stringWithString:[first.date monthInString]];
-    for (Diary* d in result) {
-        NSLog(@"%@", d.debugDescription);
-        NSLog(@"%@",month);
-        NSLog(@"%@", [d.date monthInString]);
-        if ( ![[d.date monthInString] isEqualToString:month]) {
-            [head addObject:[days copy]];
-            
-            month = [NSMutableString stringWithString:[d.date monthInString]];
-            [days removeAllObjects];
-            [days addObject:d];
-            continue;
-        }
-        [days addObject:d];
-    }
-    [head addObject:[days copy]];
-    return head;
-}
 
 
 @end

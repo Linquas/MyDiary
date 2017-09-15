@@ -1256,10 +1256,10 @@
         <image name="theme_bg_taki" width="1080" height="1276"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZEK-kr-ZhJ"/>
-        <segue reference="FIs-5r-HJZ"/>
+        <segue reference="uhG-pF-xI6"/>
         <segue reference="q0f-sm-ytR"/>
         <segue reference="Amt-24-d1l"/>
+        <segue reference="FIs-5r-HJZ"/>
         <segue reference="QQE-Ao-NSQ"/>
     </inferredMetricsTieBreakers>
 </document>
