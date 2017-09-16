@@ -10,7 +10,7 @@
 
 @interface Weather : NSObject
 
-@property (copy, nonatomic) NSString* weatherDescription;
+@property (strong, nonatomic) NSString* weatherDescription;
 @property (strong, nonatomic) NSString* location;
 
 - (instancetype)initWithWeatherDescription:(NSString*) weatherDesc withLocation:(NSString*)location;

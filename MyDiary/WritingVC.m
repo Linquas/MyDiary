@@ -42,7 +42,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.isKeyBoardShowed = NO;
     [self.dismissBtn setHidden:YES];
     
@@ -67,10 +67,6 @@
         self.loactionManager.desiredAccuracy = kCLLocationAccuracyBest;
         [self.loactionManager startUpdatingLocation];
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-
 }
 
 - (IBAction)dimissKeyBoardBtn:(id)sender {

@@ -58,6 +58,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
     [self loadDiaries];
     [self.calendar reloadData];
     if (self.selectedDiary) {

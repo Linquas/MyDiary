@@ -129,9 +129,8 @@
 //    NSLog(@"%@", result.debugDescription);
     NSMutableArray *head = [[NSMutableArray alloc]init];
     NSMutableArray *days = [[NSMutableArray alloc]init];
-    NSMutableString *month = [[NSMutableString alloc]init];
     Diary *first = result[0];
-    month = [NSMutableString stringWithString:[first.date monthInString]];
+    NSMutableString *month = [NSMutableString stringWithString:[first.date monthInString]];
     for (Diary* d in result) {
         if ( ![[d.date monthInString] isEqualToString:month]) {
             [head addObject:[days copy]];

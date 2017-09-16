@@ -37,6 +37,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
     if ([self.userDefaults objectForKey:@"isOffline"]) {
         if ([self.userDefaults boolForKey:@"isOffline"])
             [self performSegueWithIdentifier:@"logInToDiary" sender:nil];
