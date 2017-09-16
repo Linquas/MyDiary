@@ -13,7 +13,9 @@
 #import "Diary.h"
 #import "ReadingVC.h"
 #import "NSDate+YearMonthDay.h"
+#import "OpenWeatherAPI.h"
 @import Firebase;
+@import CoreLocation;
 
 
 @interface ViewController ()

@@ -20,7 +20,7 @@
 
 @implementation RealmManager
 
-+(id)instance {
++(instancetype)instance {
     RealmManager *sharedInstance = nil;
     
     @synchronized (self) {

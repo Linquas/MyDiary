@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		CE3979E7CB3718C941C93889 /* Pods_MyDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9331B83F373E2EBEE64CBBD6 /* Pods_MyDiary.framework */; };
+		F30A6A551F6CF9F9005670BE /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = F30A6A541F6CF9F9005670BE /* Weather.m */; };
+		F34D2B8B1F6BA3C50038D7FA /* OpenWeatherAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F34D2B8A1F6BA3C50038D7FA /* OpenWeatherAPI.m */; };
+		F34D2B8E1F6BB8750038D7FA /* HttpResponseErrorCode.m in Sources */ = {isa = PBXBuildFile; fileRef = F34D2B8D1F6BB8750038D7FA /* HttpResponseErrorCode.m */; };
 		F3B618EF1F67D9C0006467D5 /* DiaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B618EE1F67D9C0006467D5 /* DiaryView.m */; };
 		F3B618F21F67DBA2006467D5 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B618F11F67DBA2006467D5 /* CalendarView.m */; };
 		F3C6AD2C1F5681BC00DCEF42 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6AD2B1F5681BC00DCEF42 /* main.m */; };
@@ -39,6 +42,12 @@
 		1DFBB55305983422ADA3A138 /* Pods-MyDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary.debug.xcconfig"; sourceTree = "<group>"; };
 		7941754ACB055356062262A1 /* Pods-MyDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiary.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary.release.xcconfig"; sourceTree = "<group>"; };
 		9331B83F373E2EBEE64CBBD6 /* Pods_MyDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F30A6A531F6CF9F9005670BE /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
+		F30A6A541F6CF9F9005670BE /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
+		F34D2B891F6BA3C50038D7FA /* OpenWeatherAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenWeatherAPI.h; sourceTree = "<group>"; };
+		F34D2B8A1F6BA3C50038D7FA /* OpenWeatherAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenWeatherAPI.m; sourceTree = "<group>"; };
+		F34D2B8C1F6BB8750038D7FA /* HttpResponseErrorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpResponseErrorCode.h; sourceTree = "<group>"; };
+		F34D2B8D1F6BB8750038D7FA /* HttpResponseErrorCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpResponseErrorCode.m; sourceTree = "<group>"; };
 		F3B618ED1F67D9C0006467D5 /* DiaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryView.h; sourceTree = "<group>"; };
 		F3B618EE1F67D9C0006467D5 /* DiaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryView.m; sourceTree = "<group>"; };
 		F3B618F01F67DBA2006467D5 /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
@@ -154,6 +163,10 @@
 				F3C6AD331F5681BC00DCEF42 /* Main.storyboard */,
 				F3C6AD361F5681BC00DCEF42 /* Assets.xcassets */,
 				F3C6AD2A1F5681BC00DCEF42 /* Supporting Files */,
+				F34D2B891F6BA3C50038D7FA /* OpenWeatherAPI.h */,
+				F34D2B8A1F6BA3C50038D7FA /* OpenWeatherAPI.m */,
+				F34D2B8C1F6BB8750038D7FA /* HttpResponseErrorCode.h */,
+				F34D2B8D1F6BB8750038D7FA /* HttpResponseErrorCode.m */,
 			);
 			path = MyDiary;
 			sourceTree = "<group>";
@@ -180,6 +193,8 @@
 				F3C6AD801F592C0B00DCEF42 /* Diary.m */,
 				F3C6ADD91F611B5000DCEF42 /* User.h */,
 				F3C6ADDA1F611B5000DCEF42 /* User.m */,
+				F30A6A531F6CF9F9005670BE /* Weather.h */,
+				F30A6A541F6CF9F9005670BE /* Weather.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -331,6 +346,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -345,6 +361,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
@@ -411,11 +428,14 @@
 				F3C6ADBB1F5CFAA300DCEF42 /* CalendarVC.m in Sources */,
 				F3C6ADB81F5A8A4C00DCEF42 /* ReadingView.m in Sources */,
 				F3C6ADAF1F59748C00DCEF42 /* RealmManager.m in Sources */,
+				F34D2B8E1F6BB8750038D7FA /* HttpResponseErrorCode.m in Sources */,
+				F30A6A551F6CF9F9005670BE /* Weather.m in Sources */,
 				F3C6ADDF1F63DDF500DCEF42 /* UserInfoVC.m in Sources */,
 				F3C6ADD81F61141900DCEF42 /* AboutMeView.m in Sources */,
 				F3C6AD481F56AB3200DCEF42 /* WritingVC.m in Sources */,
 				F3C6AD2F1F5681BC00DCEF42 /* AppDelegate.m in Sources */,
 				F3B618F21F67DBA2006467D5 /* CalendarView.m in Sources */,
+				F34D2B8B1F6BA3C50038D7FA /* OpenWeatherAPI.m in Sources */,
 				F3C6AD2C1F5681BC00DCEF42 /* main.m in Sources */,
 				F3C6ADB51F5A89D900DCEF42 /* ReadingVC.m in Sources */,
 				F3C6ADC11F5D779C00DCEF42 /* AboutMeVC.m in Sources */,

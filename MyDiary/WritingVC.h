@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Diary.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface WritingVC : UIViewController  <UITextViewDelegate>
+@interface WritingVC : UIViewController  <UITextViewDelegate, CLLocationManagerDelegate>
 @property (strong, nonatomic) Diary* diary;
 
 @end

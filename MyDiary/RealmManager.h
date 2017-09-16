@@ -13,7 +13,7 @@ typedef  void (^onComplete)(void);
 
 @interface RealmManager : NSObject
 
-+(id)instance;
++(instancetype)instance;
 -(void)addOrUpdateObject:(RLMObject*)obj;
 -(void)updateObject:(RLMObject*)obj;
 -(void)deleteObject:(RLMObject*)obj;

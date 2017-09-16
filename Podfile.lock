@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -78,6 +93,7 @@ PODS:
   - Realm/Headers (2.10.0)
 
 DEPENDENCIES:
+  - AFNetworking (~> 3.0)
   - Bolts
   - Crashlytics
   - Fabric
@@ -93,6 +109,7 @@ DEPENDENCIES:
   - Realm
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Crashlytics: 95d05f4e4c19a771250c4bd9ce344d996de32bbf
   Fabric: 2fb5676bc811af011a04513451f463dac6803206
@@ -115,6 +132,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Realm: 98b3a25643cf6b3e07d2b99fb43fe0eb9c801dec
 
-PODFILE CHECKSUM: 4388a4da3dc662ef58586c86ac65e1f562699369
+PODFILE CHECKSUM: 28fa713768f6b3b736b2ac621688b29fda280380
 
 COCOAPODS: 1.3.1

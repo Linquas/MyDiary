@@ -13,7 +13,7 @@
 
 @interface DatabaseServices : NSObject
 
-+ (id) instance;
++ (instancetype) instance;
 - (void) storeDiary:(Diary*)diary;
 - (void) deleteDiary:(Diary*)diary;
 - (void) loadDiaryFromFirebase;

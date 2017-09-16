@@ -76,5 +76,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>開啟定位功能來取得現在的位置天氣如何</string>
 </dict>
 </plist>

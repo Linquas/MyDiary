@@ -19,4 +19,5 @@ target 'MyDiary' do
   pod 'Firebase/AdMob'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'AFNetworking', '~> 3.0'
 end

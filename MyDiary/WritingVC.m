@@ -12,6 +12,9 @@
 #import "NSDate+YearMonthDay.h"
 #import "Diary.h"
 #import "DatabaseServices.h"
+#import "OpenWeatherAPI.h"
+#import "HttpResponseErrorCode.h"
+#import "Weather.h"
 @import Firebase;
 
 
@@ -27,6 +30,10 @@
 @property (nonatomic) BOOL editExistDiary;
 @property (nonatomic) BOOL isUsingFirebase;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttomViewYConstraint;
+
+@property (strong, nonatomic) CLLocationManager *loactionManager;
+@property (strong, nonatomic) CLLocation *currentLocation;
+@property (strong, nonatomic) Weather *weatherData;
 
 @end
 
@@ -52,7 +59,14 @@
     
     self.titleTextView.delegate = self;
     self.contentTextView.delegate = self;
-
+    
+    if ([CLLocationManager locationServicesEnabled]) {
+        self.loactionManager = [[CLLocationManager alloc]init];
+        self.loactionManager.delegate = self;
+        [self.loactionManager requestWhenInUseAuthorization];
+        self.loactionManager.desiredAccuracy = kCLLocationAccuracyBest;
+        [self.loactionManager startUpdatingLocation];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -81,6 +95,8 @@
 }
 
 - (IBAction)saveDiaryBtn:(id)sender {
+    [self getWeatherAndLocation];
+    
     if ([self.titleTextView.text isEqualToString:@""] || [self.contentTextView.text isEqualToString:@""] ) {
         UIAlertController* saveAlert = [UIAlertController alertControllerWithTitle:@"空白內容" message:@"好好想想生活中的樂趣吧！" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *resume = [UIAlertAction actionWithTitle:@"繼續寫"
@@ -101,6 +117,11 @@
 
             [self setDiaryUid:diary];
             
+            if (self.weatherData) {
+                diary.weather = self.weatherData.weatherDescription;
+                diary.loaction = self.weatherData.location;
+            }
+            
             [[RealmManager instance] updateObject:diary];
             [self dismissKeyboard];
             [self.presentingViewController.presentingViewController dismissViewControllerAnimated: true completion: nil];
@@ -116,6 +137,11 @@
             diary.user = [FIRAuth auth].currentUser.uid;
             
             [self setDiaryUid:diary];
+            
+            if (self.weatherData) {
+                diary.weather = self.weatherData.weatherDescription;
+                diary.loaction = self.weatherData.location;
+            }
             
             [[RealmManager instance] updateObject:diary];
         }
@@ -174,7 +200,7 @@
     if (!self.isKeyBoardShowed) {
         self.buttomViewYConstraint.constant = self.kbSize.height;
         self.isKeyBoardShowed = YES;
-        NSLog(@"%@", self.bottonView.debugDescription);
+//        NSLog(@"%@", self.bottonView.debugDescription);
     }
     [self.dismissBtn setHidden:NO];
 }
@@ -218,11 +244,45 @@
     self.buttomViewYConstraint.constant = self.kbSize.height;
 }
 
--(void)dealloc {
+#pragma mark - CLLocation Delegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    self.currentLocation = locations[0];
+}
+
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [self.loactionManager stopUpdatingLocation];
+}
+
+- (void)getWeatherAndLocation {
+    __weak WritingVC *weakself = self;
+    [[OpenWeatherAPI requestWithCompleteBlock:^(id data) {
+        WritingVC *innerSelf = weakself;
+        NSDictionary *json = data;
+//        NSLog(@"%@", json.debugDescription);
+        [innerSelf jsonParser:json];
+        
+    } failedBlock:^(NSInteger statusCode, NSInteger errorCode) {
+
+        NSLog(@"Status Code: %i", (int)statusCode);
+        NSLog(@"Error Code: %i", (int)errorCode);
+    }] getWeatherDataWithCityGPSCordinate:self.currentLocation];
+}
+
+- (void)jsonParser:(id)jsonData {
+    if ([jsonData isKindOfClass:[NSDictionary class]] || jsonData ) {
+        NSString *cityName = [jsonData objectForKey:@"name"];
+        
+        if ([[jsonData objectForKey:@"weather"] isKindOfClass:[NSArray class]]) {
+            NSArray *weather = [jsonData objectForKey:@"weather"];
+            NSDictionary *weatherData = weather[0];
+            NSString *description = [weatherData objectForKey:@"description"];
+            self.weatherData = [[Weather alloc]initWithWeatherDescription:description withLocation:cityName];
+        }
+    }
 }
 
 

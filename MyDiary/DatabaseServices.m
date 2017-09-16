@@ -21,7 +21,7 @@
 
 @implementation DatabaseServices
 
-+ (id) instance {
++ (instancetype) instance {
     static DatabaseServices *sharedInstance = nil;
     
     @synchronized (self) {
