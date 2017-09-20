@@ -19,7 +19,6 @@
 @property (nonatomic) id currentResponder;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *backgrounf;
-@property (weak, nonatomic) IBOutlet LGButton *profileButton;
 @property (weak, nonatomic) UITextField *activeField;
 
 @end

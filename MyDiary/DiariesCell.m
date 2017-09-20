@@ -9,6 +9,7 @@
 #import "DiariesCell.h"
 #import "Diary.h"
 #import "NSDate+YearMonthDay.h"
+#import "Masonry.h"
 
 @interface DiariesCell ()
 
@@ -32,6 +33,16 @@
     self.layer.shadowRadius = 4.0;
     self.layer.shadowOffset = CGSizeMake(1.0, 3.0);
     
+    self.weatherImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"clear sky.png"]];
+    [self addSubview:self.weatherImg];
+}
+
+- (void)updateConstraints {
+    [self.weatherImg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self);
+        make.top.equalTo(self);
+    }];
+    [super updateConstraints];
 }
 
 - (void)updateCell:(int)num {
@@ -44,6 +55,13 @@
     self.dateLabel.text = [diary.date dayInString];
     self.timeLabel.text = [diary.date timeInString];
     self.weekDayLabel.text = [diary.date weekdayShortInString];
+    NSString *weather = diary.weather;
+    if ([weather isEqualToString:@"NO DATA"]) {
+        self.weatherImg.hidden = YES;
+    } else {
+        self.weatherImg.image = [UIImage imageNamed:weather];
+        self.weatherImg.hidden = NO;
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

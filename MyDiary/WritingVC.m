@@ -33,7 +33,6 @@
 
 @property (strong, nonatomic) CLLocationManager *loactionManager;
 @property (strong, nonatomic) CLLocation *currentLocation;
-@property (strong, nonatomic) Weather *weatherData;
 
 @end
 
@@ -91,7 +90,6 @@
 }
 
 - (IBAction)saveDiaryBtn:(id)sender {
-    [self getWeatherAndLocation];
     
     if ([self.titleTextView.text isEqualToString:@""] || [self.contentTextView.text isEqualToString:@""] ) {
         UIAlertController* saveAlert = [UIAlertController alertControllerWithTitle:@"空白內容" message:@"好好想想生活中的樂趣吧！" preferredStyle:UIAlertControllerStyleAlert];
@@ -111,14 +109,9 @@
             diary.key = self.diary.key;
             diary.date = self.diary.date;
 
-            [self setDiaryUid:diary];
-            
-            if (self.weatherData) {
-                diary.weather = self.weatherData.weatherDescription;
-                diary.loaction = self.weatherData.location;
-            }
-            
-            [[RealmManager instance] updateObject:diary];
+            [self getWeatherAndLocationAndSaveWithDiary:diary];
+            [self setDiaryUidAndSaveToFirebase:diary];
+
             [self dismissKeyboard];
             [self.presentingViewController.presentingViewController dismissViewControllerAnimated: true completion: nil];
         } else {
@@ -130,16 +123,9 @@
             diary.text = buff;
             diary.key = [today timeInInteger];
             diary.date = today;
-            diary.user = [FIRAuth auth].currentUser.uid;
-            
-            [self setDiaryUid:diary];
-            
-            if (self.weatherData) {
-                diary.weather = self.weatherData.weatherDescription;
-                diary.loaction = self.weatherData.location;
-            }
-            
-            [[RealmManager instance] updateObject:diary];
+        
+            [self getWeatherAndLocationAndSaveWithDiary:diary];
+
         }
         [self dismissKeyboard];
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -153,7 +139,7 @@
     self.isKeyBoardShowed = NO;
 }
 
-- (void)setDiaryUid:(Diary*)diary {
+- (void)setDiaryUidAndSaveToFirebase:(Diary*)diary {
     if (self.isUsingFirebase) {
         [[DatabaseServices instance] storeDiary:diary];
         diary.user = [FIRAuth auth].currentUser.uid;
@@ -253,22 +239,31 @@
     [self.loactionManager stopUpdatingLocation];
 }
 
-- (void)getWeatherAndLocation {
+- (void)getWeatherAndLocationAndSaveWithDiary:(Diary*)diary {
     __weak WritingVC *weakself = self;
     [[OpenWeatherAPI requestWithCompleteBlock:^(id data) {
         WritingVC *innerSelf = weakself;
         NSDictionary *json = data;
-//        NSLog(@"%@", json.debugDescription);
-        [innerSelf jsonParser:json];
+        Weather *w = [innerSelf jsonParser:json];
+        if (w) {
+            diary.weather = w.weatherDescription;
+            diary.loaction = w.location;
+        }
+        [self setDiaryUidAndSaveToFirebase:diary];
+        [[RealmManager instance] updateObject:diary];
         
     } failedBlock:^(NSInteger statusCode, NSInteger errorCode) {
-
+        
         NSLog(@"Status Code: %i", (int)statusCode);
         NSLog(@"Error Code: %i", (int)errorCode);
+        [self setDiaryUidAndSaveToFirebase:diary];
+        [[RealmManager instance] updateObject:diary];
+        
     }] getWeatherDataWithCityGPSCordinate:self.currentLocation];
 }
 
-- (void)jsonParser:(id)jsonData {
+
+- (Weather*)jsonParser:(id)jsonData {
     if ([jsonData isKindOfClass:[NSDictionary class]] || jsonData ) {
         NSString *cityName = [jsonData objectForKey:@"name"];
         
@@ -276,9 +271,10 @@
             NSArray *weather = [jsonData objectForKey:@"weather"];
             NSDictionary *weatherData = weather[0];
             NSString *description = [weatherData objectForKey:@"description"];
-            self.weatherData = [[Weather alloc]initWithWeatherDescription:description withLocation:cityName];
+            return [[Weather alloc]initWithWeatherDescription:description withLocation:cityName];
         }
     }
+    return nil;
 }
 
 

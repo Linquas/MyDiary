@@ -14,7 +14,8 @@
     return @"key";
 }
 
-
-
++ (NSDictionary *)defaultPropertyValues {
+    return @{@"user" : @0, @"title": @"NO DATA", @"text": @"NO DATA", @"weather": @"NO DATA", @"mood": @"NO DATA", @"loaction": @"NO DATA", @"date": [NSDate date]};
+}
 
 @end

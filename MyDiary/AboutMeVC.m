@@ -36,7 +36,7 @@
     self.adBannerView.rootViewController = self;
     [self.adBannerView loadRequest:[GADRequest request]];
     
-    [self checkFirebaseStatus];
+    [self checkFirebaseStatusAndGetUser];
     
     [self loadUserPhotoAndName];
     
@@ -87,8 +87,8 @@
 }
 
 - (void) loadUserPhotoAndName {
-    User *user = [self.user objectAtIndex:0];
-    if (user) {
+    if (self.user.count > 0) {
+        User *user = [self.user objectAtIndex:0];
         if (user.fullName)
             self.nameLabel.text = user.fullName;
         if (user.photo)
@@ -96,7 +96,7 @@
     }
 }
 
-- (void) checkFirebaseStatus {
+- (void) checkFirebaseStatusAndGetUser {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"]) {
         [self.syncBtn setEnabled:YES];
         self.user = [[RealmManager instance] loadUserWithUid:[FIRAuth auth].currentUser.uid];

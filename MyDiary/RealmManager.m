@@ -109,6 +109,11 @@
             usr.weather = [[data objectForKey:key] objectForKey:@"weather"];
             usr.date = [dateFormat dateFromString:[NSString stringWithFormat:@"%@", [[data objectForKey:key] objectForKey:@"date"]]];
             usr.user = [FIRAuth auth].currentUser.uid;
+            if ([[data objectForKey:key] objectForKey:@"location"]) {
+                usr.loaction = [[data objectForKey:key] objectForKey:@"location"];
+            } else {
+                usr.loaction = @"NO DATA";
+            }
             [realm addOrUpdateObject:usr];
         }
         [realm commitWriteTransaction];
@@ -129,6 +134,9 @@
 //    NSLog(@"%@", result.debugDescription);
     NSMutableArray *head = [[NSMutableArray alloc]init];
     NSMutableArray *days = [[NSMutableArray alloc]init];
+    if (result.count == 0) {
+        return nil;
+    }
     Diary *first = result[0];
     NSMutableString *month = [NSMutableString stringWithString:[first.date monthInString]];
     for (Diary* d in result) {

@@ -11,6 +11,8 @@
 
 @interface DiariesCell : UITableViewCell
 
+@property (strong, nonatomic) UIImageView *weatherImg;
+
 -(void)updateCell:(int)num;
 -(void)update:(Diary*)diary;
 

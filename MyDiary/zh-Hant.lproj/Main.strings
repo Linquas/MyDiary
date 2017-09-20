@@ -1,0 +1,99 @@
+
+/* Class = "UILabel"; text = "東京生活"; ObjectID = "3na-km-SMC"; */
+"3na-km-SMC.text" = "東京生活";
+
+/* Class = "UISegmentedControl"; 7yG-51-Ieg.segmentTitles[0] = "日記"; ObjectID = "7yG-51-Ieg"; */
+"7yG-51-Ieg.segmentTitles[0]" = "日記";
+
+/* Class = "UISegmentedControl"; 7yG-51-Ieg.segmentTitles[1] = "月曆"; ObjectID = "7yG-51-Ieg"; */
+"7yG-51-Ieg.segmentTitles[1]" = "月曆";
+
+/* Class = "UISegmentedControl"; 7yG-51-Ieg.segmentTitles[2] = "關於我"; ObjectID = "7yG-51-Ieg"; */
+"7yG-51-Ieg.segmentTitles[2]" = "關於我";
+
+/* Class = "UISegmentedControl"; 82g-fC-lAN.segmentTitles[0] = "日記"; ObjectID = "82g-fC-lAN"; */
+"82g-fC-lAN.segmentTitles[0]" = "日記";
+
+/* Class = "UISegmentedControl"; 82g-fC-lAN.segmentTitles[1] = "月曆"; ObjectID = "82g-fC-lAN"; */
+"82g-fC-lAN.segmentTitles[1]" = "月曆";
+
+/* Class = "UISegmentedControl"; 82g-fC-lAN.segmentTitles[2] = "關於我"; ObjectID = "82g-fC-lAN"; */
+"82g-fC-lAN.segmentTitles[2]" = "關於我";
+
+/* Class = "UILabel"; text = "December"; ObjectID = "8Jq-3c-SAz"; */
+"8Jq-3c-SAz.text" = "December";
+
+/* Class = "UILabel"; text = "2017"; ObjectID = "C0R-Hw-gMe"; */
+"C0R-Hw-gMe.text" = "2017";
+
+/* Class = "UILabel"; text = "你的名字是?"; ObjectID = "Cd0-1e-AvS"; */
+"Cd0-1e-AvS.text" = "你的名字是?";
+
+/* Class = "UILabel"; text = "December"; ObjectID = "Md4-3I-VIu"; */
+"Md4-3I-VIu.text" = "December";
+
+/* Class = "UILabel"; text = "Sunday"; ObjectID = "ONs-uE-649"; */
+"ONs-uE-649.text" = "Sunday";
+
+/* Class = "UILabel"; text = "回味過去"; ObjectID = "Qn9-CO-Zrm"; */
+"Qn9-CO-Zrm.text" = "回味過去";
+
+/* Class = "UILabel"; text = "展望台巡りとフリ一マーケット❄️❤️"; ObjectID = "Sgj-6a-9Fb"; */
+"Sgj-6a-9Fb.text" = "展望台巡りとフリ一マーケット❄️❤️";
+
+/* Class = "UILabel"; text = "2017"; ObjectID = "TuP-r4-b0s"; */
+"TuP-r4-b0s.text" = "2017";
+
+/* Class = "UILabel"; text = "20"; ObjectID = "UUL-vB-Lpg"; */
+"UUL-vB-Lpg.text" = "20";
+
+/* Class = "UILabel"; text = "Sunday"; ObjectID = "Vbh-WP-DFW"; */
+"Vbh-WP-DFW.text" = "Sunday";
+
+/* Class = "UILabel"; text = "Fri."; ObjectID = "W5b-VC-AGZ"; */
+"W5b-VC-AGZ.text" = "Fri.";
+
+/* Class = "UILabel"; text = "12"; ObjectID = "WbL-UZ-5Ot"; */
+"WbL-UZ-5Ot.text" = "12";
+
+/* Class = "UILabel"; text = "你好"; ObjectID = "X1R-kk-gGX"; */
+"X1R-kk-gGX.text" = "你好";
+
+/* Class = "UILabel"; text = "東京生活"; ObjectID = "a2O-w3-fVe"; */
+"a2O-w3-fVe.text" = "東京生活";
+
+/* Class = "UISegmentedControl"; bC9-Qh-pT6.segmentTitles[0] = "日記"; ObjectID = "bC9-Qh-pT6"; */
+"bC9-Qh-pT6.segmentTitles[0]" = "日記";
+
+/* Class = "UISegmentedControl"; bC9-Qh-pT6.segmentTitles[1] = "月曆"; ObjectID = "bC9-Qh-pT6"; */
+"bC9-Qh-pT6.segmentTitles[1]" = "月曆";
+
+/* Class = "UISegmentedControl"; bC9-Qh-pT6.segmentTitles[2] = "關於我"; ObjectID = "bC9-Qh-pT6"; */
+"bC9-Qh-pT6.segmentTitles[2]" = "關於我";
+
+/* Class = "UILabel"; text = "12"; ObjectID = "dbs-nd-e8c"; */
+"dbs-nd-e8c.text" = "12";
+
+/* Class = "UILabel"; text = "20"; ObjectID = "iey-su-UBZ"; */
+"iey-su-UBZ.text" = "20";
+
+/* Class = "UILabel"; text = "隨手小記"; ObjectID = "lpc-AA-2Sh"; */
+"lpc-AA-2Sh.text" = "隨手小記";
+
+/* Class = "UILabel"; text = "15:20"; ObjectID = "lsC-RX-7QO"; */
+"lsC-RX-7QO.text" = "15:20";
+
+/* Class = "UILabel"; text = "15:20"; ObjectID = "mL8-XT-sbZ"; */
+"mL8-XT-sbZ.text" = "15:20";
+
+/* Class = "UILabel"; text = "故事線"; ObjectID = "tAm-uB-jL3"; */
+"tAm-uB-jL3.text" = "故事線";
+
+/* Class = "UILabel"; text = "展望台巡りとフリ一マーケット❄️❤️"; ObjectID = "wN9-aZ-FXo"; */
+"wN9-aZ-FXo.text" = "展望台巡りとフリ一マーケット❄️❤️";
+
+/* Class = "UILabel"; text = "Fri."; ObjectID = "wUA-gQ-AUi"; */
+"wUA-gQ-AUi.text" = "Fri.";
+
+/* Class = "UILabel"; text = "Steven Lin"; ObjectID = "zig-qL-lCt"; */
+"zig-qL-lCt.text" = "Steven Lin";

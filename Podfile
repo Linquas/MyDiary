@@ -20,4 +20,5 @@ target 'MyDiary' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'AFNetworking', '~> 3.0'
+  pod 'Masonry'
 end

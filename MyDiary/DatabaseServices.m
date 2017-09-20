@@ -35,7 +35,8 @@
 - (void) storeDiary:(Diary*)diary {
     self.ref = DB_REF;
     NSString *usr_uid = USER_UID;
-    NSDictionary *post = @{@"weather": @"sunny",
+    NSDictionary *post = @{@"weather": diary.weather,
+                           @"location": diary.loaction,
                            @"date": [NSNumber numberWithInteger:diary.key],
                            @"title": diary.title,
                            @"text": diary.text,
