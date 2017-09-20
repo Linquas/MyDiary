@@ -586,6 +586,7 @@
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = shallow;
 				CODE_SIGN_ENTITLEMENTS = MyDiary/MyDiary.entitlements;
 				DEVELOPMENT_TEAM = ZJ68Z9J58L;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -613,6 +614,7 @@
 				CODE_SIGN_ENTITLEMENTS = MyDiary/MyDiary.entitlements;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = ZJ68Z9J58L;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
