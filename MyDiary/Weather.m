@@ -18,5 +18,20 @@
     }
     return self;
 }
+- (instancetype)initWithJson:(id) jsonData {
+    return [self jsonParser:jsonData];
+}
 
+- (Weather*)jsonParser:(id)jsonData {
+    if ([jsonData isKindOfClass:[NSDictionary class]] || jsonData ) {
+        NSString *cityName = [jsonData objectForKey:@"name"];
+        if ([[jsonData objectForKey:@"weather"] isKindOfClass:[NSArray class]]) {
+            NSArray *weather = [jsonData objectForKey:@"weather"];
+            NSDictionary *weatherData = weather[0];
+            NSString *description = [weatherData objectForKey:@"description"];
+            return [[Weather alloc]initWithWeatherDescription:description withLocation:cityName];
+        }
+    }
+    return nil;
+}
 @end

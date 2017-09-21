@@ -11,6 +11,7 @@
 #import "RealmManager.h"
 #import "DatabaseServices.h"
 #import "User.h"
+#import "KFKeychain.h"
 
 @import LGButton;
 @import GoogleSignIn;
@@ -61,6 +62,7 @@
     
     if ([GIDSignIn sharedInstance].currentUser) {
         [[GIDSignIn sharedInstance] signOut];
+        [KFKeychain deleteObjectForKey:@"google"];
     } else if ([FBSDKAccessToken currentAccessToken]) {
         [[[FBSDKLoginManager alloc]init] logOut];
     }

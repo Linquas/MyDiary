@@ -240,11 +240,9 @@
 }
 
 - (void)getWeatherAndLocationAndSaveWithDiary:(Diary*)diary {
-    __weak WritingVC *weakself = self;
     [[OpenWeatherAPI requestWithCompleteBlock:^(id data) {
-        WritingVC *innerSelf = weakself;
         NSDictionary *json = data;
-        Weather *w = [innerSelf jsonParser:json];
+        Weather *w = [[Weather alloc]initWithJson:json];
         if (w) {
             diary.weather = w.weatherDescription;
             diary.loaction = w.location;
@@ -261,21 +259,5 @@
         
     }] getWeatherDataWithCityGPSCordinate:self.currentLocation];
 }
-
-
-- (Weather*)jsonParser:(id)jsonData {
-    if ([jsonData isKindOfClass:[NSDictionary class]] || jsonData ) {
-        NSString *cityName = [jsonData objectForKey:@"name"];
-        
-        if ([[jsonData objectForKey:@"weather"] isKindOfClass:[NSArray class]]) {
-            NSArray *weather = [jsonData objectForKey:@"weather"];
-            NSDictionary *weatherData = weather[0];
-            NSString *description = [weatherData objectForKey:@"description"];
-            return [[Weather alloc]initWithWeatherDescription:description withLocation:cityName];
-        }
-    }
-    return nil;
-}
-
 
 @end

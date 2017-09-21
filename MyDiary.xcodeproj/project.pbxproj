@@ -11,6 +11,7 @@
 		F30A6A551F6CF9F9005670BE /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = F30A6A541F6CF9F9005670BE /* Weather.m */; };
 		F34D2B8B1F6BA3C50038D7FA /* OpenWeatherAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F34D2B8A1F6BA3C50038D7FA /* OpenWeatherAPI.m */; };
 		F34D2B8E1F6BB8750038D7FA /* HttpResponseErrorCode.m in Sources */ = {isa = PBXBuildFile; fileRef = F34D2B8D1F6BB8750038D7FA /* HttpResponseErrorCode.m */; };
+		F36DC0701F73B74F003D0123 /* KFKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = F36DC06F1F73B74F003D0123 /* KFKeychain.m */; };
 		F3B618EF1F67D9C0006467D5 /* DiaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B618EE1F67D9C0006467D5 /* DiaryView.m */; };
 		F3B618F21F67DBA2006467D5 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B618F11F67DBA2006467D5 /* CalendarView.m */; };
 		F3C6AD2C1F5681BC00DCEF42 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6AD2B1F5681BC00DCEF42 /* main.m */; };
@@ -50,6 +51,8 @@
 		F34D2B8D1F6BB8750038D7FA /* HttpResponseErrorCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpResponseErrorCode.m; sourceTree = "<group>"; };
 		F36DC0651F72596B003D0123 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		F36DC0661F72596B003D0123 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		F36DC06E1F73B74F003D0123 /* KFKeychain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KFKeychain.h; sourceTree = "<group>"; };
+		F36DC06F1F73B74F003D0123 /* KFKeychain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KFKeychain.m; sourceTree = "<group>"; };
 		F3B618ED1F67D9C0006467D5 /* DiaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiaryView.h; sourceTree = "<group>"; };
 		F3B618EE1F67D9C0006467D5 /* DiaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryView.m; sourceTree = "<group>"; };
 		F3B618F01F67DBA2006467D5 /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
@@ -184,6 +187,8 @@
 				F3C6AD4A1F56B08800DCEF42 /* PlaceHoldUITextView.m */,
 				F3C6ADB01F5A77EC00DCEF42 /* NSDate+YearMonthDay.h */,
 				F3C6ADB11F5A77EC00DCEF42 /* NSDate+YearMonthDay.m */,
+				F36DC06E1F73B74F003D0123 /* KFKeychain.h */,
+				F36DC06F1F73B74F003D0123 /* KFKeychain.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -444,6 +449,7 @@
 				F3C6ADB51F5A89D900DCEF42 /* ReadingVC.m in Sources */,
 				F3C6ADC11F5D779C00DCEF42 /* AboutMeVC.m in Sources */,
 				F3B618EF1F67D9C0006467D5 /* DiaryView.m in Sources */,
+				F36DC0701F73B74F003D0123 /* KFKeychain.m in Sources */,
 				F3C6ADAC1F59466200DCEF42 /* WritingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

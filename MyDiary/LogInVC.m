@@ -9,6 +9,7 @@
 #import "LogInVC.h"
 #import "User.h"
 #import "RealmManager.h"
+#import "KFKeychain.h"
 @import LGButton;
 
 #define DEVICE_WIDTH [UIScreen mainScreen].bounds.size.width
@@ -43,6 +44,8 @@
             [self performSegueWithIdentifier:@"logInToDiary" sender:nil];
     }else if ([FBSDKAccessToken currentAccessToken]) {
         [self performSegueWithIdentifier:@"logInToDiary" sender:nil];
+    }else if ([KFKeychain loadObjectForKey:@"google"]) {
+        [self performSegueWithIdentifier:@"logInToDiary" sender:nil];
     }
 }
 
@@ -53,6 +56,8 @@ didSignInForUser:(GIDGoogleUser *)user
     if (error == nil) {
         
         GIDAuthentication *authentication = user.authentication;
+        //save token to keychain
+        [KFKeychain saveObject:authentication.idToken forKey:@"google"];
         FIRAuthCredential *credential =
         [FIRGoogleAuthProvider credentialWithIDToken:authentication.idToken
                                          accessToken:authentication.accessToken];
