@@ -111,8 +111,6 @@
             usr.user = [FIRAuth auth].currentUser.uid;
             if ([[data objectForKey:key] objectForKey:@"location"]) {
                 usr.loaction = [[data objectForKey:key] objectForKey:@"location"];
-            } else {
-                usr.loaction = @"NO DATA";
             }
             [realm addOrUpdateObject:usr];
         }

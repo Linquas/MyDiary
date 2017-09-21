@@ -13,7 +13,7 @@ NSInteger getErrorStatusCode (NSURLSessionDataTask *task) {
     return (NSInteger)httpResponse.statusCode;
 }
 NSInteger getErrorCode (NSError *error) {
-    if (!error.userInfo[AFNetworkingOperationFailingURLRequestErrorKey]) {
+    if (error.userInfo[AFNetworkingOperationFailingURLRequestErrorKey] != nil) {
         NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:(NSData*)error.userInfo[AFNetworkingOperationFailingURLRequestErrorKey] options:0 error:nil];
         NSString *errorCode = responseDict[@"errorCode"];
         return errorCode.intValue;
@@ -22,7 +22,7 @@ NSInteger getErrorCode (NSError *error) {
     }
 }
 NSDictionary *getError (NSError *error) {
-    if (!error.userInfo[AFNetworkingOperationFailingURLRequestErrorKey]) {
+    if (error.userInfo[AFNetworkingOperationFailingURLRequestErrorKey] != nil) {
         NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:(NSData*)error.userInfo[AFNetworkingOperationFailingURLRequestErrorKey] options:0 error:nil];
         return responseDict;
     } else {
