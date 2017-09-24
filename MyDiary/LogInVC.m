@@ -44,7 +44,7 @@
             [self performSegueWithIdentifier:@"logInToDiary" sender:nil];
     }else if ([FBSDKAccessToken currentAccessToken]) {
         [self performSegueWithIdentifier:@"logInToDiary" sender:nil];
-    }else if ([KFKeychain loadObjectForKey:@"google"]) {
+    }else if ([self.userDefaults boolForKey:@"UsingGoogle"]) {
         [self performSegueWithIdentifier:@"logInToDiary" sender:nil];
     }
 }
@@ -80,6 +80,7 @@ didSignInForUser:(GIDGoogleUser *)user
                                       [self.facebookBtn setEnabled:YES];
                                       [self.offlineBtn setEnabled:YES];
                                       [weakself.userDefaults setBool:YES forKey:@"UsingFirebase"];
+                                      [weakself.userDefaults setBool:YES forKey:@"UsingGoogle"];
                                       [weakself.userDefaults synchronize];
                                       [innerSelf performSegueWithIdentifier:@"logInToDiary" sender:nil];
                                   }];

@@ -74,6 +74,7 @@
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"UsingFirebase"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ID"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isOffline"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"UsingGoogle"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [self performSegueWithIdentifier:@"backToLogin" sender:nil];
     }
