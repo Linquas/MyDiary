@@ -209,7 +209,7 @@ didDisconnectWithUser:(GIDGoogleUser *)user
 //            NSLog(@"%@",usr.debugDescription);
         }
     }];
-    
+
 }
 
 - (IBAction)loginOffline:(id)sender {

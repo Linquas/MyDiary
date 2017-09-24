@@ -19,8 +19,8 @@
 - (id)initWithDoenloadCompleteBlock:(downloadComplete) completionHandler failedBlock:(downloadFailed) failHandler {
     self = [super init];
     if (self) {
-        self.downloadComplete = completionHandler;
-        self.downloadFailed = failHandler;
+        _downloadComplete = completionHandler;
+        _downloadFailed = failHandler;
     }
     return self;
 }
@@ -42,9 +42,7 @@
     [manager POST:urlString parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         NSDictionary *responseData = (NSDictionary*) responseObject;
-        
         self.downloadComplete(responseData);
-        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSInteger statusCode = getErrorStatusCode(task);

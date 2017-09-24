@@ -13,8 +13,8 @@
 - (instancetype)initWithWeatherDescription:(NSString*) weatherDesc withLocation:(NSString *)location {
     self = [super init];
     if (self) {
-        self.weatherDescription = weatherDesc;
-        self.location = location;
+        _weatherDescription = weatherDesc;
+        _location = location;
     }
     return self;
 }
