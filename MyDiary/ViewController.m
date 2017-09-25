@@ -35,7 +35,7 @@
 @end
 
 @implementation ViewController
-
+#pragma mark - View life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -74,7 +74,7 @@
     }
     [self.diariesTableView reloadData];
 }
-
+#pragma mark - Action
 - (IBAction)segementChanged:(id)sender {
     if (self.segementControl.selectedSegmentIndex == 1) {
         [self performSegueWithIdentifier:@"entriesToCalendar" sender:nil];
@@ -82,6 +82,10 @@
     if (self.segementControl.selectedSegmentIndex == 2) {
         [self performSegueWithIdentifier:@"diaryToME" sender:nil];
     }
+}
+
+- (IBAction)writeBtnPressed:(id)sender {
+    [self performSegueWithIdentifier:@"writing" sender:nil];
 }
 
 #pragma mark - tableView Delegate
@@ -95,7 +99,7 @@
     
     return cell;
 }
-
+#pragma mark - Table data source
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.sectionData.count;
 }
@@ -122,10 +126,6 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.selected = self.sectionData[indexPath.section][indexPath.row];
     [self performSegueWithIdentifier:@"reading" sender:nil];
-}
-
-- (IBAction)writeBtnPressed:(id)sender {
-    [self performSegueWithIdentifier:@"writing" sender:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

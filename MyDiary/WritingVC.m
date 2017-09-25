@@ -38,7 +38,7 @@
 
 
 @implementation WritingVC
-
+#pragma mark - View life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -67,7 +67,7 @@
         [self.loactionManager startUpdatingLocation];
     }
 }
-
+#pragma mark - Actions
 - (IBAction)dimissKeyBoardBtn:(id)sender {
     [self dismissKeyboard];
 }

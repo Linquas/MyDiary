@@ -29,7 +29,7 @@
 @end
 
 @implementation AboutMeVC
-
+#pragma mark - View life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -46,7 +46,7 @@
     //data sync from firebase
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataSync) name:@"dataSyncComplete" object:nil];
 }
-
+#pragma mark - Actions
 - (IBAction)segementChanged:(id)sender {
     if (self.segmentControl.selectedSegmentIndex == 0) {
         [self performSegueWithIdentifier:@"meToDiary" sender:nil];
@@ -84,7 +84,7 @@
     [[DatabaseServices instance] loadDiaryFromFirebase];
     self.syncBtn.isLoading = YES;
 }
-
+#pragma mark - Private Method
 - (void) dataSync {
     self.syncBtn.isLoading = NO;
 }
@@ -108,7 +108,7 @@
         [self.syncBtn setEnabled:NO];
     }
 }
-
+#pragma mark - Controller life cycle
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"dataSyncComplete" object:nil];
 }

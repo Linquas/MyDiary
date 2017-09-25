@@ -25,7 +25,7 @@
 @end
 
 @implementation ReadingVC
-
+#pragma mark - View life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titleTextView.text = self.diary.title;
@@ -36,7 +36,7 @@
     [self updateDate];
     
 }
-
+#pragma mark - Actions
 - (IBAction)deleteBtn:(id)sender {
     UIAlertController* deleteAlert = [UIAlertController alertControllerWithTitle:@"你確定要刪除日記?" message:@"你的心情將深藏在你的心中" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* close = [UIAlertAction actionWithTitle:@"確定"
