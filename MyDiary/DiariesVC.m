@@ -7,7 +7,7 @@
 //
 
 #import <Realm/Realm.h>
-#import "ViewController.h"
+#import "DiariesVC.h"
 #import "DiariesCell.h"
 #import "RealmManager.h"
 #import "Diary.h"
@@ -18,7 +18,7 @@
 @import CoreLocation;
 
 
-@interface ViewController ()
+@interface DiariesVC ()
 @property (weak, nonatomic) IBOutlet UIView *bottomRec;
 @property (weak, nonatomic) IBOutlet UITableView *diariesTableView;
 @property (nonatomic) RealmManager *realmManager;
@@ -34,7 +34,7 @@
 
 @end
 
-@implementation ViewController
+@implementation DiariesVC
 #pragma mark - View life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,9 +54,9 @@
     
     self.isUsingFirebase = [[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"];
     
-    __weak ViewController *weakSelf = self;
+    __weak DiariesVC *weakSelf = self;
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *note, RLMRealm * realm) {
-        ViewController *innerSelf = weakSelf;
+        DiariesVC *innerSelf = weakSelf;
         [innerSelf updateTableDataArray];
     }];
 }

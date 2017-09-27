@@ -11,10 +11,11 @@
 #import "RealmManager.h"
 #import "NSDate+YearMonthDay.h"
 #import "Diary.h"
-#import "DatabaseServices.h"
+#import "FirebaseManager.h"
 #import "OpenWeatherAPI.h"
 #import "HttpResponseErrorCode.h"
 #import "Weather.h"
+#import "Diary.h"
 @import Firebase;
 
 
@@ -141,7 +142,7 @@
 
 - (void)setDiaryUidAndSaveToFirebase:(Diary*)diary {
     if (self.isUsingFirebase) {
-        [[DatabaseServices instance] storeDiary:diary];
+        [[FirebaseManager instance] storeDiary:diary];
         diary.user = [FIRAuth auth].currentUser.uid;
     } else {
         diary.user = [[NSUserDefaults standardUserDefaults] stringForKey:@"ID"];

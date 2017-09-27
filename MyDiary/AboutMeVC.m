@@ -9,7 +9,7 @@
 #import "AboutMeVC.h"
 #import <Realm/Realm.h>
 #import "RealmManager.h"
-#import "DatabaseServices.h"
+#import "FirebaseManager.h"
 #import "User.h"
 #import "KFKeychain.h"
 
@@ -81,7 +81,7 @@
 }
 
 - (IBAction)syncBtn:(id)sender {
-    [[DatabaseServices instance] loadDiaryFromFirebase];
+    [[FirebaseManager instance] loadDiaryFromFirebase];
     self.syncBtn.isLoading = YES;
 }
 #pragma mark - Private Method

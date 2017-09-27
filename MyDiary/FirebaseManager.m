@@ -6,31 +6,44 @@
 //  Copyright © 2017 Linquas. All rights reserved.
 //
 
-#import "DatabaseServices.h"
+#import "FirebaseManager.h"
 #import "RealmManager.h"
 #import "NSDate+YearMonthDay.h"
+#import "Diary.h"
+@import Firebase;
+@import FirebaseDatabase;
 #define USER_UID [FIRAuth auth].currentUser.uid
 #define DB_REF [[FIRDatabase database] reference]
 #define DIARY_KEY [NSString stringWithFormat:@"%ld",diary.key]
 
-@interface DatabaseServices ()
+@interface FirebaseManager ()
 
 @property (strong, nonatomic) FIRDatabaseReference *ref;
 
 @end
 
-@implementation DatabaseServices
+@implementation FirebaseManager
 
 + (instancetype) instance {
-    static DatabaseServices *sharedInstance = nil;
+    static FirebaseManager *sharedInstance = nil;
     
     @synchronized (self) {
         if (sharedInstance == nil) {
-            sharedInstance = [[DatabaseServices alloc]init];
+            sharedInstance = [[FirebaseManager alloc] initPrivate];
         }
     }
     return sharedInstance;
 }
+
+- (instancetype)init {
+    @throw [NSException exceptionWithName:@"Singleton" reason:@"Use instance" userInfo:nil];
+}
+
+- (instancetype)initPrivate {
+    self = [super init];
+    return self;
+}
+
 
 - (void) storeDiary:(Diary*)diary {
     self.ref = DB_REF;

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
-@import CoreLocation;
+@class CLLocation;
 
 typedef  void (^downloadComplete)(id data);
 typedef void (^downloadFailed)(NSInteger statusCode, NSInteger errorCode);

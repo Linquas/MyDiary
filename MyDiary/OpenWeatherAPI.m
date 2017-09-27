@@ -8,6 +8,7 @@
 
 #import "OpenWeatherAPI.h"
 #import "HttpResponseErrorCode.h"
+@import CoreLocation;
 
 @interface OpenWeatherAPI ()
 

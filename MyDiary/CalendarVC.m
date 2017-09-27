@@ -33,7 +33,7 @@
 @end
 
 @implementation CalendarVC
-
+#pragma mark - View life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -65,7 +65,7 @@
         [self.tableview reloadData];
     }
 }
-
+#pragma mark - Actions
 - (IBAction)segementChanged:(id)sender {
     if (self.segementControl.selectedSegmentIndex == 0) {
         [self performSegueWithIdentifier:@"calendarToEntries" sender:nil];
@@ -75,7 +75,7 @@
     }
 }
 
-#pragma mark -- calendar delegate
+#pragma mark -- calendar delegate and methods
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
 {
     [self.selectedDiary removeAllObjects];

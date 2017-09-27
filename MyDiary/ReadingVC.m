@@ -7,10 +7,12 @@
 //
 
 #import "ReadingVC.h"
+#import "Diary.h"
+#import <Realm/Realm.h>
 #import "NSDate+YearMonthDay.h"
 #import "PlaceHoldUITextView.h"
 #import "RealmManager.h"
-#import "DatabaseServices.h"
+#import "FirebaseManager.h"
 #import "WritingVC.h"
 
 @interface ReadingVC ()
@@ -43,7 +45,7 @@
                                                     style:UIAlertActionStyleDestructive
                                                   handler:^(UIAlertAction * action) {
                                                       if (self.isUsingFirebase) {
-                                                          [[DatabaseServices instance] deleteDiary:self.diary];
+                                                          [[FirebaseManager instance] deleteDiary:self.diary];
                                                       }
                                                       [[RealmManager instance] deleteObject: self.diary];
                                                       [self dismissViewControllerAnimated:YES completion:nil];

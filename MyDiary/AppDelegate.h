@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@import GoogleSignIn;
-@import Firebase;
-@import FirebaseDatabase;
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

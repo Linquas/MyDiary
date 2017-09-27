@@ -10,7 +10,11 @@
 #import "User.h"
 #import "RealmManager.h"
 #import "KFKeychain.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 @import LGButton;
+@import Firebase;
+
 
 #define DEVICE_WIDTH [UIScreen mainScreen].bounds.size.width
 #define DEVICE_HEIGHT [UIScreen mainScreen].bounds.size.height
@@ -23,7 +27,7 @@
 @end
 
 @implementation LogInVC
-
+#pragma mark - View life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -119,7 +123,7 @@ didDisconnectWithUser:(GIDGoogleUser *)user
     [[RealmManager instance] addOrUpdateObject:usr];
 //    NSLog(@"%@",usr.debugDescription);
 }
-
+#pragma mark - ACtions
 - (IBAction)googleLoginBtn:(id)sender {
     self.googleBtn.isLoading = YES;
     [[GIDSignIn sharedInstance] signIn];

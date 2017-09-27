@@ -7,11 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Diary.h"
-@import Firebase;
-@import FirebaseDatabase;
+@class Diary;
 
-@interface DatabaseServices : NSObject
+@interface FirebaseManager : NSObject
 
 + (instancetype) instance;
 - (void) storeDiary:(Diary*)diary;

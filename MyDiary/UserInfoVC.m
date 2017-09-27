@@ -24,7 +24,7 @@
 @end
 
 @implementation UserInfoVC
-
+#pragma mark - View life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.userNameTextField.delegate = self;
@@ -37,7 +37,7 @@
     
     [self registerForKeyboardNotifications];
 }
-
+#pragma mark - ACtions
 - (IBAction)photoBtn:(id)sender {
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
     imagePickerController.delegate = self;
@@ -52,16 +52,6 @@
     imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
     imagePickerController.allowsEditing = NO;
     [self presentViewController:imagePickerController animated:YES completion:nil];
-}
-
-- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    if ([info objectForKey:UIImagePickerControllerOriginalImage]) {
-        UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
-        self.profilePic.image = img;
-    }else {
-        NSLog(@"Photo picker error");
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)doneBtn:(id)sender {
@@ -105,6 +95,16 @@
                                                      }];
     [closeAlert addAction:resume];
     [self presentViewController:closeAlert animated:YES completion:nil];
+}
+#pragma mark - ImagePicker delegate
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    if ([info objectForKey:UIImagePickerControllerOriginalImage]) {
+        UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
+        self.profilePic.image = img;
+    }else {
+        NSLog(@"Photo picker error");
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark -- gesture setting

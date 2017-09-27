@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Diary.h"
+@class Diary;
 #import <CoreLocation/CoreLocation.h>
 
 @interface WritingVC : UIViewController  <UITextViewDelegate, CLLocationManagerDelegate>

@@ -11,7 +11,9 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-
+@import GoogleSignIn;
+@import Firebase;
+@import FirebaseDatabase;
 
 @interface AppDelegate ()
 

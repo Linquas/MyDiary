@@ -25,10 +25,19 @@
     
     @synchronized (self) {
         if (sharedInstance == nil) {
-            sharedInstance = [[RealmManager alloc]init];
+            sharedInstance = [[RealmManager alloc] initPrivate];
         }
     }
     return sharedInstance;
+}
+
+- (instancetype)init {
+    @throw [NSException exceptionWithName:@"Singleton" reason:@"Use instance" userInfo:nil];
+}
+
+- (instancetype)initPrivate {
+    self = [super init];
+    return self;
 }
 
 -(void)addOrUpdateObject:(RLMObject*)obj {

@@ -16,7 +16,7 @@
 		F3B618F21F67DBA2006467D5 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B618F11F67DBA2006467D5 /* CalendarView.m */; };
 		F3C6AD2C1F5681BC00DCEF42 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6AD2B1F5681BC00DCEF42 /* main.m */; };
 		F3C6AD2F1F5681BC00DCEF42 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6AD2E1F5681BC00DCEF42 /* AppDelegate.m */; };
-		F3C6AD321F5681BC00DCEF42 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6AD311F5681BC00DCEF42 /* ViewController.m */; };
+		F3C6AD321F5681BC00DCEF42 /* DiariesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6AD311F5681BC00DCEF42 /* DiariesVC.m */; };
 		F3C6AD351F5681BC00DCEF42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3C6AD331F5681BC00DCEF42 /* Main.storyboard */; };
 		F3C6AD371F5681BC00DCEF42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3C6AD361F5681BC00DCEF42 /* Assets.xcassets */; };
 		F3C6AD3A1F5681BC00DCEF42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3C6AD381F5681BC00DCEF42 /* LaunchScreen.storyboard */; };
@@ -33,7 +33,7 @@
 		F3C6ADC11F5D779C00DCEF42 /* AboutMeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADC01F5D779C00DCEF42 /* AboutMeVC.m */; };
 		F3C6ADC61F5E90B100DCEF42 /* LogInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADC51F5E90B100DCEF42 /* LogInVC.m */; };
 		F3C6ADC81F5EB24F00DCEF42 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3C6ADC71F5EB24F00DCEF42 /* GoogleService-Info.plist */; };
-		F3C6ADD51F5FD47600DCEF42 /* DatabaseServices.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADD41F5FD47600DCEF42 /* DatabaseServices.m */; };
+		F3C6ADD51F5FD47600DCEF42 /* FirebaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADD41F5FD47600DCEF42 /* FirebaseManager.m */; };
 		F3C6ADD81F61141900DCEF42 /* AboutMeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADD71F61141900DCEF42 /* AboutMeView.m */; };
 		F3C6ADDB1F611B5000DCEF42 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADDA1F611B5000DCEF42 /* User.m */; };
 		F3C6ADDF1F63DDF500DCEF42 /* UserInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADDE1F63DDF500DCEF42 /* UserInfoVC.m */; };
@@ -61,8 +61,8 @@
 		F3C6AD2B1F5681BC00DCEF42 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F3C6AD2D1F5681BC00DCEF42 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F3C6AD2E1F5681BC00DCEF42 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F3C6AD301F5681BC00DCEF42 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F3C6AD311F5681BC00DCEF42 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F3C6AD301F5681BC00DCEF42 /* DiariesVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiariesVC.h; sourceTree = "<group>"; };
+		F3C6AD311F5681BC00DCEF42 /* DiariesVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiariesVC.m; sourceTree = "<group>"; };
 		F3C6AD341F5681BC00DCEF42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F3C6AD361F5681BC00DCEF42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3C6AD391F5681BC00DCEF42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -93,8 +93,8 @@
 		F3C6ADC41F5E90B100DCEF42 /* LogInVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInVC.h; sourceTree = "<group>"; };
 		F3C6ADC51F5E90B100DCEF42 /* LogInVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInVC.m; sourceTree = "<group>"; };
 		F3C6ADC71F5EB24F00DCEF42 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		F3C6ADD31F5FD47600DCEF42 /* DatabaseServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseServices.h; sourceTree = "<group>"; };
-		F3C6ADD41F5FD47600DCEF42 /* DatabaseServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseServices.m; sourceTree = "<group>"; };
+		F3C6ADD31F5FD47600DCEF42 /* FirebaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseManager.h; sourceTree = "<group>"; };
+		F3C6ADD41F5FD47600DCEF42 /* FirebaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirebaseManager.m; sourceTree = "<group>"; };
 		F3C6ADD61F61141900DCEF42 /* AboutMeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutMeView.h; sourceTree = "<group>"; };
 		F3C6ADD71F61141900DCEF42 /* AboutMeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutMeView.m; sourceTree = "<group>"; };
 		F3C6ADD91F611B5000DCEF42 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -161,8 +161,8 @@
 				F3C6AD411F568B3000DCEF42 /* model */,
 				F3C6ADAD1F59748C00DCEF42 /* RealmManager.h */,
 				F3C6ADAE1F59748C00DCEF42 /* RealmManager.m */,
-				F3C6ADD31F5FD47600DCEF42 /* DatabaseServices.h */,
-				F3C6ADD41F5FD47600DCEF42 /* DatabaseServices.m */,
+				F3C6ADD31F5FD47600DCEF42 /* FirebaseManager.h */,
+				F3C6ADD41F5FD47600DCEF42 /* FirebaseManager.m */,
 				F3C6AD2D1F5681BC00DCEF42 /* AppDelegate.h */,
 				F3C6AD2E1F5681BC00DCEF42 /* AppDelegate.m */,
 				F3C6AD331F5681BC00DCEF42 /* Main.storyboard */,
@@ -211,8 +211,8 @@
 			children = (
 				F3C6ADBF1F5D779C00DCEF42 /* AboutMeVC.h */,
 				F3C6ADC01F5D779C00DCEF42 /* AboutMeVC.m */,
-				F3C6AD301F5681BC00DCEF42 /* ViewController.h */,
-				F3C6AD311F5681BC00DCEF42 /* ViewController.m */,
+				F3C6AD301F5681BC00DCEF42 /* DiariesVC.h */,
+				F3C6AD311F5681BC00DCEF42 /* DiariesVC.m */,
 				F3C6AD461F56AB3200DCEF42 /* WritingVC.h */,
 				F3C6AD471F56AB3200DCEF42 /* WritingVC.m */,
 				F3C6ADB31F5A89D900DCEF42 /* ReadingVC.h */,
@@ -431,9 +431,9 @@
 				F3C6ADDB1F611B5000DCEF42 /* User.m in Sources */,
 				F3C6ADC61F5E90B100DCEF42 /* LogInVC.m in Sources */,
 				F3C6AD811F592C0B00DCEF42 /* Diary.m in Sources */,
-				F3C6AD321F5681BC00DCEF42 /* ViewController.m in Sources */,
+				F3C6AD321F5681BC00DCEF42 /* DiariesVC.m in Sources */,
 				F3C6AD441F568B6F00DCEF42 /* DiariesCell.m in Sources */,
-				F3C6ADD51F5FD47600DCEF42 /* DatabaseServices.m in Sources */,
+				F3C6ADD51F5FD47600DCEF42 /* FirebaseManager.m in Sources */,
 				F3C6ADBB1F5CFAA300DCEF42 /* CalendarVC.m in Sources */,
 				F3C6ADB81F5A8A4C00DCEF42 /* ReadingView.m in Sources */,
 				F3C6ADAF1F59748C00DCEF42 /* RealmManager.m in Sources */,

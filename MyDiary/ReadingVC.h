@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Realm/Realm.h>
-#import "Diary.h"
+@class Diary;
 
 @interface ReadingVC : UIViewController
 
