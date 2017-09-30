@@ -22,12 +22,11 @@
 @property (weak, nonatomic) IBOutlet UIView *bottomRec;
 @property (weak, nonatomic) IBOutlet UITableView *diariesTableView;
 @property (nonatomic) RealmManager *realmManager;
-@property RLMResults *tableDataArray;
 @property Diary *selected;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segementControl;
 @property (nonatomic) BOOL isUsingFirebase;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
-@property (strong, nonatomic) NSArray *sectionData;
+@property (strong, nonatomic) NSArray *tableViewData;
 
 // realm notification
 @property (strong, nonatomic) RLMNotificationToken *token;
@@ -68,9 +67,9 @@
 
 - (void)updateTableDataArray {
     if (self.isUsingFirebase) {
-        self.sectionData = [[RealmManager instance] loadDiaryInMonthWithUid:[FIRAuth auth].currentUser.uid];
+        self.tableViewData = [[RealmManager instance] loadDiaryInMonthWithUid:[FIRAuth auth].currentUser.uid];
     } else {
-        self.sectionData = [[RealmManager instance] loadDiaryInMonthWithUid:[[NSUserDefaults standardUserDefaults] stringForKey: @"ID"]];
+        self.tableViewData = [[RealmManager instance] loadDiaryInMonthWithUid:[[NSUserDefaults standardUserDefaults] stringForKey: @"ID"]];
     }
     [self.diariesTableView reloadData];
 }
@@ -94,25 +93,25 @@
     if (!cell) {
         cell = [[DiariesCell alloc]init];
     }
-    Diary *diary = self.sectionData[indexPath.section][indexPath.row];
+    Diary *diary = self.tableViewData[indexPath.section][indexPath.row];
     [cell update:diary];
     
     return cell;
 }
 #pragma mark - Table data source
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.sectionData.count;
+    return self.tableViewData.count;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.sectionData[section] count];
+    return [self.tableViewData[section] count];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 50, 35)];
     [view setBackgroundColor:[UIColor clearColor]];
     UILabel *month = [[UILabel alloc]initWithFrame:CGRectMake(8, 5, 200, 40)];
-    Diary *a = self.sectionData[section][0];
+    Diary *a = self.tableViewData[section][0];
     month.text = [a.date monthInString];
     month.textColor = [UIColor whiteColor];
     [view addSubview:month];
@@ -124,7 +123,7 @@
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.selected = self.sectionData[indexPath.section][indexPath.row];
+    self.selected = self.tableViewData[indexPath.section][indexPath.row];
     [self performSegueWithIdentifier:@"reading" sender:nil];
 }
 

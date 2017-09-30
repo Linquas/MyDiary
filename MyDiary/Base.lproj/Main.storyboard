@@ -173,10 +173,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYD-yz-gDg">
-                                                    <rect key="frame" x="8" y="5" width="374" height="90"/>
+                                                    <rect key="frame" x="8" y="5" width="366" height="90"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="4VC-EI-kGs" userLabel="Cell Stack">
-                                                            <rect key="frame" x="19" y="4" width="336" height="81"/>
+                                                            <rect key="frame" x="18.666666666666657" y="4" width="328.66666666666663" height="81"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qhb-JI-Vui" userLabel="DateStack">
                                                                     <rect key="frame" x="0.0" y="0.0" width="42" height="81"/>
@@ -203,22 +203,22 @@
                                                                     </constraints>
                                                                 </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="QoQ-j8-bs8" userLabel="ContainStack">
-                                                                    <rect key="frame" x="56" y="0.0" width="280" height="81"/>
+                                                                    <rect key="frame" x="56" y="0.0" width="272.66666666666663" height="81"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mL8-XT-sbZ" userLabel="Time">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="280" height="27"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="272.66666666666663" height="27"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="東京生活" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3na-km-SMC" userLabel="Title">
-                                                                            <rect key="frame" x="0.0" y="27" width="280" height="27"/>
+                                                                            <rect key="frame" x="0.0" y="27" width="272.66666666666663" height="27"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="展望台巡りとフリ一マーケット❄️❤️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgj-6a-9Fb" userLabel="Content">
-                                                                            <rect key="frame" x="0.0" y="54" width="280" height="27"/>
+                                                                            <rect key="frame" x="0.0" y="54" width="272.66666666666663" height="27"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
@@ -256,8 +256,8 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="rYD-yz-gDg" firstAttribute="height" secondItem="oYn-mq-DqR" secondAttribute="height" multiplier="0.9" id="6Cr-zn-nfF"/>
-                                                <constraint firstItem="rYD-yz-gDg" firstAttribute="width" secondItem="oYn-mq-DqR" secondAttribute="width" id="EK4-X2-oCo"/>
                                                 <constraint firstItem="rYD-yz-gDg" firstAttribute="centerY" secondItem="oYn-mq-DqR" secondAttribute="centerY" id="KMZ-pj-nc2"/>
+                                                <constraint firstAttribute="trailing" secondItem="rYD-yz-gDg" secondAttribute="trailing" id="Zea-fd-ibp"/>
                                                 <constraint firstItem="rYD-yz-gDg" firstAttribute="leading" secondItem="oYn-mq-DqR" secondAttribute="leadingMargin" id="j5E-K6-Xyc"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -429,10 +429,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w9E-QW-c2a">
-                                                    <rect key="frame" x="8" y="10.333333333333336" width="355" height="68.333333333333343"/>
+                                                    <rect key="frame" x="0.0" y="10.333333333333336" width="374" height="68.333333333333343"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="Y1h-B3-be9" userLabel="Cell Stack">
-                                                            <rect key="frame" x="17" y="0.0" width="304" height="68.333333333333343"/>
+                                                            <rect key="frame" x="18" y="0.0" width="320.33333333333331" height="68.333333333333343"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-1" translatesAutoresizingMaskIntoConstraints="NO" id="P3j-Wg-D7P" userLabel="DateStack">
                                                                     <rect key="frame" x="0.0" y="0.0" width="42" height="68.333333333333343"/>
@@ -458,7 +458,7 @@
                                                                     </constraints>
                                                                 </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="-4" translatesAutoresizingMaskIntoConstraints="NO" id="ZsM-HR-dmb" userLabel="ContainStack">
-                                                                    <rect key="frame" x="53" y="0.0" width="251" height="68.333333333333343"/>
+                                                                    <rect key="frame" x="53" y="0.0" width="267.33333333333331" height="68.333333333333343"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsC-RX-7QO" userLabel="Time">
                                                                             <rect key="frame" x="0.0" y="0.0" width="27" height="25.333333333333329"/>
@@ -467,13 +467,13 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="東京生活" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2O-w3-fVe" userLabel="Title">
-                                                                            <rect key="frame" x="0.0" y="21.333333333333336" width="251" height="25.666666666666664"/>
+                                                                            <rect key="frame" x="0.0" y="21.333333333333336" width="267.33333333333331" height="25.666666666666664"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="展望台巡りとフリ一マーケット❄️❤️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wN9-aZ-FXo" userLabel="Content">
-                                                                            <rect key="frame" x="0.0" y="43" width="251" height="25.333333333333343"/>
+                                                                            <rect key="frame" x="0.0" y="43" width="267.33333333333331" height="25.333333333333343"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
@@ -498,14 +498,12 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="w9E-QW-c2a" firstAttribute="width" secondItem="jWf-zb-UuC" secondAttribute="width" multiplier="0.9" constant="18.300000000000011" id="JKz-QL-zdK"/>
+                                                <constraint firstAttribute="trailing" secondItem="w9E-QW-c2a" secondAttribute="trailing" id="6ts-RW-9ag"/>
+                                                <constraint firstItem="w9E-QW-c2a" firstAttribute="leading" secondItem="jWf-zb-UuC" secondAttribute="leading" id="gAK-1J-Fpb"/>
                                                 <constraint firstItem="w9E-QW-c2a" firstAttribute="centerY" secondItem="jWf-zb-UuC" secondAttribute="centerY" id="i5X-Uq-oPw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="w9E-QW-c2a" firstAttribute="leading" secondItem="CE4-lV-sJL" secondAttribute="leading" constant="8" id="Xnr-qc-nUy"/>
-                                        </constraints>
                                         <connections>
                                             <outlet property="contentLabel" destination="wN9-aZ-FXo" id="2Az-ug-zVJ"/>
                                             <outlet property="dateLabel" destination="dbs-nd-e8c" id="jSL-Ud-Ko3"/>
@@ -1291,10 +1289,10 @@
         <image name="theme_bg_taki" width="1080" height="1276"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QQE-Ao-NSQ"/>
+        <segue reference="g0y-5W-5Y2"/>
         <segue reference="Amt-24-d1l"/>
-        <segue reference="q0f-sm-ytR"/>
+        <segue reference="rhE-Cm-fFW"/>
         <segue reference="FIs-5r-HJZ"/>
-        <segue reference="ryc-Aw-LKj"/>
+        <segue reference="ZEK-kr-ZhJ"/>
     </inferredMetricsTieBreakers>
 </document>
