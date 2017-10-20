@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE3979E7CB3718C941C93889 /* Pods_MyDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9331B83F373E2EBEE64CBBD6 /* Pods_MyDiary.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		F30A6A551F6CF9F9005670BE /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = F30A6A541F6CF9F9005670BE /* Weather.m */; };
+		F31E1F291F90AEC7008C0138 /* RealmManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F31E1F281F90AEC7008C0138 /* RealmManagerTest.m */; };
 		F34D2B8B1F6BA3C50038D7FA /* OpenWeatherAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F34D2B8A1F6BA3C50038D7FA /* OpenWeatherAPI.m */; };
 		F34D2B8E1F6BB8750038D7FA /* HttpResponseErrorCode.m in Sources */ = {isa = PBXBuildFile; fileRef = F34D2B8D1F6BB8750038D7FA /* HttpResponseErrorCode.m */; };
 		F36DC0701F73B74F003D0123 /* KFKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = F36DC06F1F73B74F003D0123 /* KFKeychain.m */; };
@@ -50,6 +51,13 @@
 			remoteGlobalIDString = F3C6AD261F5681BC00DCEF42;
 			remoteInfo = MyDiary;
 		};
+		F31E1F2B1F90AEC7008C0138 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3C6AD1F1F5681BC00DCEF42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3C6AD261F5681BC00DCEF42;
+			remoteInfo = MyDiary;
+		};
 		F3F9C5B91F8F408100420C46 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F3C6AD1F1F5681BC00DCEF42 /* Project object */;
@@ -67,12 +75,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1DFBB55305983422ADA3A138 /* Pods-MyDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary.debug.xcconfig"; sourceTree = "<group>"; };
+		7488AFCE69A24BB6537E8750 /* Pods-MyDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary.debug.xcconfig"; sourceTree = "<group>"; };
 		7941754ACB055356062262A1 /* Pods-MyDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiary.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary.release.xcconfig"; sourceTree = "<group>"; };
 		9331B83F373E2EBEE64CBBD6 /* Pods_MyDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F30A6A531F6CF9F9005670BE /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
 		F30A6A541F6CF9F9005670BE /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
 		F31E1F181F8F5B96008C0138 /* Weather.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Weather.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F31E1F261F90AEC7008C0138 /* RealmManagerTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RealmManagerTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F31E1F281F90AEC7008C0138 /* RealmManagerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RealmManagerTest.m; sourceTree = "<group>"; };
+		F31E1F2A1F90AEC7008C0138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F34D2B891F6BA3C50038D7FA /* OpenWeatherAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenWeatherAPI.h; sourceTree = "<group>"; };
 		F34D2B8A1F6BA3C50038D7FA /* OpenWeatherAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenWeatherAPI.m; sourceTree = "<group>"; };
 		F34D2B8C1F6BB8750038D7FA /* HttpResponseErrorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpResponseErrorCode.h; sourceTree = "<group>"; };
@@ -147,6 +158,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F31E1F231F90AEC7008C0138 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F3C6AD241F5681BC00DCEF42 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -184,10 +202,19 @@
 		7F16984B439E4B5135DE437A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1DFBB55305983422ADA3A138 /* Pods-MyDiary.debug.xcconfig */,
 				7941754ACB055356062262A1 /* Pods-MyDiary.release.xcconfig */,
+				7488AFCE69A24BB6537E8750 /* Pods-MyDiary.debug.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F31E1F271F90AEC7008C0138 /* RealmManagerTest */ = {
+			isa = PBXGroup;
+			children = (
+				F31E1F281F90AEC7008C0138 /* RealmManagerTest.m */,
+				F31E1F2A1F90AEC7008C0138 /* Info.plist */,
+			);
+			path = RealmManagerTest;
 			sourceTree = "<group>";
 		};
 		F3C6AD1E1F5681BC00DCEF42 = {
@@ -196,6 +223,7 @@
 				F3C6AD291F5681BC00DCEF42 /* MyDiary */,
 				F3F9C5B51F8F408100420C46 /* WeatherAPITest */,
 				F3F9C5C31F8F4F8700420C46 /* WeatherTest */,
+				F31E1F271F90AEC7008C0138 /* RealmManagerTest */,
 				F3C6AD281F5681BC00DCEF42 /* Products */,
 				7F16984B439E4B5135DE437A /* Pods */,
 				6E89BA161C99185D3C93515C /* Frameworks */,
@@ -209,6 +237,7 @@
 				F3F9C5B41F8F408100420C46 /* WeatherAPITest.xctest */,
 				F3F9C5C21F8F4F8700420C46 /* WeatherTest.xctest */,
 				F31E1F181F8F5B96008C0138 /* Weather.xctest */,
+				F31E1F261F90AEC7008C0138 /* RealmManagerTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -347,6 +376,24 @@
 			productReference = F31E1F181F8F5B96008C0138 /* Weather.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		F31E1F251F90AEC7008C0138 /* RealmManagerTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F31E1F2F1F90AEC7008C0138 /* Build configuration list for PBXNativeTarget "RealmManagerTest" */;
+			buildPhases = (
+				F31E1F221F90AEC7008C0138 /* Sources */,
+				F31E1F231F90AEC7008C0138 /* Frameworks */,
+				F31E1F241F90AEC7008C0138 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F31E1F2C1F90AEC7008C0138 /* PBXTargetDependency */,
+			);
+			name = RealmManagerTest;
+			productName = RealmManagerTest;
+			productReference = F31E1F261F90AEC7008C0138 /* RealmManagerTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F3C6AD261F5681BC00DCEF42 /* MyDiary */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3C6AD3E1F5681BC00DCEF42 /* Build configuration list for PBXNativeTarget "MyDiary" */;
@@ -418,6 +465,11 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = F3C6AD261F5681BC00DCEF42;
 					};
+					F31E1F251F90AEC7008C0138 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F3C6AD261F5681BC00DCEF42;
+					};
 					F3C6AD261F5681BC00DCEF42 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = ZJ68Z9J58L;
@@ -461,12 +513,20 @@
 				F3F9C5B31F8F408100420C46 /* WeatherAPITest */,
 				F3F9C5C11F8F4F8700420C46 /* WeatherTest */,
 				F31E1F171F8F5B96008C0138 /* Weather */,
+				F31E1F251F90AEC7008C0138 /* RealmManagerTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F31E1F161F8F5B96008C0138 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F31E1F241F90AEC7008C0138 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -603,6 +663,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F31E1F221F90AEC7008C0138 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F31E1F291F90AEC7008C0138 /* RealmManagerTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F3C6AD231F5681BC00DCEF42 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -658,6 +726,11 @@
 			isa = PBXTargetDependency;
 			target = F3C6AD261F5681BC00DCEF42 /* MyDiary */;
 			targetProxy = F31E1F1D1F8F5B96008C0138 /* PBXContainerItemProxy */;
+		};
+		F31E1F2C1F90AEC7008C0138 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3C6AD261F5681BC00DCEF42 /* MyDiary */;
+			targetProxy = F31E1F2B1F90AEC7008C0138 /* PBXContainerItemProxy */;
 		};
 		F3F9C5BA1F8F408100420C46 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -725,6 +798,44 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lnquas.Weather;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyDiary.app/MyDiary";
+			};
+			name = Release;
+		};
+		F31E1F2D1F90AEC7008C0138 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RealmManagerTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Lnquas.RealmManagerTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyDiary.app/MyDiary";
+			};
+			name = Debug;
+		};
+		F31E1F2E1F90AEC7008C0138 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RealmManagerTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Lnquas.RealmManagerTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyDiary.app/MyDiary";
@@ -837,7 +948,7 @@
 		};
 		F3C6AD3F1F5681BC00DCEF42 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1DFBB55305983422ADA3A138 /* Pods-MyDiary.debug.xcconfig */;
+			baseConfigurationReference = 7488AFCE69A24BB6537E8750 /* Pods-MyDiary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -858,7 +969,7 @@
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MyDiary/MyDiary-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.2;
 			};
 			name = Debug;
 		};
@@ -885,13 +996,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MyDiary/MyDiary-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.2;
 			};
 			name = Release;
 		};
 		F3F9C5BB1F8F408100420C46 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1DFBB55305983422ADA3A138 /* Pods-MyDiary.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -974,6 +1084,15 @@
 			buildConfigurations = (
 				F31E1F1F1F8F5B96008C0138 /* Debug */,
 				F31E1F201F8F5B96008C0138 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F31E1F2F1F90AEC7008C0138 /* Build configuration list for PBXNativeTarget "RealmManagerTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F31E1F2D1F90AEC7008C0138 /* Debug */,
+				F31E1F2E1F90AEC7008C0138 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

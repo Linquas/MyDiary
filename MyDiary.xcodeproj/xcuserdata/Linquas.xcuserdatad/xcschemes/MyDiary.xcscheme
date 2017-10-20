@@ -50,6 +50,16 @@
                ReferencedContainer = "container:MyDiary.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F31E1F251F90AEC7008C0138"
+               BuildableName = "RealmManagerTest.xctest"
+               BlueprintName = "RealmManagerTest"
+               ReferencedContainer = "container:MyDiary.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
