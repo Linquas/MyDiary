@@ -52,15 +52,15 @@
 }
 
 - (void)testAddObject {
-    RLMRealm* realm = [RLMRealm defaultRealm];
+//    RLMRealm* realm = [RLMRealm defaultRealm];
     [manager addOrUpdateObject:testDiary];
     
-    XCTestExpectation *e = [self expectationWithDescription:@"object get"];
-    RLMNotificationToken *token = [realm addNotificationBlock:^(RLMNotification  _Nonnull notification, RLMRealm * _Nonnull realm) {
-        [e fulfill];
-    }];
+//    XCTestExpectation *e = [self expectationWithDescription:@"object get"];
+//    RLMNotificationToken *token = [realm addNotificationBlock:^(RLMNotification  _Nonnull notification, RLMRealm * _Nonnull realm) {
+//        [e fulfill];
+//    }];
     
-    [self waitForExpectationsWithTimeout:3.0 handler:nil];
+//    [self waitForExpectationsWithTimeout:3.0 handler:nil];
     
     RLMResults *results = [Diary allObjects];
     Diary *d = [results lastObject];

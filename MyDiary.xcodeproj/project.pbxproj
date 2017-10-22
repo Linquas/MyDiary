@@ -38,6 +38,7 @@
 		F3C6ADD81F61141900DCEF42 /* AboutMeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADD71F61141900DCEF42 /* AboutMeView.m */; };
 		F3C6ADDB1F611B5000DCEF42 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADDA1F611B5000DCEF42 /* User.m */; };
 		F3C6ADDF1F63DDF500DCEF42 /* UserInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C6ADDE1F63DDF500DCEF42 /* UserInfoVC.m */; };
+		F3DC382F1F99E6F90047B59A /* MainPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F3DC382E1F99E6F90047B59A /* MainPageVC.m */; };
 		F3F9C5B71F8F408100420C46 /* WeatherAPITest.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F9C5B61F8F408100420C46 /* WeatherAPITest.m */; };
 		F3F9C5C51F8F4F8700420C46 /* WeatherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F9C5C41F8F4F8700420C46 /* WeatherTest.m */; };
 		F3F9C5CD1F8F501100420C46 /* weatherTestData.json in Resources */ = {isa = PBXBuildFile; fileRef = F3F9C5CC1F8F501100420C46 /* weatherTestData.json */; };
@@ -141,6 +142,8 @@
 		F3C6ADDC1F626A3E00DCEF42 /* MyDiary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyDiary.entitlements; sourceTree = "<group>"; };
 		F3C6ADDD1F63DDF500DCEF42 /* UserInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoVC.h; sourceTree = "<group>"; };
 		F3C6ADDE1F63DDF500DCEF42 /* UserInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoVC.m; sourceTree = "<group>"; };
+		F3DC382D1F99E6F90047B59A /* MainPageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainPageVC.h; sourceTree = "<group>"; };
+		F3DC382E1F99E6F90047B59A /* MainPageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainPageVC.m; sourceTree = "<group>"; };
 		F3F9C5B41F8F408100420C46 /* WeatherAPITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAPITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3F9C5B61F8F408100420C46 /* WeatherAPITest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherAPITest.m; sourceTree = "<group>"; };
 		F3F9C5B81F8F408100420C46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -313,6 +316,8 @@
 				F3C6ADC51F5E90B100DCEF42 /* LogInVC.m */,
 				F3C6ADDD1F63DDF500DCEF42 /* UserInfoVC.h */,
 				F3C6ADDE1F63DDF500DCEF42 /* UserInfoVC.m */,
+				F3DC382D1F99E6F90047B59A /* MainPageVC.h */,
+				F3DC382E1F99E6F90047B59A /* MainPageVC.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -693,6 +698,7 @@
 				F3C6AD481F56AB3200DCEF42 /* WritingVC.m in Sources */,
 				F3C6AD2F1F5681BC00DCEF42 /* AppDelegate.m in Sources */,
 				F3B618F21F67DBA2006467D5 /* CalendarView.m in Sources */,
+				F3DC382F1F99E6F90047B59A /* MainPageVC.m in Sources */,
 				F34D2B8B1F6BA3C50038D7FA /* OpenWeatherAPI.m in Sources */,
 				F3C6AD2C1F5681BC00DCEF42 /* main.m in Sources */,
 				F3C6ADB51F5A89D900DCEF42 /* ReadingVC.m in Sources */,
@@ -768,6 +774,7 @@
 /* Begin XCBuildConfiguration section */
 		F31E1F1F1F8F5B96008C0138 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7488AFCE69A24BB6537E8750 /* Pods-MyDiary.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -806,6 +813,7 @@
 		};
 		F31E1F2D1F90AEC7008C0138 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7488AFCE69A24BB6537E8750 /* Pods-MyDiary.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -844,6 +852,7 @@
 		};
 		F3C6AD3C1F5681BC00DCEF42 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7488AFCE69A24BB6537E8750 /* Pods-MyDiary.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1002,6 +1011,7 @@
 		};
 		F3F9C5BB1F8F408100420C46 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7488AFCE69A24BB6537E8750 /* Pods-MyDiary.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1040,6 +1050,7 @@
 		};
 		F3F9C5CA1F8F4F8800420C46 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7488AFCE69A24BB6537E8750 /* Pods-MyDiary.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

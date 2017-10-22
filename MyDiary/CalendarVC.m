@@ -15,8 +15,7 @@
 #import "ReadingVC.h"
 @import Firebase;
 
-@interface CalendarVC () 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segementControl;
+@interface CalendarVC ()
 @property (weak, nonatomic) IBOutlet FSCalendar *calendar;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
@@ -37,7 +36,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.segementControl addTarget:self action:@selector(segementChanged:) forControlEvents:UIControlEventValueChanged];
     self.selectedDiary = [[NSMutableArray alloc]init];
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateFormat = @"yyyyMMdd";
@@ -49,8 +47,6 @@
     self.calendar.delegate = self;
     self.calendar.layer.cornerRadius = 10.0;
     
-    self.isUsingFirebase = [[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"];
-    
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *note, RLMRealm * realm) {
         [self loadDiaries];
         [self loadToday];
@@ -59,19 +55,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    self.isUsingFirebase = [[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"];
     [self loadDiaries];
     [self.calendar reloadData];
     if (self.selectedDiary) {
         [self.tableview reloadData];
-    }
-}
-#pragma mark - Actions
-- (IBAction)segementChanged:(id)sender {
-    if (self.segementControl.selectedSegmentIndex == 0) {
-        [self performSegueWithIdentifier:@"calendarToEntries" sender:nil];
-    }
-    if (self.segementControl.selectedSegmentIndex == 2) {
-        [self performSegueWithIdentifier:@"calendarToMe" sender:nil];
     }
 }
 
@@ -160,6 +148,9 @@
     }
 }
 
+- (void)dealloc {
+    [self.token stop];
+}
 
 
 

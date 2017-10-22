@@ -12,6 +12,8 @@
 #import "KFKeychain.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "MainPageVC.h"
+
 @import LGButton;
 @import Firebase;
 
@@ -44,12 +46,17 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
     if ([self.userDefaults objectForKey:@"isOffline"]) {
-        if ([self.userDefaults boolForKey:@"isOffline"])
-            [self performSegueWithIdentifier:@"logInToDiary" sender:nil];
+        if ([self.userDefaults boolForKey:@"isOffline"]){
+            MainPageVC *mainPageVC = [MainPageVC storyboardInstance];
+           [self presentViewController:mainPageVC animated:YES completion:nil];
+        }
     }else if ([FBSDKAccessToken currentAccessToken]) {
-        [self performSegueWithIdentifier:@"logInToDiary" sender:nil];
+        MainPageVC *mainPageVC = [MainPageVC storyboardInstance];
+        [self presentViewController:mainPageVC animated:YES completion:nil];
+
     }else if ([self.userDefaults boolForKey:@"UsingGoogle"]) {
-        [self performSegueWithIdentifier:@"logInToDiary" sender:nil];
+        MainPageVC *mainPageVC = [MainPageVC storyboardInstance];
+        [self presentViewController:mainPageVC animated:YES completion:nil];
     }
 }
 
@@ -86,7 +93,9 @@ didSignInForUser:(GIDGoogleUser *)user
                                       [weakself.userDefaults setBool:YES forKey:@"UsingFirebase"];
                                       [weakself.userDefaults setBool:YES forKey:@"UsingGoogle"];
                                       [weakself.userDefaults synchronize];
-                                      [innerSelf performSegueWithIdentifier:@"logInToDiary" sender:nil];
+                                      
+                                      MainPageVC *mainPageVC = [MainPageVC storyboardInstance];
+                                      [innerSelf presentViewController:mainPageVC animated:YES completion:nil];
                                   }];
         } else {
             self.googleBtn.isLoading = NO;
@@ -172,9 +181,15 @@ didDisconnectWithUser:(GIDGoogleUser *)user
                                            btn.isLoading = NO;
                                            [self.googleBtn setEnabled:YES];
                                            [self.offlineBtn setEnabled:YES];
-                                           [weakself.userDefaults setBool:YES forKey:@"UsingFirebase"];
-                                           [weakself.userDefaults synchronize];
-                                           [innerSelf performSegueWithIdentifier:@"logInToDiary" sender:nil];
+                                           [innerSelf.userDefaults setBool:YES forKey:@"UsingFirebase"];
+                                           [innerSelf.userDefaults synchronize];
+                                           
+                                           if ([NSThread isMainThread]) {
+                                               NSLog(@"Main thread");
+                                           }
+                                           
+                                           MainPageVC *mainPageVC = [MainPageVC storyboardInstance];
+                                           [innerSelf presentViewController:mainPageVC animated:YES completion:nil];
                                        }];
              
 

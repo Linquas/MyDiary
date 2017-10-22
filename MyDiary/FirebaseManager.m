@@ -70,6 +70,9 @@
             [[RealmManager instance]saveDatafromFirebase:snapshot.value];
         } else {
             NSLog(@"No data from firebase");
+            dispatch_async(dispatch_get_main_queue(),^{
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"dataSyncComplete" object:self];
+            });
         }
         
     }];

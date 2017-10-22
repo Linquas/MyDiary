@@ -19,11 +19,9 @@
 
 
 @interface DiariesVC ()
-@property (weak, nonatomic) IBOutlet UIView *bottomRec;
 @property (weak, nonatomic) IBOutlet UITableView *diariesTableView;
 @property (nonatomic) RealmManager *realmManager;
 @property Diary *selected;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segementControl;
 @property (nonatomic) BOOL isUsingFirebase;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSArray *tableViewData;
@@ -46,12 +44,8 @@
     [self.refreshControl addTarget:self action:@selector(reloadTableView) forControlEvents:UIControlEventValueChanged];
     [refreshView addSubview:self.refreshControl];
     
-    [self.segementControl addTarget:self action:@selector(segementChanged:) forControlEvents:UIControlEventValueChanged];
-    
     self.diariesTableView.dataSource = self;
     self.diariesTableView.delegate = self;
-    
-    self.isUsingFirebase = [[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"];
     
     __weak DiariesVC *weakSelf = self;
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *note, RLMRealm * realm) {
@@ -62,6 +56,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    self.isUsingFirebase = [[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"];
     [self updateTableDataArray];
 }
 
@@ -74,15 +69,6 @@
     [self.diariesTableView reloadData];
 }
 #pragma mark - Action
-- (IBAction)segementChanged:(id)sender {
-    if (self.segementControl.selectedSegmentIndex == 1) {
-        [self performSegueWithIdentifier:@"entriesToCalendar" sender:nil];
-    }
-    if (self.segementControl.selectedSegmentIndex == 2) {
-        [self performSegueWithIdentifier:@"diaryToME" sender:nil];
-    }
-}
-
 - (IBAction)writeBtnPressed:(id)sender {
     [self performSegueWithIdentifier:@"writing" sender:nil];
 }
@@ -138,6 +124,10 @@
 {
     [self updateTableDataArray];
     [self.refreshControl endRefreshing];
+}
+
+- (void)dealloc {
+    [self.token stop];
 }
 
 

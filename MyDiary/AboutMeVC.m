@@ -21,7 +21,6 @@
 
 @interface AboutMeVC ()
 @property (weak, nonatomic) IBOutlet GADBannerView *adBannerView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property RLMResults *user;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet LGButton *syncBtn;
@@ -37,24 +36,16 @@
     self.adBannerView.rootViewController = self;
     [self.adBannerView loadRequest:[GADRequest request]];
     
-    [self checkFirebaseStatusAndGetUser];
-    
-    [self loadUserPhotoAndName];
-    
-    [self.segmentControl addTarget:self action:@selector(segementChanged:) forControlEvents:UIControlEventValueChanged];
-    
     //data sync from firebase
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataSync) name:@"dataSyncComplete" object:nil];
 }
-#pragma mark - Actions
-- (IBAction)segementChanged:(id)sender {
-    if (self.segmentControl.selectedSegmentIndex == 0) {
-        [self performSegueWithIdentifier:@"meToDiary" sender:nil];
-    }
-    if (self.segmentControl.selectedSegmentIndex == 1) {
-        [self performSegueWithIdentifier:@"meToCalendar" sender:nil];
-    }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self checkFirebaseStatusAndGetUser];
+    [self loadUserPhotoAndName];
 }
+#pragma mark - Actions
 
 - (IBAction)logoutBtn:(id)sender {
     NSError *signOutError;
@@ -71,12 +62,18 @@
         NSLog(@"Error signing out: %@", signOutError);
     } else {
         NSLog(@"Logout");
+
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"UsingFirebase"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ID"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isOffline"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"UsingGoogle"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        [self performSegueWithIdentifier:@"backToLogin" sender:nil];
+        
+        if (self.parentViewController.presentingViewController.presentingViewController) {
+            [self.parentViewController.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+        }
     }
 }
 

@@ -41,12 +41,10 @@
 }
 
 -(void)addOrUpdateObject:(RLMObject*)obj {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        RLMRealm* realm = [RLMRealm defaultRealm];
-        [realm beginWriteTransaction];
-        [realm addOrUpdateObject:obj];
-        [realm commitWriteTransaction];
-    });
+    RLMRealm* realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm addOrUpdateObject:obj];
+    [realm commitWriteTransaction];
 }
 
 -(void)updateObject:(RLMObject*)obj {
@@ -76,7 +74,7 @@
 
 -(RLMResults*)loadAllDataWithUid:(NSString*)uid {
     if ([uid isEqualToString:@""] || !uid) {
-        NSLog(@"Empty uid");
+        NSLog(@"Empty uid when load all data");
         return nil;
     }
     RLMResults<Diary *> *diaries = [Diary objectsWhere: [NSString stringWithFormat:@"user = '%@'",uid]];
@@ -85,7 +83,7 @@
 
 - (RLMResults*)loadUserWithUid:(NSString*)uid {
     if ([uid isEqualToString:@""] || !uid) {
-        NSLog(@"Empty uid");
+        NSLog(@"Empty uid when load user");
         return nil;
     }
     RLMResults<User *> *Users = [User objectsWhere: [NSString stringWithFormat:@"userId = '%@'",uid]];
@@ -124,7 +122,7 @@
             [realm addOrUpdateObject:usr];
         }
         [realm commitWriteTransaction];
-        NSLog(@"Sync Conplete");
+        NSLog(@"Sync Complete");
         dispatch_async(dispatch_get_main_queue(),^{
             [[NSNotificationCenter defaultCenter]postNotificationName:@"dataSyncComplete" object:self];
         });
@@ -133,7 +131,7 @@
 
 -(NSArray*)loadDiaryInMonthWithUid:(NSString*)uid {
     RLMResults<Diary *> *diaries = [Diary objectsWhere: [NSString stringWithFormat:@"user = '%@'",uid]];
-    return [self relocateDataInMonth:[diaries sortedResultsUsingKeyPath:@"key" ascending:YES]];
+    return [self relocateDataInMonth:[diaries sortedResultsUsingKeyPath:@"key" ascending:NO]];
 }
 
 // separate diary data into group of month

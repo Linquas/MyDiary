@@ -9,6 +9,7 @@
 #import "UserInfoVC.h"
 #import "User.h"
 #import "RealmManager.h"
+#import "MainPageVC.h"
 @import LGButton;
 
 @interface UserInfoVC () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate>
@@ -76,8 +77,9 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isOffline"];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"UsingFirebase"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-
-        [self performSegueWithIdentifier:@"userinfoToDiary" sender:nil];
+        
+        MainPageVC *mainPageVC = [MainPageVC storyboardInstance];
+        [self presentViewController:mainPageVC animated:YES completion:nil];
     }
 }
 

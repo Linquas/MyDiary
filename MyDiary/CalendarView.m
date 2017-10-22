@@ -10,7 +10,6 @@
 @import FSCalendar;
 
 @interface CalendarView ()
-@property (weak, nonatomic) IBOutlet UIView *upperRec;
 @property (weak, nonatomic) IBOutlet FSCalendar *calendarView;
 
 @end
@@ -19,12 +18,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    [self.upperRec.layer setCornerRadius:0.5];
-    [self.upperRec.layer setShadowColor:[UIColor blackColor].CGColor];
-    [self.upperRec.layer setCornerRadius:5.0];
-    [self.upperRec.layer setShadowOffset:CGSizeMake(0.0f, 1.0f)];
-    [self.upperRec.layer setShadowOpacity:0.6f];
     
     [self.calendarView.layer setCornerRadius:0.5];
     [self.calendarView.layer setShadowColor:[UIColor blackColor].CGColor];
