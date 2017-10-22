@@ -40,21 +40,11 @@
     [[GIDSignIn sharedInstance] signInSilently];
     
     self.userDefaults = [NSUserDefaults standardUserDefaults];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
-    if ([self.userDefaults objectForKey:@"isOffline"]) {
-        if ([self.userDefaults boolForKey:@"isOffline"]){
-            MainPageVC *mainPageVC = [MainPageVC storyboardInstance];
-           [self presentViewController:mainPageVC animated:YES completion:nil];
-        }
-    }else if ([FBSDKAccessToken currentAccessToken]) {
-        MainPageVC *mainPageVC = [MainPageVC storyboardInstance];
-        [self presentViewController:mainPageVC animated:YES completion:nil];
-
-    }else if ([self.userDefaults boolForKey:@"UsingGoogle"]) {
+    if ([self.userDefaults boolForKey:@"LoggedIn"]) {
         MainPageVC *mainPageVC = [MainPageVC storyboardInstance];
         [self presentViewController:mainPageVC animated:YES completion:nil];
     }
@@ -92,6 +82,7 @@ didSignInForUser:(GIDGoogleUser *)user
                                       [self.offlineBtn setEnabled:YES];
                                       [weakself.userDefaults setBool:YES forKey:@"UsingFirebase"];
                                       [weakself.userDefaults setBool:YES forKey:@"UsingGoogle"];
+                                      [weakself.userDefaults setBool:YES forKey:@"LoggedIn"];
                                       [weakself.userDefaults synchronize];
                                       
                                       MainPageVC *mainPageVC = [MainPageVC storyboardInstance];
@@ -182,11 +173,8 @@ didDisconnectWithUser:(GIDGoogleUser *)user
                                            [self.googleBtn setEnabled:YES];
                                            [self.offlineBtn setEnabled:YES];
                                            [innerSelf.userDefaults setBool:YES forKey:@"UsingFirebase"];
+                                           [weakself.userDefaults setBool:YES forKey:@"LoggedIn"];
                                            [innerSelf.userDefaults synchronize];
-                                           
-                                           if ([NSThread isMainThread]) {
-                                               NSLog(@"Main thread");
-                                           }
                                            
                                            MainPageVC *mainPageVC = [MainPageVC storyboardInstance];
                                            [innerSelf presentViewController:mainPageVC animated:YES completion:nil];
@@ -235,5 +223,6 @@ didDisconnectWithUser:(GIDGoogleUser *)user
 - (IBAction)loginOffline:(id)sender {
     [self performSegueWithIdentifier:@"loginToUserinfo" sender:nil];
 }
+
 
 @end

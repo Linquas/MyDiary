@@ -47,6 +47,8 @@
     self.diariesTableView.dataSource = self;
     self.diariesTableView.delegate = self;
     
+    self.isUsingFirebase = [[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"];
+    
     __weak DiariesVC *weakSelf = self;
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *note, RLMRealm * realm) {
         DiariesVC *innerSelf = weakSelf;

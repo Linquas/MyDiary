@@ -47,9 +47,13 @@
     self.calendar.delegate = self;
     self.calendar.layer.cornerRadius = 10.0;
     
+    self.isUsingFirebase = [[NSUserDefaults standardUserDefaults] boolForKey:@"UsingFirebase"];
+    
+    __weak CalendarVC *weakSelf = self;
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *note, RLMRealm * realm) {
-        [self loadDiaries];
-        [self loadToday];
+        CalendarVC *innerSelf = weakSelf;
+        [innerSelf loadDiaries];
+        [innerSelf loadToday];
     }];
 }
 

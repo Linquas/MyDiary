@@ -67,6 +67,7 @@
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ID"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isOffline"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"UsingGoogle"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LoggedIn"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         if (self.parentViewController.presentingViewController.presentingViewController) {

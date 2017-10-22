@@ -76,6 +76,7 @@
         
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isOffline"];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"UsingFirebase"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"LoggedIn"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         MainPageVC *mainPageVC = [MainPageVC storyboardInstance];
