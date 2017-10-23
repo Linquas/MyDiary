@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) UISegmentedControl *mainSegmentControl;
 @property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) NSMutableArray *viewControllers;
 
 @end
 
@@ -71,6 +72,10 @@
     
     [self.view addSubview:self.diaries.view];
     self.currentVC = self.diaries;
+    
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+    [self.view addGestureRecognizer:panRecognizer];
+    
 }
 
 - (void)changeSubView:(UISegmentedControl*)seg {
@@ -112,6 +117,29 @@
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MainPageVC *mainVC = [sb instantiateViewControllerWithIdentifier:@"mainPageVC"];
     return mainVC;
+}
+
+- (void)pan:(UIPanGestureRecognizer *)gr {
+    if (gr.state == UIGestureRecognizerStateEnded) {
+        CGPoint translation = [gr translationInView:self.view];
+        if (translation.x > 8) {
+            NSInteger index = self.mainSegmentControl.selectedSegmentIndex - 1;
+            if (index >= 0) {
+//                NSLog(@"Right");
+                self.mainSegmentControl.selectedSegmentIndex = index;
+                [self.mainSegmentControl sendActionsForControlEvents:UIControlEventValueChanged];
+            }
+        }
+        if (translation.x < -8) {
+            NSInteger index = self.mainSegmentControl.selectedSegmentIndex + 1;
+            if (index <= 2) {
+//                NSLog(@"Left");
+                self.mainSegmentControl.selectedSegmentIndex = index;
+                [self.mainSegmentControl sendActionsForControlEvents:UIControlEventValueChanged];
+            }
+        }
+        [gr setTranslation:CGPointZero inView:self.view];
+    }
 }
 
 
