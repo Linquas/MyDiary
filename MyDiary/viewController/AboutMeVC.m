@@ -11,7 +11,8 @@
 #import "RealmManager.h"
 #import "FirebaseManager.h"
 #import "User.h"
-#import "KFKeychain.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <FontAwesomeKit/FAKFontAwesome.h>
 
 @import LGButton;
 @import GoogleSignIn;
@@ -53,7 +54,6 @@
     
     if ([GIDSignIn sharedInstance].currentUser) {
         [[GIDSignIn sharedInstance] signOut];
-        [KFKeychain deleteObjectForKey:@"google"];
     } else if ([FBSDKAccessToken currentAccessToken]) {
         [[[FBSDKLoginManager alloc]init] logOut];
     }
@@ -81,10 +81,33 @@
 - (IBAction)syncBtn:(id)sender {
     [[FirebaseManager instance] loadDiaryFromFirebase];
     self.syncBtn.isLoading = YES;
+    [self addHUD];
 }
 #pragma mark - Private Method
 - (void) dataSync {
     self.syncBtn.isLoading = NO;
+    
+    [self dissmissHUD];
+}
+
+- (void)addHUD {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.label.text = @"Loading...";
+    hud.minSize = CGSizeMake(100.f, 100.f);
+    self.view.userInteractionEnabled = NO;
+}
+
+- (void)dissmissHUD {
+    FAKFontAwesome *checkMarkIcon = [FAKFontAwesome checkIconWithSize:20];
+    UIImage *checkmarkImage = [checkMarkIcon imageWithSize:CGSizeMake(40, 40)];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:checkmarkImage];
+    
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
+    hud.customView = imageView;
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.label.text = @"Done!";
+    [hud hideAnimated:YES afterDelay:1.f];
+    self.view.userInteractionEnabled = YES;
 }
 
 - (void) loadUserPhotoAndName {

@@ -21,4 +21,6 @@ target 'MyDiary' do
   pod 'Crashlytics'
   pod 'AFNetworking', '~> 3.0'
   pod 'Masonry'
+  pod 'MBProgressHUD', '~> 1.0.0'
+  pod 'FontAwesomeKit/FontAwesome'
 end
