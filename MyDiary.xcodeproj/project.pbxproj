@@ -248,23 +248,18 @@
 		F3C6AD291F5681BC00DCEF42 /* MyDiary */ = {
 			isa = PBXGroup;
 			children = (
+				F3E993B71FB198CE00FD6A2F /* helper */,
+				F3E993B61FB1988F00FD6A2F /* network */,
+				F3E993B51FB1987F00FD6A2F /* database */,
+				F3E993B41FB1987100FD6A2F /* model */,
+				F3E993B21FB1981100FD6A2F /* viewController */,
+				F3E993B11FB197EC00FD6A2F /* view */,
 				F3C6ADDC1F626A3E00DCEF42 /* MyDiary.entitlements */,
-				F3C6AD4C1F57EC9E00DCEF42 /* view */,
-				F3C6AD451F56A11B00DCEF42 /* controller */,
-				F3C6AD411F568B3000DCEF42 /* model */,
-				F3C6ADAD1F59748C00DCEF42 /* RealmManager.h */,
-				F3C6ADAE1F59748C00DCEF42 /* RealmManager.m */,
-				F3C6ADD31F5FD47600DCEF42 /* FirebaseManager.h */,
-				F3C6ADD41F5FD47600DCEF42 /* FirebaseManager.m */,
 				F3C6AD2D1F5681BC00DCEF42 /* AppDelegate.h */,
 				F3C6AD2E1F5681BC00DCEF42 /* AppDelegate.m */,
 				F3C6AD331F5681BC00DCEF42 /* Main.storyboard */,
 				F3C6AD361F5681BC00DCEF42 /* Assets.xcassets */,
 				F3C6AD2A1F5681BC00DCEF42 /* Supporting Files */,
-				F34D2B891F6BA3C50038D7FA /* OpenWeatherAPI.h */,
-				F34D2B8A1F6BA3C50038D7FA /* OpenWeatherAPI.m */,
-				F34D2B8C1F6BB8750038D7FA /* HttpResponseErrorCode.h */,
-				F34D2B8D1F6BB8750038D7FA /* HttpResponseErrorCode.m */,
 			);
 			path = MyDiary;
 			sourceTree = "<group>";
@@ -276,30 +271,30 @@
 				F3C6AD381F5681BC00DCEF42 /* LaunchScreen.storyboard */,
 				F3C6AD3B1F5681BC00DCEF42 /* Info.plist */,
 				F3C6AD2B1F5681BC00DCEF42 /* main.m */,
-				F3C6AD491F56B08800DCEF42 /* PlaceHoldUITextView.h */,
-				F3C6AD4A1F56B08800DCEF42 /* PlaceHoldUITextView.m */,
-				F3C6ADB01F5A77EC00DCEF42 /* NSDate+YearMonthDay.h */,
-				F3C6ADB11F5A77EC00DCEF42 /* NSDate+YearMonthDay.m */,
-				F36DC06E1F73B74F003D0123 /* KFKeychain.h */,
-				F36DC06F1F73B74F003D0123 /* KFKeychain.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F3C6AD411F568B3000DCEF42 /* model */ = {
+		F3E993B11FB197EC00FD6A2F /* view */ = {
 			isa = PBXGroup;
 			children = (
-				F3C6AD7F1F592C0B00DCEF42 /* Diary.h */,
-				F3C6AD801F592C0B00DCEF42 /* Diary.m */,
-				F3C6ADD91F611B5000DCEF42 /* User.h */,
-				F3C6ADDA1F611B5000DCEF42 /* User.m */,
-				F30A6A531F6CF9F9005670BE /* Weather.h */,
-				F30A6A541F6CF9F9005670BE /* Weather.m */,
+				F3C6ADAA1F59466200DCEF42 /* WritingView.h */,
+				F3C6ADAB1F59466200DCEF42 /* WritingView.m */,
+				F3C6AD421F568B6F00DCEF42 /* DiariesCell.h */,
+				F3C6AD431F568B6F00DCEF42 /* DiariesCell.m */,
+				F3C6ADB61F5A8A4C00DCEF42 /* ReadingView.h */,
+				F3C6ADB71F5A8A4C00DCEF42 /* ReadingView.m */,
+				F3C6ADD61F61141900DCEF42 /* AboutMeView.h */,
+				F3C6ADD71F61141900DCEF42 /* AboutMeView.m */,
+				F3B618ED1F67D9C0006467D5 /* DiaryView.h */,
+				F3B618EE1F67D9C0006467D5 /* DiaryView.m */,
+				F3B618F01F67DBA2006467D5 /* CalendarView.h */,
+				F3B618F11F67DBA2006467D5 /* CalendarView.m */,
 			);
-			name = model;
+			path = view;
 			sourceTree = "<group>";
 		};
-		F3C6AD451F56A11B00DCEF42 /* controller */ = {
+		F3E993B21FB1981100FD6A2F /* viewController */ = {
 			isa = PBXGroup;
 			children = (
 				F3C6ADBF1F5D779C00DCEF42 /* AboutMeVC.h */,
@@ -319,26 +314,55 @@
 				F3DC382D1F99E6F90047B59A /* MainPageVC.h */,
 				F3DC382E1F99E6F90047B59A /* MainPageVC.m */,
 			);
-			name = controller;
+			path = viewController;
 			sourceTree = "<group>";
 		};
-		F3C6AD4C1F57EC9E00DCEF42 /* view */ = {
+		F3E993B41FB1987100FD6A2F /* model */ = {
 			isa = PBXGroup;
 			children = (
-				F3C6ADAA1F59466200DCEF42 /* WritingView.h */,
-				F3C6ADAB1F59466200DCEF42 /* WritingView.m */,
-				F3C6AD421F568B6F00DCEF42 /* DiariesCell.h */,
-				F3C6AD431F568B6F00DCEF42 /* DiariesCell.m */,
-				F3C6ADB61F5A8A4C00DCEF42 /* ReadingView.h */,
-				F3C6ADB71F5A8A4C00DCEF42 /* ReadingView.m */,
-				F3C6ADD61F61141900DCEF42 /* AboutMeView.h */,
-				F3C6ADD71F61141900DCEF42 /* AboutMeView.m */,
-				F3B618ED1F67D9C0006467D5 /* DiaryView.h */,
-				F3B618EE1F67D9C0006467D5 /* DiaryView.m */,
-				F3B618F01F67DBA2006467D5 /* CalendarView.h */,
-				F3B618F11F67DBA2006467D5 /* CalendarView.m */,
+				F3C6AD7F1F592C0B00DCEF42 /* Diary.h */,
+				F3C6AD801F592C0B00DCEF42 /* Diary.m */,
+				F3C6ADD91F611B5000DCEF42 /* User.h */,
+				F3C6ADDA1F611B5000DCEF42 /* User.m */,
+				F30A6A531F6CF9F9005670BE /* Weather.h */,
+				F30A6A541F6CF9F9005670BE /* Weather.m */,
 			);
-			name = view;
+			path = model;
+			sourceTree = "<group>";
+		};
+		F3E993B51FB1987F00FD6A2F /* database */ = {
+			isa = PBXGroup;
+			children = (
+				F3C6ADAD1F59748C00DCEF42 /* RealmManager.h */,
+				F3C6ADAE1F59748C00DCEF42 /* RealmManager.m */,
+				F3C6ADD31F5FD47600DCEF42 /* FirebaseManager.h */,
+				F3C6ADD41F5FD47600DCEF42 /* FirebaseManager.m */,
+			);
+			path = database;
+			sourceTree = "<group>";
+		};
+		F3E993B61FB1988F00FD6A2F /* network */ = {
+			isa = PBXGroup;
+			children = (
+				F34D2B891F6BA3C50038D7FA /* OpenWeatherAPI.h */,
+				F34D2B8A1F6BA3C50038D7FA /* OpenWeatherAPI.m */,
+				F34D2B8C1F6BB8750038D7FA /* HttpResponseErrorCode.h */,
+				F34D2B8D1F6BB8750038D7FA /* HttpResponseErrorCode.m */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		F3E993B71FB198CE00FD6A2F /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				F3C6AD491F56B08800DCEF42 /* PlaceHoldUITextView.h */,
+				F3C6AD4A1F56B08800DCEF42 /* PlaceHoldUITextView.m */,
+				F3C6ADB01F5A77EC00DCEF42 /* NSDate+YearMonthDay.h */,
+				F3C6ADB11F5A77EC00DCEF42 /* NSDate+YearMonthDay.m */,
+				F36DC06E1F73B74F003D0123 /* KFKeychain.h */,
+				F36DC06F1F73B74F003D0123 /* KFKeychain.m */,
+			);
+			path = helper;
 			sourceTree = "<group>";
 		};
 		F3F9C5B51F8F408100420C46 /* WeatherAPITest */ = {

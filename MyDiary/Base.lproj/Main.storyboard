@@ -201,7 +201,7 @@
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbL-UZ-5Ot" userLabel="Date">
                                                                             <rect key="frame" x="0.0" y="0.0" width="42" height="49"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="42" id="gjI-H5-KQi"/>
+                                                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="42" id="gjI-H5-KQi"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="35"/>
                                                                             <color key="textColor" red="0.070588235294117646" green="0.58823529411764708" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

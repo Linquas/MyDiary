@@ -32,7 +32,7 @@
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [FIRApp configure];
-    [GADMobileAds configureWithApplicationID:@"ca-app-pub-4649001250005093~1748802115"];
+//    [GADMobileAds configureWithApplicationID:@"ca-app-pub-4649001250005093~1748802115"];
     [FIRDatabase database].persistenceEnabled = YES;
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
